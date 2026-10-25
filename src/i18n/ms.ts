@@ -58,7 +58,7 @@ export const msTranslations = {
   },
   services: {
     badge: "SKOP TEKNIKAL",
-    title: "PERKHIDMATAN WEB & SISTEM",
+    title: "BINA IDEA. LANCAR WEB.",
     subhead:
       "Dua kategori teras: Pembangunan Frontend berimpak visual tinggi atau Sistem Khas Full-Stack berasaskan pangkalan data.",
     tabs: {
@@ -71,7 +71,7 @@ export const msTranslations = {
   },
   portfolio: {
     badge: "BUKTI KARYA",
-    title: "PORTFOLIO & EKSPERIMEN DIGITAL",
+    title: "IDEA JADI REALITI.",
     subhead:
       "Koleksi prototaip, konsep reka bentuk antaramuka dan sistem komponen web. Dilabelkan secara telus.",
     statusFilterAll: "Semua",
@@ -81,7 +81,7 @@ export const msTranslations = {
   },
   pricing: {
     badge: "KALKULATOR SEBUT HARGA",
-    title: "PRICING STUDIO",
+    title: "BINA IKUT BAJET.",
     subhead:
       "Pilih pakej frontend dan tambah fungsi yang anda perlukan. Anggaran dikira secara langsung dan telus.",
     basePackagesLabel: "1. PILIH PAKEJ ASAS",
@@ -99,7 +99,7 @@ export const msTranslations = {
   },
   coaching: {
     badge: "BIMBINGAN 1:1 PERIBADI",
-    title: "SESI COACHING WEB DEVELOPMENT",
+    title: "BELAJAR. BINA. DEPLOY.",
     subhead:
       "Bimbingan peribadi 1:1 bersama Syahmi AOF. Pilih topik kemahiran dan tempoh sesi yang sesuai untuk matlamat anda.",
     topicsLabel: "1. PILIH TOPIK COACHING",
@@ -111,7 +111,7 @@ export const msTranslations = {
   },
   about: {
     badge: "IDENTITI & LATAR BELAKANG",
-    title: "TENTANG SAYA — SYAHMI AOF",
+    title: "SAYA SYAHMI AOF.",
     role: "Pembangun Web & Pelajar IT (Cloud Computing)",
     institution: "TVETMARA Besut, Terengganu",
     bio1:

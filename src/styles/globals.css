@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+  /* Font Family Tokens */
+  --font-display: 'Oswald', 'Impact', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Color Palette Tokens */
   --color-ink: #09090b;
   --color-surface: #121216;
   --color-surface-elevated: #18181e;
@@ -18,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
   background-color: var(--color-ink);
   color: var(--color-white);
   font-family: var(--font-sans, system-ui, -apple-system, sans-serif);

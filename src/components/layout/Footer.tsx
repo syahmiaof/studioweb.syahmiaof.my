@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ locale }) => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-zinc-400 hover:text-acid transition-colors inline-flex items-center gap-1 group"
+                    className="text-sm text-zinc-400 hover:text-acid transition-colors inline-flex items-center gap-1 py-1 group"
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-acid" />

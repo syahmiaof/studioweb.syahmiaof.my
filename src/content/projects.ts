@@ -18,7 +18,7 @@ export const PROJECTS: ProjectItem[] = [
     },
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Radix UI"],
     role: "Frontend Architecture & UI Engineering",
-    image: "/assets/references/03-portfolio.png",
+    image: "/assets/projects/symi-ui.png",
     demoNote: {
       ms: "Projek inisiatif kendiri bagi mendemonstrasikan seni bina rekaan komponen brutalist.",
       en: "Self-initiated showcase demonstrating brutalist component architecture.",
@@ -41,7 +41,7 @@ export const PROJECTS: ProjectItem[] = [
     },
     stack: ["React", "GSAP ScrollTrigger", "CSS 3D Transforms", "Web Audio API"],
     role: "Creative Development & Motion Design",
-    image: "/assets/references/03-portfolio.png",
+    image: "/assets/projects/lamborghini-concept.png",
     demoNote: {
       ms: "Eksperimen konsep reka bentuk tidak rasmi; tiada kaitan atau tajaan rasmi daripada jenama automotif tersebut.",
       en: "Unofficial design concept experiment; no official affiliation or endorsement by the automotive brand.",
@@ -64,7 +64,7 @@ export const PROJECTS: ProjectItem[] = [
     },
     stack: ["Next.js", "Tailwind CSS", "Zustand", "Lucide Icons"],
     role: "UI/UX Prototyping & Frontend Engineering",
-    image: "/assets/references/03-portfolio.png",
+    image: "/assets/projects/uberpokmi-ui.png",
     demoNote: {
       ms: "Prototaip simulasi aliran antaramuka pengguna; tidak disambungkan kepada pangkalan data pengeluaran sebenar.",
       en: "Simulated UI flow prototype; not connected to a live production backend.",

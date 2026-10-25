@@ -131,14 +131,15 @@ function HeaderBar({ locale }: HeaderProps) {
         <div className="flex md:hidden items-center gap-2">
           <Link
             href={getToggleUrl()}
-            className="flex items-center gap-1 px-2 py-1 text-xs font-mono border border-zinc-800 text-zinc-300 hover:text-acid"
+            className="flex items-center justify-center min-h-[44px] min-w-[44px] px-2.5 py-2 text-xs font-mono border border-zinc-800 text-zinc-300 hover:text-acid hover:border-acid transition-colors"
+            title={`Switch to ${locale === "ms" ? "English" : "Bahasa Melayu"}`}
           >
             <span className="font-bold">{locale === "ms" ? "EN" : "BM"}</span>
           </Link>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 border border-zinc-800 text-zinc-200 hover:text-acid hover:border-acid transition-colors"
+            className="min-h-[44px] min-w-[44px] p-2.5 flex items-center justify-center border border-zinc-800 text-zinc-200 hover:text-acid hover:border-acid transition-colors"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -149,7 +150,7 @@ function HeaderBar({ locale }: HeaderProps) {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-ink/98 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
+        <div className="md:hidden bg-ink/98 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-1.5 animate-fadeIn max-h-[calc(100vh-4rem)] overflow-y-auto">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -157,7 +158,7 @@ function HeaderBar({ locale }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2 text-sm font-semibold uppercase tracking-wider border-l-2 transition-colors ${
+                className={`min-h-[44px] flex items-center px-4 py-3 text-sm font-semibold uppercase tracking-wider border-l-2 transition-colors ${
                   active
                     ? "border-acid text-acid bg-zinc-900/40"
                     : "border-transparent text-zinc-300 hover:text-white hover:border-zinc-500"
@@ -171,7 +172,7 @@ function HeaderBar({ locale }: HeaderProps) {
             <Link
               href={locale === "en" ? "/en/hubungi" : "/hubungi"}
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-bold uppercase tracking-wider bg-acid text-ink hover:bg-acid-hover transition-colors shadow-brutal"
+              className="w-full flex items-center justify-center gap-1.5 min-h-[44px] py-3.5 text-xs font-bold uppercase tracking-wider bg-acid text-ink hover:bg-acid-hover transition-colors shadow-brutal"
             >
               <span>{t.nav.ctaStart}</span>
               <ArrowUpRight className="w-4 h-4" />
