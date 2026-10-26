@@ -31,6 +31,14 @@ type NewProject = {
   liveUrl: string;
 };
 
+type EditProject = {
+  id: string;
+  title: string;
+  category: string;
+  status: ProjectStatus;
+  liveUrl: string;
+};
+
 export function PortfolioView({ locale, embedded = false }: { locale: Locale; embedded?: boolean }) {
   const [active, setActive] = useState(0);
   const [projects, setProjects] = useState<ProjectItem[]>(PROJECTS);
@@ -38,6 +46,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
   const [activeStatus, setActiveStatus] = useState<ProjectStatus | "all">("all");
   const [adminOpen, setAdminOpen] = useState(false);
   const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [adminMode, setAdminMode] = useState<"create" | "edit">("create");
   const [password, setPassword] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
   const [isSaving, setIsSaving] = useState(false);
@@ -49,6 +58,14 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
     status: "completed",
     liveUrl: "",
   });
+  const [editProject, setEditProject] = useState<EditProject>({
+    id: "",
+    title: "",
+    category: "",
+    status: "completed",
+    liveUrl: "",
+  });
+
   const isChinese = locale === "zh-Hans";
   const c = (ms: string, en: string, zh?: string) => copy(locale, ms, en, zh);
   const featured = FEATURED_PROJECTS.map((item) => PROJECTS.find((project) => project.id === item.id)).filter(
@@ -69,6 +86,19 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
     "in-progress": locale === "ms" ? "Sedang dibina" : isChinese ? "进行中" : "In progress",
     "on-hold": locale === "ms" ? "Ditangguhkan" : isChinese ? "暂缓" : "On hold",
   } satisfies Record<ProjectStatus, string>;
+
+  function handleSelectProjectForEdit(id: string) {
+    const target = projects.find((p) => p.id === id);
+    if (target) {
+      setEditProject({
+        id: target.id,
+        title: target.title,
+        category: localized(target.category, locale),
+        status: target.status,
+        liveUrl: target.liveUrl || "",
+      });
+    }
+  }
 
   useEffect(() => {
     const selectFromHash = () => {
@@ -142,24 +172,49 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
         setAdminUnlocked(true);
         setPassword("");
         setAdminMessage(c("Akses admin dibuka untuk 8 jam pada browser ini.", "Admin access is open for 8 hours in this browser."));
+        if (!editProject.id && projects[0]) {
+          handleSelectProjectForEdit(projects[0].id);
+        }
         return;
       }
 
-      const response = await fetch("/api/projects", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "create", ...newProject }),
-      });
-      const data = await response.json() as { project?: ProjectItem; message?: string };
-      if (response.status === 401) {
-        setAdminUnlocked(false);
-        setAdminMessage(data.message || c("Sesi tamat. Masukkan kata laluan semula.", "Session expired. Enter the password again."));
+      if (adminMode === "create") {
+        const response = await fetch("/api/projects", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "create", ...newProject }),
+        });
+        const data = await response.json() as { project?: ProjectItem; message?: string };
+        if (response.status === 401) {
+          setAdminUnlocked(false);
+          setAdminMessage(data.message || c("Sesi tamat. Masukkan kata laluan semula.", "Session expired. Enter the password again."));
+          return;
+        }
+        if (!response.ok || !data.project) throw new Error(data.message || c("Projek tak dapat disimpan.", "Project could not be saved."));
+        setProjects((items) => [...items, data.project!]);
+        setNewProject({ title: "", category: "", status: "completed", liveUrl: "" });
+        setAdminMessage(c("Projek berjaya ditambah ke showcase!", "Project added to showcase successfully!", "项目已成功添加到展示列表！"));
         return;
       }
-      if (!response.ok || !data.project) throw new Error(data.message || c("Projek tak dapat disimpan.", "Project could not be saved."));
-      setProjects((items) => [...items, data.project!]);
-      setNewProject({ title: "", category: "", status: "completed", liveUrl: "" });
-        setAdminMessage(c("Projek berjaya ditambah ke database showcase.", "Project added to the showcase database."));
+
+      if (adminMode === "edit") {
+        if (!editProject.id) throw new Error(c("Sila pilih projek untuk diedit.", "Please select a project to edit."));
+        const response = await fetch("/api/projects", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "update", ...editProject }),
+        });
+        const data = await response.json() as { project?: ProjectItem; message?: string };
+        if (response.status === 401) {
+          setAdminUnlocked(false);
+          setAdminMessage(data.message || c("Sesi tamat. Masukkan kata laluan semula.", "Session expired. Enter the password again."));
+          return;
+        }
+        if (!response.ok || !data.project) throw new Error(data.message || c("Kemaskini gagal disimpan.", "Update could not be saved."));
+        setProjects((items) => items.map((item) => (item.id === data.project!.id ? data.project! : item)));
+        setAdminMessage(c("Projek berjaya dikemaskini!", "Project updated successfully!", "项目已成功更新！"));
+        return;
+      }
     } catch (error) {
       setAdminMessage(error instanceof Error ? error.message : c("Ralat tak dijangka.", "Unexpected error."));
     } finally {
@@ -241,8 +296,19 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
             <p className="project-result-count" aria-live="polite">
               {locale === "ms" ? `${visibleProjects.length} projek` : isChinese ? `${visibleProjects.length} 个项目` : `${visibleProjects.length} projects`}
             </p>
-            <button ref={adminTriggerRef} className="project-admin-trigger" type="button" onClick={() => { setAdminOpen(true); setAdminMessage(""); }}>
-              <span aria-hidden="true">＋</span>{c("Tambah projek", "Add project", "添加项目")}
+            <button
+              ref={adminTriggerRef}
+              className="project-admin-trigger"
+              type="button"
+              onClick={() => {
+                setAdminOpen(true);
+                setAdminMessage("");
+                if (adminUnlocked && !editProject.id && projects[0]) {
+                  handleSelectProjectForEdit(projects[0].id);
+                }
+              }}
+            >
+              <span aria-hidden="true">＋</span>{c("Urus projek", "Manage projects", "管理项目")}
             </button>
           </div>
 
@@ -259,21 +325,58 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
             <div className="project-grid">
               {visibleProjects.map((item, index) => (
                 <article className="project-card" key={item.id}>
-                  {item.liveUrl ? <a className="project-card-preview-link" href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${c("Buka projek", "Open project", "打开项目")}: ${item.title}`}><ProjectPreview project={item} locale={locale} /></a> : <ProjectPreview project={item} locale={locale} />}
+                  {item.liveUrl ? (
+                    <a className="project-card-preview-link" href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${c("Buka projek", "Open project", "打开项目")}: ${item.title}`}>
+                      <ProjectPreview project={item} locale={locale} />
+                    </a>
+                  ) : (
+                    <ProjectPreview project={item} locale={locale} />
+                  )}
                   <div className="project-card-info">
                     <div className="project-card-heading">
-                      <span className={`project-status project-status--${item.status}`}><i aria-hidden="true" />{PROJECT_STATUS_LABELS[locale][item.status]}</span>
-                      <span className="project-card-number">{String(index + 1).padStart(2, "0")}</span>
+                      <span className={`project-status project-status--${item.status}`}>
+                        <i aria-hidden="true" />{PROJECT_STATUS_LABELS[locale][item.status]}
+                      </span>
+                      <div className="project-card-meta">
+                        {adminUnlocked && (
+                          <button
+                            type="button"
+                            className="project-card-edit-button"
+                            title={c("Edit projek ini", "Edit this project", "编辑此项目")}
+                            onClick={() => {
+                              handleSelectProjectForEdit(item.id);
+                              setAdminMode("edit");
+                              setAdminMessage("");
+                              setAdminOpen(true);
+                            }}
+                          >
+                            ✏️ {c("Edit", "Edit", "编辑")}
+                          </button>
+                        )}
+                        <span className="project-card-number">{String(index + 1).padStart(2, "0")}</span>
+                      </div>
                     </div>
                     <h3>{item.title}</h3>
                     <p>{localized(item.category, locale)}</p>
-                    {item.liveUrl ? <a className="project-card-domain" href={item.liveUrl} target="_blank" rel="noopener noreferrer">{new URL(item.liveUrl).hostname}<span aria-hidden="true"> ↗</span></a> : <span className="project-card-domain project-card-domain-muted">{c("Pautan akan ditambah", "Live link not listed", "暂未提供线上链接")}</span>}
-                    <a className="project-card-inquiry" href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "website-ui", project: item.slug }))}>{c("Bincang projek ini", "Discuss this project", "讨论这个项目")} <span aria-hidden="true">→</span></a>
+                    {item.liveUrl ? (
+                      <a className="project-card-domain" href={item.liveUrl} target="_blank" rel="noopener noreferrer">
+                        {new URL(item.liveUrl).hostname}<span aria-hidden="true"> ↗</span>
+                      </a>
+                    ) : (
+                      <span className="project-card-domain project-card-domain-muted">
+                        {c("Pautan akan ditambah", "Live link not listed", "暂未提供线上链接")}
+                      </span>
+                    )}
+                    <a className="project-card-inquiry" href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "website-ui", project: item.slug }))}>
+                      {c("Bincang projek ini", "Discuss this project", "讨论这个项目")} <span aria-hidden="true">→</span>
+                    </a>
                   </div>
                 </article>
               ))}
             </div>
-          ) : <p className="project-empty-state">{c("Tiada projek sepadan. Cuba kata carian lain.", "No matching projects. Try another search.", "没有找到匹配项目，请换个关键词。")}</p>}
+          ) : (
+            <p className="project-empty-state">{c("Tiada projek sepadan. Cuba kata carian lain.", "No matching projects. Try another search.", "没有找到匹配项目，请换个关键词。")}</p>
+          )}
         </div>
       </section>
 
@@ -282,20 +385,170 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
           <section ref={adminDialogRef} className="project-admin-dialog" role="dialog" aria-modal="true" aria-labelledby="project-admin-title">
             <button className="project-admin-close" type="button" aria-label={c("Tutup", "Close", "关闭")} onClick={() => setAdminOpen(false)}>×</button>
             <span className="chapter-line">{adminUnlocked ? c("AKSES ADMIN", "ADMIN ACCESS", "管理员权限") : c("KAWASAN PEMILIK", "OWNER AREA", "所有者区域")}</span>
-            <h2 id="project-admin-title">{adminUnlocked ? c("Tambah projek", "Add a project", "添加项目") : c("Masukkan kata laluan", "Enter password", "输入密码")}</h2>
+            <h2 id="project-admin-title">
+              {!adminUnlocked
+                ? c("Masukkan kata laluan", "Enter password", "输入密码")
+                : adminMode === "edit"
+                ? c("Edit projek", "Edit project", "编辑项目")
+                : c("Tambah projek", "Add a project", "添加项目")}
+            </h2>
+
+            {adminUnlocked && (
+              <div className="project-admin-tabs" role="tablist">
+                <button
+                  type="button"
+                  className={`project-admin-tab ${adminMode === "create" ? "is-active" : ""}`}
+                  onClick={() => {
+                    setAdminMode("create");
+                    setAdminMessage("");
+                  }}
+                >
+                  ＋ {c("Tambah Baru", "Add New", "添加新项目")}
+                </button>
+                <button
+                  type="button"
+                  className={`project-admin-tab ${adminMode === "edit" ? "is-active" : ""}`}
+                  onClick={() => {
+                    setAdminMode("edit");
+                    setAdminMessage("");
+                    if (!editProject.id && projects[0]) {
+                      handleSelectProjectForEdit(projects[0].id);
+                    }
+                  }}
+                >
+                  ✏️ {c("Edit Projek Sedia Ada", "Edit Existing Project", "编辑现有项目")}
+                </button>
+              </div>
+            )}
+
             <form onSubmit={handleAdminSubmit}>
               {!adminUnlocked ? (
-                <label>{c("Kata laluan", "Password", "密码")}<input type="password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} required /></label>
+                <label>
+                  {c("Kata laluan", "Password", "密码")}
+                  <input
+                    type="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    required
+                  />
+                </label>
+              ) : adminMode === "create" ? (
+                <>
+                  <label>
+                    {c("Nama projek", "Project name", "项目名称")}
+                    <input
+                      value={newProject.title}
+                      onChange={(event) => setNewProject({ ...newProject, title: event.target.value })}
+                      maxLength={80}
+                      required
+                    />
+                  </label>
+                  <label>
+                    {c("Kategori", "Category", "类别")}
+                    <input
+                      value={newProject.category}
+                      onChange={(event) => setNewProject({ ...newProject, category: event.target.value })}
+                      maxLength={100}
+                      required
+                    />
+                  </label>
+                  <label>
+                    {c("Status", "Status", "状态")}
+                    <select
+                      value={newProject.status}
+                      onChange={(event) => setNewProject({ ...newProject, status: event.target.value as ProjectStatus })}
+                    >
+                      {STATUSES.map((status) => (
+                        <option key={status} value={status}>{statusLabels[status]}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {c("Pautan live (jika ada)", "Live URL (optional)", "线上链接（可选）")}
+                    <input
+                      type="url"
+                      inputMode="url"
+                      placeholder="https://example.com"
+                      value={newProject.liveUrl}
+                      onChange={(event) => setNewProject({ ...newProject, liveUrl: event.target.value })}
+                    />
+                  </label>
+                </>
               ) : (
                 <>
-                  <label>{c("Nama projek", "Project name", "项目名称")}<input value={newProject.title} onChange={(event) => setNewProject({ ...newProject, title: event.target.value })} maxLength={80} required /></label>
-                  <label>{c("Kategori", "Category", "类别")}<input value={newProject.category} onChange={(event) => setNewProject({ ...newProject, category: event.target.value })} maxLength={100} required /></label>
-                  <label>{c("Status", "Status", "状态")}<select value={newProject.status} onChange={(event) => setNewProject({ ...newProject, status: event.target.value as ProjectStatus })}>{STATUSES.map((status) => <option key={status} value={status}>{statusLabels[status]}</option>)}</select></label>
-                  <label>{c("Pautan live (jika ada)", "Live URL (optional)", "线上链接（可选）")}<input type="url" inputMode="url" placeholder="https://example.com" value={newProject.liveUrl} onChange={(event) => setNewProject({ ...newProject, liveUrl: event.target.value })} /></label>
+                  <label>
+                    {c("Pilih projek untuk diedit", "Select project to edit", "选择要编辑的项目")}
+                    <select
+                      value={editProject.id}
+                      onChange={(event) => handleSelectProjectForEdit(event.target.value)}
+                      required
+                    >
+                      {projects.map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.title} ({statusLabels[p.status]})
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {c("Nama projek", "Project name", "项目名称")}
+                    <input
+                      value={editProject.title}
+                      onChange={(event) => setEditProject({ ...editProject, title: event.target.value })}
+                      maxLength={80}
+                      required
+                    />
+                  </label>
+                  <label>
+                    {c("Kategori", "Category", "类别")}
+                    <input
+                      value={editProject.category}
+                      onChange={(event) => setEditProject({ ...editProject, category: event.target.value })}
+                      maxLength={100}
+                      required
+                    />
+                  </label>
+                  <label>
+                    {c("Status", "Status", "状态")}
+                    <select
+                      value={editProject.status}
+                      onChange={(event) => setEditProject({ ...editProject, status: event.target.value as ProjectStatus })}
+                    >
+                      {STATUSES.map((status) => (
+                        <option key={status} value={status}>{statusLabels[status]}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {c("Pautan live (jika ada)", "Live URL (optional)", "线上链接（可选）")}
+                    <input
+                      type="url"
+                      inputMode="url"
+                      placeholder="https://example.com"
+                      value={editProject.liveUrl}
+                      onChange={(event) => setEditProject({ ...editProject, liveUrl: event.target.value })}
+                    />
+                  </label>
                 </>
               )}
-              <button className="studio-button" type="submit" disabled={isSaving}>{isSaving ? c("Sedang simpan…", "Saving…", "正在保存…") : adminUnlocked ? c("Simpan projek", "Save project", "保存项目") : c("Buka akses", "Unlock", "解锁")}</button>
-              <p className="project-admin-message" aria-live="polite">{adminMessage}</p>
+
+              <button className="studio-button" type="submit" disabled={isSaving}>
+                {isSaving
+                  ? c("Sedang simpan…", "Saving…", "正在保存…")
+                  : !adminUnlocked
+                  ? c("Buka akses", "Unlock", "解锁")
+                  : adminMode === "edit"
+                  ? c("Kemaskini projek", "Update project", "更新项目")
+                  : c("Simpan projek", "Save project", "保存项目")}
+              </button>
+
+              <p
+                className={`project-admin-message ${adminMessage.includes("HAHAHAHA") ? "is-error" : ""}`}
+                aria-live="polite"
+              >
+                {adminMessage}
+              </p>
             </form>
           </section>
         </div>
