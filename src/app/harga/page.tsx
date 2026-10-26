@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Pakej website dari RM299, sistem tempahan RM499 dan sebut harga untuk sistem bisnes tersuai.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/harga",
+    canonical: "https://studioweb.syahmiaof.my/harga",
     languages: {
-      ms: "https://studio.syahmiaof.my/harga",
-      en: "https://studio.syahmiaof.my/en/harga",
+      ms: "https://studioweb.syahmiaof.my/harga",
+      en: "https://studioweb.syahmiaof.my/en/harga",
     },
   },
 };

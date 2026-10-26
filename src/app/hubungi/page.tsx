@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "IDEA KAU. KITA BINA. Hantar taklimat projek pembangunan web, sistem khas atau pertanyaan sesi coaching kepada Syahmi AOF.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/hubungi",
+    canonical: "https://studioweb.syahmiaof.my/hubungi",
     languages: {
-      ms: "https://studio.syahmiaof.my/hubungi",
-      en: "https://studio.syahmiaof.my/en/hubungi",
+      ms: "https://studioweb.syahmiaof.my/hubungi",
+      en: "https://studioweb.syahmiaof.my/en/hubungi",
     },
   },
 };

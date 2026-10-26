@@ -1,0 +1,1132 @@
+[
+  {
+    "route": "/",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 266126,
+        "duration": 294.7999999523163
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=640&q=75",
+        "bytes": 26730,
+        "duration": 40.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=640&q=75",
+        "bytes": 19798,
+        "duration": 38.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=640&q=75",
+        "bytes": 24260,
+        "duration": 63.799999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=1080&q=75",
+        "bytes": 176136,
+        "duration": 70.10000002384186
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 96376,
+        "duration": 8.899999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 665.5,
+      "load": 897.5
+    },
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 364510,
+        "duration": 30.199999928474426
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 143484,
+        "duration": 10.200000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 123.60000002384186,
+      "load": 133.20000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 345624,
+        "duration": 29.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=640&q=95",
+        "bytes": 102094,
+        "duration": 14.299999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=640&q=95",
+        "bytes": 40016,
+        "duration": 12.299999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=640&q=95",
+        "bytes": 78168,
+        "duration": 14.899999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 77.20000004768372,
+      "load": 85.70000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 382852,
+        "duration": 7.900000095367432
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 97438,
+        "duration": 8.100000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 37,
+      "load": 37.300000071525574
+    },
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 442462,
+        "duration": 10.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 169626,
+        "duration": 6.800000071525574
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 52.60000002384186,
+      "load": 53
+    },
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 421056,
+        "duration": 10
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 138250,
+        "duration": 6.799999952316284
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 83.30000007152557,
+      "load": 94.20000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 1672,
+    "height": 941,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 331886,
+        "duration": 8.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 121608,
+        "duration": 9.600000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41.5,
+      "load": 41.89999997615814
+    },
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 266126,
+        "duration": 16.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=384&q=75",
+        "bytes": 14978,
+        "duration": 53.199999928474426
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=384&q=75",
+        "bytes": 11372,
+        "duration": 53.39999997615814
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=384&q=75",
+        "bytes": 14500,
+        "duration": 53.10000002384186
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=1080&q=75",
+        "bytes": 176136,
+        "duration": 54.39999997615814
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 96376,
+        "duration": 6.399999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 51.299999952316284,
+      "load": 259.7999999523163
+    },
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 364510,
+        "duration": 42.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 143484,
+        "duration": 9.299999952316284
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 112.89999997615814,
+      "load": 121.70000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 345624,
+        "duration": 15.300000071525574
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=640&q=95",
+        "bytes": 102094,
+        "duration": 13.299999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=640&q=95",
+        "bytes": 40016,
+        "duration": 12.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=640&q=95",
+        "bytes": 78168,
+        "duration": 13
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 94.60000002384186,
+      "load": 100.90000009536743
+    },
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 382852,
+        "duration": 8.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 97438,
+        "duration": 5.800000071525574
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 42.39999997615814,
+      "load": 43.60000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 442462,
+        "duration": 10.599999904632568
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 169626,
+        "duration": 6.400000095367432
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41.699999928474426,
+      "load": 41.89999997615814
+    },
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 421056,
+        "duration": 20.899999976158142
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 138250,
+        "duration": 20.700000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 96.59999990463257,
+      "load": 106.69999992847443
+    },
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 1440,
+    "height": 900,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 331886,
+        "duration": 7.900000095367432
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 121608,
+        "duration": 7.200000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 42.39999997615814,
+      "load": 42.800000071525574
+    },
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 266126,
+        "duration": 21.399999976158142
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=640&q=75",
+        "bytes": 26730,
+        "duration": 21.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=640&q=75",
+        "bytes": 19798,
+        "duration": 19.299999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=640&q=75",
+        "bytes": 24260,
+        "duration": 20.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=1200&q=75",
+        "bytes": 176136,
+        "duration": 40
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 96376,
+        "duration": 6.300000071525574
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 46.09999990463257,
+      "load": 198.5
+    },
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 364510,
+        "duration": 40.10000002384186
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 143484,
+        "duration": 24
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 127,
+      "load": 136.70000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 345624,
+        "duration": 25.799999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=640&q=95",
+        "bytes": 102094,
+        "duration": 11.800000071525574
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=640&q=95",
+        "bytes": 40016,
+        "duration": 11
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=640&q=95",
+        "bytes": 78168,
+        "duration": 12.300000071525574
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 91.39999997615814,
+      "load": 100.39999997615814
+    },
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 382852,
+        "duration": 9.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 97438,
+        "duration": 6.100000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41,
+      "load": 41.300000071525574
+    },
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 442462,
+        "duration": 100.60000002384186
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 169626,
+        "duration": 9.600000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 44.5,
+      "load": 44.700000047683716
+    },
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 421056,
+        "duration": 24.199999928474426
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 138250,
+        "duration": 6.600000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 90.20000004768372,
+      "load": 98.40000009536743
+    },
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 1920,
+    "height": 1080,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=1920&q=95",
+        "bytes": 331886,
+        "duration": 6.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 121608,
+        "duration": 5.799999952316284
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 36.199999928474426,
+      "load": 36.5
+    },
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 51278,
+        "duration": 15
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 143390,
+        "duration": 13.900000095367432
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=256&q=75",
+        "bytes": 8974,
+        "duration": 15.299999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=256&q=75",
+        "bytes": 6806,
+        "duration": 16.199999928474426
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=256&q=75",
+        "bytes": 8870,
+        "duration": 14
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=640&q=75",
+        "bytes": 93884,
+        "duration": 16.100000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 71.5,
+      "load": 190.20000004768372
+    },
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 66894,
+        "duration": 7.799999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 172566,
+        "duration": 7.399999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 27.600000023841858,
+      "load": 58.39999997615814
+    },
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 68886,
+        "duration": 9.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=750&q=95",
+        "bytes": 102094,
+        "duration": 30.40000009536743
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=750&q=95",
+        "bytes": 40016,
+        "duration": 16
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=750&q=95",
+        "bytes": 78168,
+        "duration": 12.200000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 59,
+      "load": 59.60000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 67136,
+        "duration": 8.799999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 149070,
+        "duration": 11.100000023841858
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 49.89999997615814,
+      "load": 50.299999952316284
+    },
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 76152,
+        "duration": 8.399999976158142
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 252308,
+        "duration": 34
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 34.800000071525574,
+      "load": 46.60000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 85614,
+        "duration": 7
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 201700,
+        "duration": 11.399999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 33.700000047683716,
+      "load": 73.10000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 768,
+    "height": 1024,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 64156,
+        "duration": 7.300000071525574
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=828&q=95",
+        "bytes": 173208,
+        "duration": 9.200000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 38.700000047683716,
+      "load": 38.89999997615814
+    },
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 51278,
+        "duration": 12.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 96376,
+        "duration": 28
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=384&q=75",
+        "bytes": 14978,
+        "duration": 11
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=384&q=75",
+        "bytes": 11372,
+        "duration": 10.399999976158142
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=384&q=75",
+        "bytes": 14500,
+        "duration": 10.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=384&q=75",
+        "bytes": 41452,
+        "duration": 6.799999952316284
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41,
+      "load": 195.09999990463257
+    },
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 66894,
+        "duration": 5.800000071525574
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 143484,
+        "duration": 12.400000095367432
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 50,
+      "load": 50.300000071525574
+    },
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 68886,
+        "duration": 5.5
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=640&q=95",
+        "bytes": 102094,
+        "duration": 12.900000095367432
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=640&q=95",
+        "bytes": 40016,
+        "duration": 11.800000071525574
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=640&q=95",
+        "bytes": 78168,
+        "duration": 12.200000047683716
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 38.300000071525574,
+      "load": 46.10000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 67136,
+        "duration": 6.100000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 97438,
+        "duration": 7.399999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41.5,
+      "load": 41.799999952316284
+    },
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 76152,
+        "duration": 6.799999952316284
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 169626,
+        "duration": 7.199999928474426
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 36,
+      "load": 88.29999995231628
+    },
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 85614,
+        "duration": 9.600000023841858
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 138250,
+        "duration": 8.399999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 34.60000002384186,
+      "load": 67.60000002384186
+    },
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 390,
+    "height": 844,
+    "density": 1,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "clippedPrices": [],
+    "font": "StudioDisplay, sans-serif",
+    "imageResources": [
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 64156,
+        "duration": 6
+      },
+      {
+        "url": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=640&q=95",
+        "bytes": 121608,
+        "duration": 27.899999976158142
+      }
+    ],
+    "navigation": {
+      "domContentLoaded": 41.5,
+      "load": 41.800000071525574
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "checks": [
+    "English pricing title clears console at 1440",
+    "English pricing title clears console at 1920",
+    "Direct gallery hash selects Lamborghini",
+    "Same-page hash changes selection",
+    "Gallery progress reaches full scale",
+    "One mounted scene: cycle 1, Servis",
+    "One mounted scene: cycle 1, Portfolio",
+    "One mounted scene: cycle 1, Harga",
+    "One mounted scene: cycle 1, Coaching",
+    "One mounted scene: cycle 1, Tentang",
+    "One mounted scene: cycle 1, Hubungi",
+    "One mounted scene: cycle 1, Utama",
+    "One mounted scene: cycle 2, Servis",
+    "One mounted scene: cycle 2, Portfolio",
+    "One mounted scene: cycle 2, Harga",
+    "One mounted scene: cycle 2, Coaching",
+    "One mounted scene: cycle 2, Tentang",
+    "One mounted scene: cycle 2, Hubungi",
+    "One mounted scene: cycle 2, Utama",
+    "One mounted scene: cycle 3, Servis",
+    "One mounted scene: cycle 3, Portfolio",
+    "One mounted scene: cycle 3, Harga",
+    "One mounted scene: cycle 3, Coaching",
+    "One mounted scene: cycle 3, Tentang",
+    "One mounted scene: cycle 3, Hubungi",
+    "One mounted scene: cycle 3, Utama",
+    "One mounted scene: cycle 4, Servis",
+    "One mounted scene: cycle 4, Portfolio",
+    "One mounted scene: cycle 4, Harga",
+    "One mounted scene: cycle 4, Coaching",
+    "One mounted scene: cycle 4, Tentang",
+    "One mounted scene: cycle 4, Hubungi",
+    "One mounted scene: cycle 4, Utama",
+    "Reduced motion media change leaves headline visible",
+    "No runtime errors in focused checks"
+  ],
+  "lifecycle": [
+    {
+      "cycle": 1,
+      "documents": 1,
+      "nodes": 348,
+      "jsEventListeners": 368,
+      "heapUsedBytes": 5433392
+    },
+    {
+      "cycle": 2,
+      "documents": 1,
+      "nodes": 348,
+      "jsEventListeners": 383,
+      "heapUsedBytes": 5710796
+    },
+    {
+      "cycle": 3,
+      "documents": 1,
+      "nodes": 348,
+      "jsEventListeners": 398,
+      "heapUsedBytes": 5793704
+    },
+    {
+      "cycle": 4,
+      "documents": 1,
+      "nodes": 348,
+      "jsEventListeners": 413,
+      "heapUsedBytes": 5903756
+    }
+  ],
+  "errors": []
+}

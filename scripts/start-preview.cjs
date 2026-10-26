@@ -7,6 +7,7 @@ const path = require("node:path");
 const HOST = "127.0.0.1";
 const PORT = 3461;
 const URL = `http://${HOST}:${PORT}`;
+const projectRoot = process.cwd();
 
 function checkPort(host, port) {
   return new Promise((resolve) => {
@@ -31,18 +32,19 @@ async function main() {
     process.exit(0);
   }
 
-  const buildDir = path.join(process.cwd(), ".next");
+  const buildDir = path.join(projectRoot, ".next");
   if (!fs.existsSync(buildDir)) {
     console.error("[PREVIEW] Error: Production build not found. Please run 'npm run build' first.");
     process.exit(1);
   }
 
   console.log(`[PREVIEW] Starting Next.js production server on ${URL}...`);
-  const child = spawn(
-    process.platform === "win32" ? "npx.cmd" : "npx",
-    ["next", "start", "-H", HOST, "-p", String(PORT)],
-    { stdio: "inherit" }
-  );
+  const nextCli = path.join(projectRoot, "node_modules", "next", "dist", "bin", "next");
+  const child = spawn(process.execPath, [nextCli, "start", "-H", HOST, "-p", String(PORT)], {
+    cwd: projectRoot,
+    stdio: "inherit",
+    windowsHide: true,
+  });
 
   child.on("error", (err) => {
     console.error(`[PREVIEW] Failed to start preview server:`, err.message);

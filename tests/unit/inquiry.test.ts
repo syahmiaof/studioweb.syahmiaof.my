@@ -97,4 +97,16 @@ describe("Inquiry Form & API Schema Validation", () => {
     const res = validateInquiry(input);
     expect(res.success).toBe(false);
   });
+
+  it("caps add-on collection size and text length before pricing normalization", () => {
+    const base = {
+      service: "website-ui",
+      name: "QA User",
+      contact: "qa@example.com",
+      message: "Saya ingin bertanya tentang landing page untuk bisnes.",
+      packageId: "landing",
+    };
+    expect(validateInquiry({ ...base, addons: Array.from({ length: 9 }, () => "extra-page") }).success).toBe(false);
+    expect(validateInquiry({ ...base, addons: ["x".repeat(81)] }).success).toBe(false);
+  });
 });

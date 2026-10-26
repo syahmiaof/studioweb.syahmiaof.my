@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "High-impact Frontend UI development, GSAP animation choreography, and custom database-backed full-stack systems by Syahmi AOF.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/servis",
+    canonical: "https://studioweb.syahmiaof.my/en/servis",
     languages: {
-      ms: "https://studio.syahmiaof.my/servis",
-      en: "https://studio.syahmiaof.my/en/servis",
+      ms: "https://studioweb.syahmiaof.my/servis",
+      en: "https://studioweb.syahmiaof.my/en/servis",
     },
   },
 };

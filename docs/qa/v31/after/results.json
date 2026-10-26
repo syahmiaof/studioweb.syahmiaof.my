@@ -1,0 +1,662 @@
+{
+  "base": "http://localhost:3462",
+  "results": [
+    {
+      "path": "/",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "WEB YANG\nBUKAN BIASA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/servis",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IDEA.\nLANCAR WEB.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/portfolio",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA JADI\nREALITI.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/harga",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IKUT\nBAJET.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/coaching",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BELAJAR.\nBINA.\nDEPLOY.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/tentang",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "SAYA\nSYAHMI\nAOF.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/hubungi",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA KAU.\nKITA BINA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/en",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "ANYTHING BUT\nORDINARY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/servis",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD IDEAS.\nLAUNCH WEB.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/portfolio",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEAS MADE\nREAL.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/harga",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD TO\nYOUR BUDGET.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/coaching",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "LEARN.\nBUILD.\nDEPLOY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/tentang",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "I’M\nSYAHMI\nAOF.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/hubungi",
+      "width": 1440,
+      "height": 900,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "YOUR IDEA.\nLET’S BUILD.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "WEB YANG\nBUKAN BIASA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/servis",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IDEA.\nLANCAR WEB.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/portfolio",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA JADI\nREALITI.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/harga",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IKUT\nBAJET.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/coaching",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BELAJAR.\nBINA.\nDEPLOY.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/tentang",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "SAYA\nSYAHMI\nAOF.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/hubungi",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA KAU.\nKITA BINA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/en",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "ANYTHING BUT\nORDINARY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/servis",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD IDEAS.\nLAUNCH WEB.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/portfolio",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEAS MADE\nREAL.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/harga",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD TO\nYOUR BUDGET.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/coaching",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "LEARN.\nBUILD.\nDEPLOY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/tentang",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "I’M\nSYAHMI\nAOF.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/hubungi",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "YOUR IDEA.\nLET’S BUILD.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "WEB YANG\nBUKAN BIASA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/servis",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IDEA.\nLANCAR WEB.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/portfolio",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA JADI\nREALITI.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/harga",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IKUT\nBAJET.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/coaching",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BELAJAR.\nBINA.\nDEPLOY.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/tentang",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "SAYA\nSYAHMI\nAOF.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/hubungi",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA KAU.\nKITA BINA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/en",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "ANYTHING BUT\nORDINARY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/servis",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD IDEAS.\nLAUNCH WEB.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/portfolio",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEAS MADE\nREAL.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/harga",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD TO\nYOUR BUDGET.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/coaching",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "LEARN.\nBUILD.\nDEPLOY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/tentang",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "I’M\nSYAHMI\nAOF.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/hubungi",
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "YOUR IDEA.\nLET’S BUILD.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "WEB YANG\nBUKAN BIASA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/servis",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IDEA.\nLANCAR WEB.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/portfolio",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA JADI\nREALITI.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/harga",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BINA IKUT\nBAJET.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/coaching",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BELAJAR.\nBINA.\nDEPLOY.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/tentang",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "SAYA\nSYAHMI\nAOF.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/hubungi",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEA KAU.\nKITA BINA.",
+      "htmlLang": "ms",
+      "brokenImages": []
+    },
+    {
+      "path": "/en",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "ANYTHING BUT\nORDINARY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/servis",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD IDEAS.\nLAUNCH WEB.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/portfolio",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "IDEAS MADE\nREAL.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/harga",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "BUILD TO\nYOUR BUDGET.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/coaching",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "LEARN.\nBUILD.\nDEPLOY.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/tentang",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "I’M\nSYAHMI\nAOF.",
+      "htmlLang": "en",
+      "brokenImages": []
+    },
+    {
+      "path": "/en/hubungi",
+      "width": 360,
+      "height": 800,
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "YOUR IDEA.\nLET’S BUILD.",
+      "htmlLang": "en",
+      "brokenImages": []
+    }
+  ],
+  "failures": [],
+  "pricingLayoutFix": [
+    {
+      "path": "/harga",
+      "status": 200,
+      "errors": [],
+      "scene": {
+        "top": 66,
+        "bottom": 962
+      },
+      "estimate": {
+        "top": 628,
+        "bottom": 814
+      },
+      "system": {
+        "top": 834,
+        "bottom": 960
+      },
+      "noOverlap": true,
+      "overflow": false
+    },
+    {
+      "path": "/en/harga",
+      "status": 200,
+      "errors": [],
+      "scene": {
+        "top": 66,
+        "bottom": 962
+      },
+      "estimate": {
+        "top": 623,
+        "bottom": 809
+      },
+      "system": {
+        "top": 830,
+        "bottom": 956
+      },
+      "noOverlap": true,
+      "overflow": false
+    }
+  ]
+}

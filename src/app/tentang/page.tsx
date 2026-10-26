@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Latar belakang sebenar Syahmi AOF, Pembangun Web & pelajar IT (Cloud Computing) di TVETMARA Besut. Standard integriti kejuruteraan tanpa dakwaan palsu.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/tentang",
+    canonical: "https://studioweb.syahmiaof.my/tentang",
     languages: {
-      ms: "https://studio.syahmiaof.my/tentang",
-      en: "https://studio.syahmiaof.my/en/tentang",
+      ms: "https://studioweb.syahmiaof.my/tentang",
+      en: "https://studioweb.syahmiaof.my/en/tentang",
     },
   },
 };

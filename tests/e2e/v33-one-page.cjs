@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 
 const BASE = process.env.BASE_URL || "http://localhost:3461";
-const SECTION_IDS = ["utama", "servis", "portfolio", "harga", "coaching", "tentang", "hubungi"];
+const SECTION_IDS = ["home", "tentang", "servis", "portfolio", "harga", "coaching", "hubungi"];
 const VIEWPORTS = [[1440, 900], [768, 1024], [390, 844], [360, 800]];
 const results = { base: BASE, checks: [], responsive: [], errors: [] };
 
@@ -31,11 +31,12 @@ async function main() {
     let response = await open(page, "/");
     check("Malay homepage returns one rendered page", response.status() === 200 && await page.locator("main").count() === 1);
     check("Hero copy uses the approved V3.3 headline", (await page.locator("main h1").innerText()) === "FREELANCE\nWEB SERVICES.");
-    check("Hero CTAs target service and contact sections", (await page.locator("#utama .scene-actions a").evaluateAll((links) => links.map((link) => link.getAttribute("href")))).join(",") === "#servis,#hubungi");
+    check("Hero CTAs target service and contact sections", (await page.locator("#home .scene-actions a").evaluateAll((links) => links.map((link) => link.getAttribute("href")))).join(",") === "#servis,#hubungi");
     check("Professional title sits above the existing wordmark", await page.locator(".brand-role").innerText() === "FULL-STACK DEVELOPER" && await page.locator(".brand-role").evaluate((el) => el.nextElementSibling?.textContent?.startsWith("SYAHMIAOF")));
     check("One header and footer wrap the whole experience", await page.locator(".studio-header").count() === 1 && await page.locator(".studio-footer").count() === 1);
     const sectionOrder = await page.locator("main .studio-page-fragment > section[id]").evaluateAll((sections, ids) => sections.map((section) => section.id).filter((id) => ids.includes(id)), SECTION_IDS);
     check("All seven real sections render in required order", JSON.stringify(sectionOrder) === JSON.stringify(SECTION_IDS));
+    check("Legacy home anchor remains available", await page.locator("#utama").count() === 1 && await page.locator("#home #utama").count() === 1);
     check("Legacy homepage teaser sections are removed", await page.locator(".story-section, .story-finale, .service-index").count() === 0);
     check("Only the hero is an H1", await page.locator("main h1").count() === 1);
 
@@ -84,6 +85,7 @@ async function main() {
     await page.waitForFunction(() => location.hash === "#hubungi");
     check("Quote handoff carries package, add-on and care context", (await page.getByTestId("quote-summary").innerText()).includes("RM698") && (await page.getByTestId("maintenance-summary").innerText()).includes("RM59 / bulan"));
 
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await open(page, "/#coaching");
     await page.getByRole("radio", { name: /Sistem Full-Stack/ }).check();
     check("Full-Stack coaching shows RM99 for two hours", (await page.locator(".duration-options").innerText()).includes("2 jam · RM99") && new URL(page.url()).hash === "#coaching");
@@ -92,14 +94,20 @@ async function main() {
     check("Coaching handoff carries selected package", (await page.getByTestId("coaching-summary").innerText()).includes("Sistem Full-Stack"));
 
     await open(page, "/#coaching");
-    await page.waitForFunction(() => window.scrollY > 1000 && document.querySelector('.studio-nav [aria-current="location"]')?.getAttribute("href") === "#coaching" && document.querySelector('.language-switch')?.getAttribute("href") === "/en#coaching");
+    await page.waitForFunction(() => window.scrollY > 1000 && document.querySelector('.studio-nav [aria-current="location"]')?.getAttribute("href") === "#coaching" && document.querySelector('.language-switch a[href="/en#coaching"]'));
     check("Refreshing a direct section hash restores its scroll position", new URL(page.url()).hash === "#coaching");
     await Promise.all([
       page.waitForURL("**/en#coaching", { waitUntil: "commit" }),
-      page.locator(".language-switch").click(),
+      page.locator('.language-switch a[href="/en#coaching"]').click(),
     ]);
     await page.waitForFunction(() => document.querySelector('.studio-nav [aria-current="location"]')?.getAttribute("href") === "#coaching");
     check("BM/EN switch preserves current section and renders English copy", await page.locator(".studio-nav [aria-current='location']").getAttribute("href") === "#coaching" && (await page.locator("#coaching .scene-intro").innerText()).includes("Choose a 1:1 session"));
+
+    await open(page, "/en?service=website-ui&project=symi-ui#portfolio");
+    await page.waitForFunction(() => document.querySelector('.studio-nav a[aria-current="location"]')?.getAttribute("href") === "#portfolio");
+    await page.getByRole("link", { name: "Bahasa Melayu" }).click();
+    await page.waitForURL("**/?service=website-ui&project=symi-ui#portfolio");
+    check("EN/BM switch reaches the Malay route and preserves query/hash", await page.locator("html").getAttribute("lang") === "ms" && new URL(page.url()).searchParams.get("project") === "symi-ui" && new URL(page.url()).hash === "#portfolio");
 
     await open(page, "/#hubungi");
     await page.getByRole("button", { name: "Sediakan Pertanyaan" }).click();
@@ -127,7 +135,7 @@ async function main() {
             const rect = node.getBoundingClientRect();
             return { left: Math.round(rect.left), right: Math.round(rect.right) };
           }),
-          sectionIds: [...document.querySelectorAll("main .studio-page-fragment > section[id]")].map((node) => node.id).filter((id) => ["utama","servis","portfolio","harga","coaching","tentang","hubungi"].includes(id)),
+          sectionIds: [...document.querySelectorAll("main section.studio-scene[id]")].map((node) => node.id).filter((id) => ["home","tentang","servis","portfolio","harga","coaching","hubungi"].includes(id)),
         }));
         check(`${locale} ${width}px one-page layout fits without horizontal overflow`, layout.scrollWidth <= layout.width && layout.h1.every((rect) => rect.left >= -1 && rect.right <= layout.width + 1) && JSON.stringify(layout.sectionIds) === JSON.stringify(SECTION_IDS));
         results.responsive.push({ locale, width, height, ...layout });

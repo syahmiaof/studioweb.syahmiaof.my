@@ -1,4 +1,5 @@
 "use client";
+import { localized, localizedPriceLabel } from "@/lib/localized";
 import { Suspense, useRef, useState } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 import { Globe, Play, Code2 } from "lucide-react";
@@ -118,11 +119,8 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
       <section className="studio-scene scene-light pricing-scene" id="harga">
         <Architecture variant="pricing" priority={!embedded} />
         <div className="pricing-copy">
-          <SceneLabel number="04">{c("HARGA", "PRICING")}</SceneLabel>
-          <DisplayTitle
-            level={2}
-            lines={locale === "ms" ? ["BINA IKUT", "BAJET."] : ["BUILD TO", "YOUR BUDGET."]}
-          />
+          <SceneLabel number="05">{c("HARGA", "PRICING")}</SceneLabel>
+          <DisplayTitle level={2} lines={locale === "ms" ? ["BINA IKUT", "BAJET."] : locale === "zh-Hans" ? ["按预算", "打造。"] : ["BUILD TO", "YOUR BUDGET."]} />
           <p className="scene-intro">
             {c(
               "Pilih pakej website, tambah fungsi dan semak anggaran sekali bayar.",
@@ -132,7 +130,7 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
         </div>
         <div className="pricing-console-wrap">
           <div className="console pricing-console">
-            <h2>{c("KIRA HARGA", "PRICE YOUR")} <span>WEBSITE</span></h2>
+            <h2>{c("KIRA HARGA", "PRICE YOUR")} <span>{locale === "zh-Hans" ? "网站" : "WEBSITE"}</span></h2>
             <fieldset>
               <legend>1. {c("PILIH PAKEJ", "CHOOSE A PACKAGE")}</legend>
               <div className="package-options">
@@ -146,7 +144,7 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
                       onChange={() => selectPackage(pkg.id)}
                     />
                     <span>
-                      <span>{pkg.name[locale]}</span>
+                      <span>{localized(pkg.name, locale)}</span>
                       <strong>{formatMYR(pkg.basePrice)}</strong>
                     </span>
                   </label>
@@ -159,22 +157,22 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
                 {c(
                   "Termasuk percuma: ",
                   "Included free: ",
-                ) + INCLUDED_FREEBIES.map((item) => item[locale]).join(" · ") + c(
+                ) + INCLUDED_FREEBIES.map((item) => localized(item, locale)).join(" · ") + c(
                   ". SEO tidak menjamin kedudukan Google.",
                   ". SEO does not guarantee Google rankings.",
                 )}
               </p>
               <div className="addon-options">
                 {PRICING_ADDONS.map((addon, index) => (
-                  <label className="addon-option" key={addon.id} title={addon.description[locale]}>
+                  <label className="addon-option" key={addon.id} title={localized(addon.description, locale)}>
                     {index === 0 ? <Globe /> : <Play />}
-                    <span>{addon.name[locale]}</span>
+                    <span>{localized(addon.name, locale)}</span>
                     <strong>{addon.price === 0 ? c("Percuma", "Free") : "+" + formatMYR(addon.price)}</strong>
                     <input
                       type="checkbox"
                       checked={addons.includes(addon.id)}
                       onChange={() => toggleAddon(addon.id)}
-                      aria-label={addon.name[locale]}
+                      aria-label={localized(addon.name, locale)}
                     />
                     <span className="switch" aria-hidden="true" />
                   </label>
@@ -203,7 +201,7 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
             <Code2 />
             <div>
               <span>{c("SISTEM BISNES · TEMPAHAN ASAS", "BUSINESS SYSTEMS · BASIC BOOKING")}</span>
-              <strong>{SYSTEM_OFFERS[0].priceDisplay}</strong>
+              <strong>{localizedPriceLabel(SYSTEM_OFFERS[0].priceDisplay, locale)}</strong>
             </div>
             <ActionLink blue href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "full-stack", package: "booking-request" }))}>
               {c("Lihat Pilihan Sistem", "View System Options")}
@@ -212,9 +210,9 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
         </div>
       </section>
       <section className="package-detail">
-        <h2>{PRICING_PACKAGES.find((pkg) => pkg.id === selected)?.name[locale]}</h2>
-        <p>{PRICING_PACKAGES.find((pkg) => pkg.id === selected)?.scopeSummary[locale]}</p>
-        <ul>{PRICING_PACKAGES.find((pkg) => pkg.id === selected)?.deliverables[locale].map((item) => <li key={item}>{item}</li>)}</ul>
+        <h2>{localized(PRICING_PACKAGES.find((pkg) => pkg.id === selected)!.name, locale)}</h2>
+        <p>{localized(PRICING_PACKAGES.find((pkg) => pkg.id === selected)!.scopeSummary, locale)}</p>
+        <ul>{localized(PRICING_PACKAGES.find((pkg) => pkg.id === selected)!.deliverables, locale).map((item) => <li key={item}>{item}</li>)}</ul>
         <details>
           <summary>{c("Penjagaan pilihan — caj berasingan", "Optional maintenance — billed separately")}</summary>
           <p>{c("Penjagaan tidak termasuk dalam jumlah sekali bayar. Pilih satu pilihan untuk disertakan dalam pertanyaan; kerja tambahan perlukan kelulusan dan minit bulanan tidak dibawa ke bulan berikutnya.", "Maintenance is not included in the one-time total. Select one option to include in your enquiry; extra work requires approval and monthly minutes do not roll over.")}</p>
@@ -229,20 +227,20 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
                   checked={maintenanceId === option.id}
                   onChange={() => selectMaintenance(option.id)}
                 />
-                <span>{option.name[locale]} · {option.priceDisplay[locale]}</span>
+                <span>{localized(option.name, locale)} · {localized(option.priceDisplay, locale)}</span>
               </label>
             ))}
           </fieldset>
           <p data-testid="maintenance-selection">
             {selectedCare.cadence === "none"
-              ? selectedCare.description[locale]
-              : c("Pilihan berasingan: ", "Separate option: ") + selectedCare.name[locale] + " — " + selectedCare.priceDisplay[locale]}
+              ? localized(selectedCare.description, locale)
+              : c("Pilihan berasingan: ", "Separate option: ") + localized(selectedCare.name, locale) + " — " + localized(selectedCare.priceDisplay, locale)}
           </p>
           {selectedCare.cadence !== "none" && (
             <>
-              <p>{selectedCare.description[locale]}</p>
-              <ul>{selectedCare.includes[locale].map((item) => <li key={item}>{item}</li>)}</ul>
-              <p>{c("Tidak termasuk:", "Excludes:")} {selectedCare.excludes[locale].join(" · ")}</p>
+              <p>{localized(selectedCare.description, locale)}</p>
+              <ul>{localized(selectedCare.includes, locale).map((item) => <li key={item}>{item}</li>)}</ul>
+              <p>{c("Tidak termasuk:", "Excludes:")} {localized(selectedCare.excludes, locale).join(" · ")}</p>
             </>
           )}
         </details>
@@ -250,9 +248,9 @@ function Configurator({ locale, embedded = false }: { locale: Locale; embedded?:
           <summary>{c("Sistem bisnes dan harga mula", "Business systems and starting prices")}</summary>
           {SYSTEM_OFFERS.map((offer) => (
             <div key={offer.id}>
-              <h3>{offer.name[locale]} — {offer.priceDisplay}</h3>
-              <p>{offer.scopeSummary[locale]}</p>
-              <ul>{offer.deliverables[locale].map((item) => <li key={item}>{item}</li>)}</ul>
+              <h3>{localized(offer.name, locale)} — {localizedPriceLabel(offer.priceDisplay, locale)}</h3>
+              <p>{localized(offer.scopeSummary, locale)}</p>
+              <ul>{localized(offer.deliverables, locale).map((item) => <li key={item}>{item}</li>)}</ul>
               <ActionLink blue href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "full-stack", package: offer.id }))}>
                 {c("Hubungi untuk Sebut Harga", "Contact for a Quote")}
               </ActionLink>

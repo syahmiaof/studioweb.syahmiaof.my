@@ -1,0 +1,56 @@
+[
+  {
+    "width": 1440,
+    "state": "quote",
+    "sceneBottom": 915.234375,
+    "formBottom": 875.234375
+  },
+  {
+    "width": 1440,
+    "state": "errors",
+    "sceneBottom": 994.359375,
+    "formBottom": 954.359375
+  },
+  {
+    "width": 1440,
+    "state": "fallback",
+    "sceneBottom": 1016.953125,
+    "formBottom": 976.953125
+  },
+  {
+    "width": 768,
+    "state": "quote",
+    "sceneBottom": 1836.328125,
+    "formBottom": 1378.328125
+  },
+  {
+    "width": 768,
+    "state": "errors",
+    "sceneBottom": 1058.328125,
+    "formBottom": 600.328125
+  },
+  {
+    "width": 768,
+    "state": "fallback",
+    "sceneBottom": 1065.109375,
+    "formBottom": 607.109375
+  },
+  {
+    "width": 390,
+    "state": "quote",
+    "sceneBottom": 1798.265625,
+    "formBottom": 1494.265625
+  },
+  {
+    "width": 390,
+    "state": "errors",
+    "sceneBottom": 919.265625,
+    "formBottom": 615.265625
+  },
+  {
+    "width": 390,
+    "state": "fallback",
+    "sceneBottom": 1000.046875,
+    "formBottom": 696.046875
+  }
+]

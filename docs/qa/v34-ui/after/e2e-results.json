@@ -1,0 +1,323 @@
+{
+  "base": "http://127.0.0.1:3461",
+  "checks": [
+    "Malay home responds 200 and chatbot stays closed initially",
+    "Seven sections appear in approved one-page order",
+    "Navigation follows the same seven-section order",
+    "Legacy #utama anchor remains inside Home",
+    "Hero replaces the small brand label with the service and joke modules",
+    "home keeps its matching approved V2.1 plate",
+    "tentang keeps its matching approved V2.1 plate",
+    "servis keeps its matching approved V2.1 plate",
+    "harga keeps its matching approved V2.1 plate",
+    "coaching keeps its matching approved V2.1 plate",
+    "hubungi keeps its matching approved V2.1 plate",
+    "Portfolio removes old concept artwork and keeps the black gallery surface",
+    "Portfolio starts with all 23 Nemo records",
+    "Existing Home hero keeps its approved image plate",
+    "Malay canonical and Open Graph metadata are fully configured",
+    "Favicon set has explicit sizes without conflicting generated icon",
+    "Brand metadata asset resolves: /favicon.ico",
+    "Brand metadata asset resolves: /icons/favicon-16x16.png",
+    "Brand metadata asset resolves: /icons/favicon-32x32.png",
+    "Brand metadata asset resolves: /icons/apple-touch-icon.png",
+    "Brand metadata asset resolves: /icons/icon-192.png",
+    "Brand metadata asset resolves: /icons/icon-512.png",
+    "Brand metadata asset resolves: /opengraph-image.png",
+    "Production preview stays FAQ-only and refuses provider calls",
+    "MIBOT greeting appears without automatically opening the panel",
+    "Clicking the greeting bubble opens MIBOT",
+    "Greeting does not repeat within the browsing session",
+    "Sliding indicator follows the active scrollspy label",
+    "Language switcher keeps the current section hash",
+    "Launcher opens labelled dialog without changing page scroll",
+    "Focus moves to visible close control",
+    "Welcome copy and four working actions are present",
+    "Escape closes the dialog and restores focus to launcher",
+    "Quick action Harga Website triggers its real response",
+    "Quick action Sistem Full-Stack triggers its real response",
+    "Quick action Coaching 1:1 triggers its real response",
+    "Quick action Bincang Projek triggers its real response",
+    "Shift+Enter keeps newline in the message composer",
+    "Unknown question fails gracefully without fabricating an answer",
+    "Lead flow includes canonical price, optional maintenance and editable details",
+    "WhatsApp opens only after click with normalized verified number",
+    "WhatsApp handoff contains edited summary and never sends automatically",
+    "English route preserves seven-section order and renders localized assistant",
+    "English welcome, quick chip labels and FAQ disclosure render",
+    "English pricing answer keeps one-time and monthly amounts distinct",
+    "BM switch returns to Malay and preserves portfolio context",
+    "Chinese route sets zh-Hans and translates the navigation",
+    "Portfolio catalogs all 23 Nemo projects without concept badges",
+    "Chinese portfolio includes all Nemo projects",
+    "Chinese project statuses match Nemo records",
+    "Portfolio search finds a project by title",
+    "Three Nemo records without a live URL get honest text fallbacks",
+    "Chinese MIBOT identity and quick actions are translated",
+    "Chinese MIBOT pricing keeps RM amounts intact",
+    "ms 1440px home has no horizontal overflow",
+    "en 1440px home has no horizontal overflow",
+    "zh-Hans 1440px home has no horizontal overflow",
+    "Chat panel fits 1440px × 900px viewport with no horizontal overflow",
+    "ms 1024px home has no horizontal overflow",
+    "en 1024px home has no horizontal overflow",
+    "zh-Hans 1024px home has no horizontal overflow",
+    "Chat panel fits 1024px × 900px viewport with no horizontal overflow",
+    "ms 768px home has no horizontal overflow",
+    "en 768px home has no horizontal overflow",
+    "zh-Hans 768px home has no horizontal overflow",
+    "Chat panel fits 768px × 1024px viewport with no horizontal overflow",
+    "ms 390px home has no horizontal overflow",
+    "en 390px home has no horizontal overflow",
+    "zh-Hans 390px home has no horizontal overflow",
+    "Chat panel fits 390px × 844px viewport with no horizontal overflow",
+    "ms 375px home has no horizontal overflow",
+    "en 375px home has no horizontal overflow",
+    "zh-Hans 375px home has no horizontal overflow",
+    "Chat panel fits 375px × 812px viewport with no horizontal overflow",
+    "Reduced-motion removes assistant entrance animation",
+    "Close button works at narrow mobile width"
+  ],
+  "responsive": [
+    {
+      "locale": "ms",
+      "width": 1440,
+      "height": 900,
+      "page": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "height": 900,
+      "page": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "width": 1440,
+      "height": 900,
+      "page": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 1440,
+      "height": 900,
+      "assistant": {
+        "x": 1026,
+        "y": 116,
+        "width": 390,
+        "height": 690
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 1024,
+      "height": 900,
+      "page": {
+        "width": 1024,
+        "scrollWidth": 1024
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "height": 900,
+      "page": {
+        "width": 1024,
+        "scrollWidth": 1024
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "width": 1024,
+      "height": 900,
+      "page": {
+        "width": 1024,
+        "scrollWidth": 1024
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 1024,
+      "height": 900,
+      "assistant": {
+        "x": 610,
+        "y": 116,
+        "width": 390,
+        "height": 690
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 768,
+      "height": 1024,
+      "page": {
+        "width": 768,
+        "scrollWidth": 768
+      }
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "height": 1024,
+      "page": {
+        "width": 768,
+        "scrollWidth": 768
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "width": 768,
+      "height": 1024,
+      "page": {
+        "width": 768,
+        "scrollWidth": 768
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 768,
+      "height": 1024,
+      "assistant": {
+        "x": 354,
+        "y": 240,
+        "width": 390,
+        "height": 690
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 390,
+      "height": 844,
+      "page": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "height": 844,
+      "page": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "width": 390,
+      "height": 844,
+      "page": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 390,
+      "height": 844,
+      "assistant": {
+        "x": 8,
+        "y": 142.171875,
+        "width": 374,
+        "height": 693.828125
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 375,
+      "height": 812,
+      "page": {
+        "width": 375,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "locale": "en",
+      "width": 375,
+      "height": 812,
+      "page": {
+        "width": 375,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "locale": "zh-Hans",
+      "width": 375,
+      "height": 812,
+      "page": {
+        "width": 375,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "locale": "ms",
+      "width": 375,
+      "height": 812,
+      "assistant": {
+        "x": 8,
+        "y": 137.046875,
+        "width": 359,
+        "height": 666.953125
+      }
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()",
+    "Failed to load resource: the server responded with a status of 403 ()"
+  ],
+  "screenshots": [
+    "docs/qa/v34-ui/after/mibot-greeting-desktop-ms.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-ms.png",
+    "docs/qa/v34-ui/after/fullpage-desktop-1440-ms.png",
+    "docs/qa/v34-ui/after/assistant-open-desktop-1440-ms.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-en.png",
+    "docs/qa/v34-ui/after/assistant-open-desktop-1440-en.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-zh-Hans.png",
+    "docs/qa/v34-ui/after/assistant-open-desktop-1440-zh-Hans.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-ms.png",
+    "docs/qa/v34-ui/after/fullpage-desktop-1440-ms.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-en.png",
+    "docs/qa/v34-ui/after/fullpage-desktop-1440-en.png",
+    "docs/qa/v34-ui/after/home-desktop-1440-zh-Hans.png",
+    "docs/qa/v34-ui/after/fullpage-desktop-1440-zh-Hans.png",
+    "docs/qa/v34-ui/after/home-tablet-1024-ms.png",
+    "docs/qa/v34-ui/after/home-tablet-1024-en.png",
+    "docs/qa/v34-ui/after/home-tablet-1024-zh-Hans.png",
+    "docs/qa/v34-ui/after/home-tablet-768-ms.png",
+    "docs/qa/v34-ui/after/home-tablet-768-en.png",
+    "docs/qa/v34-ui/after/home-tablet-768-zh-Hans.png",
+    "docs/qa/v34-ui/after/home-mobile-390-ms.png",
+    "docs/qa/v34-ui/after/fullpage-mobile-390-ms.png",
+    "docs/qa/v34-ui/after/assistant-open-mobile-390-ms.png",
+    "docs/qa/v34-ui/after/home-mobile-390-en.png",
+    "docs/qa/v34-ui/after/fullpage-mobile-390-en.png",
+    "docs/qa/v34-ui/after/assistant-open-mobile-390-en.png",
+    "docs/qa/v34-ui/after/home-mobile-390-zh-Hans.png",
+    "docs/qa/v34-ui/after/fullpage-mobile-390-zh-Hans.png",
+    "docs/qa/v34-ui/after/assistant-open-mobile-390-zh-Hans.png",
+    "docs/qa/v34-ui/after/assistant-open-mobile-390-ms.png",
+    "docs/qa/v34-ui/after/home-mobile-375-ms.png",
+    "docs/qa/v34-ui/after/home-mobile-375-en.png",
+    "docs/qa/v34-ui/after/home-mobile-375-zh-Hans.png"
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: No uncaught browser runtime errors — Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 () | Failed to load resource: the server responded with a status of 403 ()\n    at check (C:\\Users\\USER\\Desktop\\studio.syahmiaof.my\\tests\\e2e\\v34-assistant.cjs:13:10)\n    at main (C:\\Users\\USER\\Desktop\\studio.syahmiaof.my\\tests\\e2e\\v34-assistant.cjs:229:5)"
+}

@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Curated collection of UI prototypes, design systems, and component architectures by Syahmi AOF. Transparently labeled.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/portfolio",
+    canonical: "https://studioweb.syahmiaof.my/en/portfolio",
     languages: {
-      ms: "https://studio.syahmiaof.my/portfolio",
-      en: "https://studio.syahmiaof.my/en/portfolio",
+      ms: "https://studioweb.syahmiaof.my/portfolio",
+      en: "https://studioweb.syahmiaof.my/en/portfolio",
     },
   },
 };

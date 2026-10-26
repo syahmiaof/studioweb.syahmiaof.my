@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Bimbingan peribadi 1:1 bersama Syahmi AOF. Asas Web, React/Next.js moden, dan mentor ulasan kod projek sebenar.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/coaching",
+    canonical: "https://studioweb.syahmiaof.my/coaching",
     languages: {
-      ms: "https://studio.syahmiaof.my/coaching",
-      en: "https://studio.syahmiaof.my/en/coaching",
+      ms: "https://studioweb.syahmiaof.my/coaching",
+      en: "https://studioweb.syahmiaof.my/en/coaching",
     },
   },
 };

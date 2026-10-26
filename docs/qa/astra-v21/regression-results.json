@@ -1,0 +1,2306 @@
+{
+  "checks": [
+    "Estimate RM1,745",
+    "Estimate RM2,145",
+    "Estimate RM2,395",
+    "Estimate RM1,295",
+    "Estimate RM3,645",
+    "Estimate RM3,645",
+    "Language state persists",
+    "Estimate RM2,145",
+    "Quote handoff total",
+    "English document language",
+    "Empty fields rejected",
+    "Invalid contact rejected",
+    "Provider unavailable is HTTP 503",
+    "Email handoff retains quote",
+    "No fabricated delivery",
+    "Unconfigured WhatsApp is disabled",
+    "Spoofed URL estimate recomputed",
+    "Full-stack handoff",
+    "Coaching language state",
+    "Coaching handoff",
+    "Gallery selection changes details",
+    "Gallery next",
+    "Gallery previous",
+    "API ignores spoofed and duplicate quote totals",
+    "API rejects malformed JSON",
+    "API caps payload",
+    "ms / 1440 responsive route",
+    "ms /servis 1440 responsive route",
+    "ms /portfolio 1440 responsive route",
+    "ms /harga 1440 responsive route",
+    "ms /coaching 1440 responsive route",
+    "ms /tentang 1440 responsive route",
+    "ms /hubungi 1440 responsive route",
+    "en / 1440 responsive route",
+    "en /servis 1440 responsive route",
+    "en /portfolio 1440 responsive route",
+    "en /harga 1440 responsive route",
+    "en /coaching 1440 responsive route",
+    "en /tentang 1440 responsive route",
+    "en /hubungi 1440 responsive route",
+    "ms / 1920 responsive route",
+    "ms /servis 1920 responsive route",
+    "ms /portfolio 1920 responsive route",
+    "ms /harga 1920 responsive route",
+    "ms /coaching 1920 responsive route",
+    "ms /tentang 1920 responsive route",
+    "ms /hubungi 1920 responsive route",
+    "en / 1920 responsive route",
+    "en /servis 1920 responsive route",
+    "en /portfolio 1920 responsive route",
+    "en /harga 1920 responsive route",
+    "en /coaching 1920 responsive route",
+    "en /tentang 1920 responsive route",
+    "en /hubungi 1920 responsive route",
+    "ms / 768 responsive route",
+    "ms /servis 768 responsive route",
+    "ms /portfolio 768 responsive route",
+    "ms /harga 768 responsive route",
+    "ms /coaching 768 responsive route",
+    "ms /tentang 768 responsive route",
+    "ms /hubungi 768 responsive route",
+    "en / 768 responsive route",
+    "en /servis 768 responsive route",
+    "en /portfolio 768 responsive route",
+    "en /harga 768 responsive route",
+    "en /coaching 768 responsive route",
+    "en /tentang 768 responsive route",
+    "en /hubungi 768 responsive route",
+    "Menu opens 768",
+    "Escape closes menu 768",
+    "Mobile navigation 768",
+    "ms / 390 responsive route",
+    "ms /servis 390 responsive route",
+    "ms /portfolio 390 responsive route",
+    "ms /harga 390 responsive route",
+    "ms /coaching 390 responsive route",
+    "ms /tentang 390 responsive route",
+    "ms /hubungi 390 responsive route",
+    "en / 390 responsive route",
+    "en /servis 390 responsive route",
+    "en /portfolio 390 responsive route",
+    "en /harga 390 responsive route",
+    "en /coaching 390 responsive route",
+    "en /tentang 390 responsive route",
+    "en /hubungi 390 responsive route",
+    "Menu opens 390",
+    "Escape closes menu 390",
+    "Mobile navigation 390",
+    "no-preference / reverse scroll",
+    "no-preference /servis reverse scroll",
+    "no-preference /portfolio reverse scroll",
+    "no-preference /harga reverse scroll",
+    "no-preference /coaching reverse scroll",
+    "no-preference /tentang reverse scroll",
+    "no-preference /hubungi reverse scroll",
+    "no-preference browser back",
+    "no-preference browser forward",
+    "reduce / reverse scroll",
+    "reduce /servis reverse scroll",
+    "reduce /portfolio reverse scroll",
+    "reduce /harga reverse scroll",
+    "reduce /coaching reverse scroll",
+    "reduce /tentang reverse scroll",
+    "reduce /hubungi reverse scroll",
+    "reduce browser back",
+    "reduce browser forward",
+    "No JavaScript runtime errors"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "locale": "ms",
+      "route": "/",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "WEB YANG",
+          "left": 55.96875,
+          "right": 498.3890380859375,
+          "width": 1440
+        },
+        {
+          "text": "BUKAN BIASA.",
+          "left": 55.96875,
+          "right": 647.2406005859375,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 55.96875,
+          "right": 260.9375,
+          "width": 1440
+        },
+        {
+          "text": "Mulakan Projek",
+          "left": 272.984375,
+          "right": 483.125,
+          "width": 1440
+        },
+        {
+          "text": "Terokai Servis",
+          "left": 57.59375,
+          "right": 272,
+          "width": 1440
+        },
+        {
+          "text": "Semua Projek",
+          "left": 1170.78125,
+          "right": 1382.40625,
+          "width": 1440
+        },
+        {
+          "text": "Kira Anggaran Projek",
+          "left": 763.1875,
+          "right": 1032.578125,
+          "width": 1440
+        },
+        {
+          "text": "Terokai Coaching 1:1",
+          "left": 763.1875,
+          "right": 1025.65625,
+          "width": 1440
+        },
+        {
+          "text": "Kenali Saya",
+          "left": 763.1875,
+          "right": 955.09375,
+          "width": 1440
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 1160.890625,
+          "right": 1382.40625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/servis",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IDEA.",
+          "left": 55.96875,
+          "right": 572.203125,
+          "width": 1440
+        },
+        {
+          "text": "LANCAR WEB.",
+          "left": 55.96875,
+          "right": 714.4017333984375,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Pakej",
+          "left": 80.078125,
+          "right": 312.609375,
+          "width": 1440
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 506.375,
+          "right": 738.90625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/portfolio",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA JADI",
+          "left": 55.96875,
+          "right": 488.8974914550781,
+          "width": 1440
+        },
+        {
+          "text": "REALITI.",
+          "left": 55.96875,
+          "right": 404.150634765625,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Semua Projek",
+          "left": 55.96875,
+          "right": 319,
+          "width": 1440
+        },
+        {
+          "text": "Bincang Projek Serupa",
+          "left": 898.546875,
+          "right": 1181.421875,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/harga",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IKUT",
+          "left": 55.96875,
+          "right": 563.708740234375,
+          "width": 1440
+        },
+        {
+          "text": "BAJET.",
+          "left": 55.96875,
+          "right": 420.31060791015625,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Dapatkan Sebut Harga",
+          "left": 1015.640625,
+          "right": 1321.84375,
+          "width": 1440
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 1094.96875,
+          "right": 1313.375,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/coaching",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BELAJAR.",
+          "left": 55.96875,
+          "right": 520.887939453125,
+          "width": 1440
+        },
+        {
+          "text": "BINA.",
+          "left": 55.96875,
+          "right": 314.3343811035156,
+          "width": 1440
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 55.96875,
+          "right": 453.4787292480469,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Tanya Slot Coaching",
+          "left": 79.21875,
+          "right": 608.890625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/tentang",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "SAYA",
+          "left": 55.96875,
+          "right": 357.8221740722656,
+          "width": 1440
+        },
+        {
+          "text": "SYAHMI",
+          "left": 55.96875,
+          "right": 530.0849609375,
+          "width": 1440
+        },
+        {
+          "text": "AOF.",
+          "left": 55.96875,
+          "right": 317.7806091308594,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 55.96875,
+          "right": 358.265625,
+          "width": 1440
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 368.59375,
+          "right": 670.890625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/hubungi",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA KAU.",
+          "left": 55.96875,
+          "right": 574.99609375,
+          "width": 1440
+        },
+        {
+          "text": "KITA BINA.",
+          "left": 55.96875,
+          "right": 604.2217407226562,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Sediakan Pertanyaan",
+          "left": 812.140625,
+          "right": 1285.8125,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "ANYTHING BUT",
+          "left": 55.96875,
+          "right": 573.2763671875,
+          "width": 1440
+        },
+        {
+          "text": "ORDINARY.",
+          "left": 55.96875,
+          "right": 441.8951416015625,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 55.96875,
+          "right": 260.9375,
+          "width": 1440
+        },
+        {
+          "text": "Start a Project",
+          "left": 272.984375,
+          "right": 483.125,
+          "width": 1440
+        },
+        {
+          "text": "Explore Services",
+          "left": 57.59375,
+          "right": 293.46875,
+          "width": 1440
+        },
+        {
+          "text": "All Projects",
+          "left": 1190.609375,
+          "right": 1382.40625,
+          "width": 1440
+        },
+        {
+          "text": "Estimate Your Project",
+          "left": 763.1875,
+          "right": 1039.59375,
+          "width": 1440
+        },
+        {
+          "text": "Explore 1:1 Coaching",
+          "left": 763.1875,
+          "right": 1027.65625,
+          "width": 1440
+        },
+        {
+          "text": "Meet the Developer",
+          "left": 763.1875,
+          "right": 1018.734375,
+          "width": 1440
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 1143.453125,
+          "right": 1382.40625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/servis",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD IDEAS.",
+          "left": 55.96875,
+          "right": 656.6655883789062,
+          "width": 1440
+        },
+        {
+          "text": "LAUNCH WEB.",
+          "left": 55.96875,
+          "right": 715.9022216796875,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Packages",
+          "left": 80.078125,
+          "right": 312.609375,
+          "width": 1440
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 506.375,
+          "right": 738.90625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/portfolio",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEAS MADE",
+          "left": 55.96875,
+          "right": 606.2799682617188,
+          "width": 1440
+        },
+        {
+          "text": "REAL.",
+          "left": 55.96875,
+          "right": 301.99908447265625,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Explore the Projects",
+          "left": 55.96875,
+          "right": 326.328125,
+          "width": 1440
+        },
+        {
+          "text": "Discuss a Similar Project",
+          "left": 898.546875,
+          "right": 1197.859375,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/harga",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD TO",
+          "left": 55.96875,
+          "right": 377.8687438964844,
+          "width": 1440
+        },
+        {
+          "text": "YOUR BUDGET.",
+          "left": 55.96875,
+          "right": 574.4071655273438,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Request a Quote",
+          "left": 1015.640625,
+          "right": 1321.84375,
+          "width": 1440
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 1076.515625,
+          "right": 1313.375,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/coaching",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "LEARN.",
+          "left": 55.96875,
+          "right": 394.0467224121094,
+          "width": 1440
+        },
+        {
+          "text": "BUILD.",
+          "left": 55.96875,
+          "right": 365.6502990722656,
+          "width": 1440
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 55.96875,
+          "right": 453.4787292480469,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Ask About Coaching",
+          "left": 79.21875,
+          "right": 608.890625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/tentang",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "I’M",
+          "left": 55.96875,
+          "right": 253.22250366210938,
+          "width": 1440
+        },
+        {
+          "text": "SYAHMI",
+          "left": 55.96875,
+          "right": 530.0849609375,
+          "width": 1440
+        },
+        {
+          "text": "AOF.",
+          "left": 55.96875,
+          "right": 317.7806091308594,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 55.96875,
+          "right": 358.265625,
+          "width": 1440
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 368.59375,
+          "right": 670.890625,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/hubungi",
+      "width": 1440,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "YOUR IDEA.",
+          "left": 55.96875,
+          "right": 572.3287353515625,
+          "width": 1440
+        },
+        {
+          "text": "LET’S BUILD.",
+          "left": 55.96875,
+          "right": 631.0387573242188,
+          "width": 1440
+        }
+      ],
+      "controls": [
+        {
+          "text": "Prepare Inquiry",
+          "left": 812.140625,
+          "right": 1285.8125,
+          "width": 1440
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "WEB YANG",
+          "left": 74.640625,
+          "right": 664.5625,
+          "width": 1920
+        },
+        {
+          "text": "BUKAN BIASA.",
+          "left": 74.640625,
+          "right": 863.0405883789062,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 74.640625,
+          "right": 347.9375,
+          "width": 1920
+        },
+        {
+          "text": "Mulakan Projek",
+          "left": 364,
+          "right": 644.1875,
+          "width": 1920
+        },
+        {
+          "text": "Terokai Servis",
+          "left": 76.796875,
+          "right": 317.421875,
+          "width": 1920
+        },
+        {
+          "text": "Semua Projek",
+          "left": 1605.984375,
+          "right": 1843.203125,
+          "width": 1920
+        },
+        {
+          "text": "Kira Anggaran Projek",
+          "left": 1017.59375,
+          "right": 1325.828125,
+          "width": 1920
+        },
+        {
+          "text": "Terokai Coaching 1:1",
+          "left": 1017.59375,
+          "right": 1317.3125,
+          "width": 1920
+        },
+        {
+          "text": "Kenali Saya",
+          "left": 1017.59375,
+          "right": 1230.578125,
+          "width": 1920
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 1593.828125,
+          "right": 1843.203125,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/servis",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IDEA.",
+          "left": 74.640625,
+          "right": 762.96875,
+          "width": 1920
+        },
+        {
+          "text": "LANCAR WEB.",
+          "left": 74.640625,
+          "right": 952.5967407226562,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Pakej",
+          "left": 106.78125,
+          "right": 416.828125,
+          "width": 1920
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 675.1875,
+          "right": 985.234375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/portfolio",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA JADI",
+          "left": 74.640625,
+          "right": 651.9181518554688,
+          "width": 1920
+        },
+        {
+          "text": "REALITI.",
+          "left": 74.640625,
+          "right": 538.9124755859375,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Semua Projek",
+          "left": 74.640625,
+          "right": 426.734375,
+          "width": 1920
+        },
+        {
+          "text": "Bincang Projek Serupa",
+          "left": 1198.078125,
+          "right": 1522.890625,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/harga",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IKUT",
+          "left": 74.640625,
+          "right": 751.6327514648438,
+          "width": 1920
+        },
+        {
+          "text": "BAJET.",
+          "left": 74.640625,
+          "right": 560.4518432617188,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Dapatkan Sebut Harga",
+          "left": 1354.1875,
+          "right": 1762.8125,
+          "width": 1920
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 1458.59375,
+          "right": 1751.1875,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/coaching",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BELAJAR.",
+          "left": 74.640625,
+          "right": 694.53955078125,
+          "width": 1920
+        },
+        {
+          "text": "BINA.",
+          "left": 74.640625,
+          "right": 419.12811279296875,
+          "width": 1920
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 74.640625,
+          "right": 604.6473388671875,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Tanya Slot Coaching",
+          "left": 105.640625,
+          "right": 811.859375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/tentang",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "SAYA",
+          "left": 74.640625,
+          "right": 477.10467529296875,
+          "width": 1920
+        },
+        {
+          "text": "SYAHMI",
+          "left": 74.640625,
+          "right": 706.7884521484375,
+          "width": 1920
+        },
+        {
+          "text": "AOF.",
+          "left": 74.640625,
+          "right": 423.6943664550781,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 74.640625,
+          "right": 477.703125,
+          "width": 1920
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 491.46875,
+          "right": 894.53125,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/hubungi",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA KAU.",
+          "left": 74.640625,
+          "right": 766.6884765625,
+          "width": 1920
+        },
+        {
+          "text": "KITA BINA.",
+          "left": 74.640625,
+          "right": 805.6559448242188,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Sediakan Pertanyaan",
+          "left": 1082.859375,
+          "right": 1714.4375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "ANYTHING BUT",
+          "left": 74.640625,
+          "right": 764.4282836914062,
+          "width": 1920
+        },
+        {
+          "text": "ORDINARY.",
+          "left": 74.640625,
+          "right": 589.2291870117188,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 74.640625,
+          "right": 347.9375,
+          "width": 1920
+        },
+        {
+          "text": "Start a Project",
+          "left": 364,
+          "right": 644.1875,
+          "width": 1920
+        },
+        {
+          "text": "Explore Services",
+          "left": 76.796875,
+          "right": 343.828125,
+          "width": 1920
+        },
+        {
+          "text": "All Projects",
+          "left": 1630.359375,
+          "right": 1843.203125,
+          "width": 1920
+        },
+        {
+          "text": "Estimate Your Project",
+          "left": 1017.59375,
+          "right": 1334.453125,
+          "width": 1920
+        },
+        {
+          "text": "Explore 1:1 Coaching",
+          "left": 1017.59375,
+          "right": 1319.765625,
+          "width": 1920
+        },
+        {
+          "text": "Meet the Developer",
+          "left": 1017.59375,
+          "right": 1308.796875,
+          "width": 1920
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 1572.390625,
+          "right": 1843.203125,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/servis",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD IDEAS.",
+          "left": 74.640625,
+          "right": 875.5796508789062,
+          "width": 1920
+        },
+        {
+          "text": "LAUNCH WEB.",
+          "left": 74.640625,
+          "right": 954.5973510742188,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Packages",
+          "left": 106.78125,
+          "right": 416.828125,
+          "width": 1920
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 675.1875,
+          "right": 985.234375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/portfolio",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEAS MADE",
+          "left": 74.640625,
+          "right": 808.4281005859375,
+          "width": 1920
+        },
+        {
+          "text": "REAL.",
+          "left": 74.640625,
+          "right": 402.70062255859375,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Explore the Projects",
+          "left": 74.640625,
+          "right": 436.5,
+          "width": 1920
+        },
+        {
+          "text": "Discuss a Similar Project",
+          "left": 1198.078125,
+          "right": 1543.078125,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/harga",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD TO",
+          "left": 74.640625,
+          "right": 503.86328125,
+          "width": 1920
+        },
+        {
+          "text": "YOUR BUDGET.",
+          "left": 74.640625,
+          "right": 765.923583984375,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Request a Quote",
+          "left": 1354.1875,
+          "right": 1762.8125,
+          "width": 1920
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 1433.984375,
+          "right": 1751.1875,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/coaching",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "LEARN.",
+          "left": 74.640625,
+          "right": 525.391357421875,
+          "width": 1920
+        },
+        {
+          "text": "BUILD.",
+          "left": 74.640625,
+          "right": 487.54937744140625,
+          "width": 1920
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 74.640625,
+          "right": 604.6473388671875,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Ask About Coaching",
+          "left": 105.640625,
+          "right": 811.859375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/tentang",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "I’M",
+          "left": 74.640625,
+          "right": 337.638427734375,
+          "width": 1920
+        },
+        {
+          "text": "SYAHMI",
+          "left": 74.640625,
+          "right": 706.7884521484375,
+          "width": 1920
+        },
+        {
+          "text": "AOF.",
+          "left": 74.640625,
+          "right": 423.6943664550781,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 74.640625,
+          "right": 477.703125,
+          "width": 1920
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 491.46875,
+          "right": 894.53125,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/hubungi",
+      "width": 1920,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "YOUR IDEA.",
+          "left": 74.640625,
+          "right": 763.1556396484375,
+          "width": 1920
+        },
+        {
+          "text": "LET’S BUILD.",
+          "left": 74.640625,
+          "right": 841.4255981445312,
+          "width": 1920
+        }
+      ],
+      "controls": [
+        {
+          "text": "Prepare Inquiry",
+          "left": 1082.859375,
+          "right": 1714.4375,
+          "width": 1920
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "WEB YANG",
+          "left": 28,
+          "right": 353.109375,
+          "width": 768
+        },
+        {
+          "text": "BUKAN BIASA.",
+          "left": 28,
+          "right": 461.875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 28,
+          "right": 233.03125,
+          "width": 768
+        },
+        {
+          "text": "Mulakan Projek",
+          "left": 245.03125,
+          "right": 455.6875,
+          "width": 768
+        },
+        {
+          "text": "Terokai Servis",
+          "left": 38.390625,
+          "right": 242.34375,
+          "width": 768
+        },
+        {
+          "text": "Semua Projek",
+          "left": 528.171875,
+          "right": 729.609375,
+          "width": 768
+        },
+        {
+          "text": "Kira Anggaran Projek",
+          "left": 38.390625,
+          "right": 292.296875,
+          "width": 768
+        },
+        {
+          "text": "Terokai Coaching 1:1",
+          "left": 334.875,
+          "right": 582.5,
+          "width": 768
+        },
+        {
+          "text": "Kenali Saya",
+          "left": 399,
+          "right": 582.515625,
+          "width": 768
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 519.203125,
+          "right": 729.609375,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/servis",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IDEA.",
+          "left": 28,
+          "right": 352.234375,
+          "width": 768
+        },
+        {
+          "text": "LANCAR WEB.",
+          "left": 28,
+          "right": 460.859375,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Pakej",
+          "left": 52,
+          "right": 230.953125,
+          "width": 768
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 294.953125,
+          "right": 473.90625,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/portfolio",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA JADI",
+          "left": 28,
+          "right": 331.90625,
+          "width": 768
+        },
+        {
+          "text": "REALITI.",
+          "left": 28,
+          "right": 272.0625,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Semua Projek",
+          "left": 28,
+          "right": 270.796875,
+          "width": 768
+        },
+        {
+          "text": "Bincang Projek Serupa",
+          "left": 477.6875,
+          "right": 729.609375,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/harga",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IKUT",
+          "left": 28,
+          "right": 328.984375,
+          "width": 768
+        },
+        {
+          "text": "BAJET.",
+          "left": 28,
+          "right": 249.71875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Dapatkan Sebut Harga",
+          "left": 369.96875,
+          "right": 700,
+          "width": 768
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 528.59375,
+          "right": 719,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/coaching",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BELAJAR.",
+          "left": 28,
+          "right": 325.65625,
+          "width": 768
+        },
+        {
+          "text": "BINA.",
+          "left": 28,
+          "right": 193.15625,
+          "width": 768
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 28,
+          "right": 282.421875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Tanya Slot Coaching",
+          "left": 53,
+          "right": 715,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/tentang",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "SAYA",
+          "left": 28,
+          "right": 187.59375,
+          "width": 768
+        },
+        {
+          "text": "SYAHMI",
+          "left": 28,
+          "right": 284.3125,
+          "width": 768
+        },
+        {
+          "text": "AOF.",
+          "left": 28,
+          "right": 166.171875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 28,
+          "right": 668.796875,
+          "width": 768
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 28,
+          "right": 668.796875,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/hubungi",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA KAU.",
+          "left": 28,
+          "right": 330.828125,
+          "width": 768
+        },
+        {
+          "text": "KITA BINA.",
+          "left": 28,
+          "right": 347.640625,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Sediakan Pertanyaan",
+          "left": 53,
+          "right": 565.265625,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "ANYTHING BUT",
+          "left": 28,
+          "right": 416.34375,
+          "width": 768
+        },
+        {
+          "text": "ORDINARY.",
+          "left": 28,
+          "right": 317.703125,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 28,
+          "right": 230.515625,
+          "width": 768
+        },
+        {
+          "text": "Start a Project",
+          "left": 242.515625,
+          "right": 449.109375,
+          "width": 768
+        },
+        {
+          "text": "Explore Services",
+          "left": 38.390625,
+          "right": 261.859375,
+          "width": 768
+        },
+        {
+          "text": "All Projects",
+          "left": 546.203125,
+          "right": 729.609375,
+          "width": 768
+        },
+        {
+          "text": "Estimate Your Project",
+          "left": 38.390625,
+          "right": 298.671875,
+          "width": 768
+        },
+        {
+          "text": "Explore 1:1 Coaching",
+          "left": 334.875,
+          "right": 584.3125,
+          "width": 768
+        },
+        {
+          "text": "Meet the Developer",
+          "left": 399,
+          "right": 640.328125,
+          "width": 768
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 503.359375,
+          "right": 729.609375,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/servis",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD IDEAS.",
+          "left": 28,
+          "right": 425.25,
+          "width": 768
+        },
+        {
+          "text": "LAUNCH WEB.",
+          "left": 28,
+          "right": 461.84375,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Packages",
+          "left": 52,
+          "right": 230.953125,
+          "width": 768
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 294.953125,
+          "right": 473.90625,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/portfolio",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEAS MADE",
+          "left": 28,
+          "right": 414.96875,
+          "width": 768
+        },
+        {
+          "text": "REAL.",
+          "left": 28,
+          "right": 200.765625,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Explore the Projects",
+          "left": 28,
+          "right": 277.078125,
+          "width": 768
+        },
+        {
+          "text": "Discuss a Similar Project",
+          "left": 477.6875,
+          "right": 729.609375,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/harga",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD TO",
+          "left": 28,
+          "right": 268.765625,
+          "width": 768
+        },
+        {
+          "text": "YOUR BUDGET.",
+          "left": 28,
+          "right": 420.953125,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Request a Quote",
+          "left": 369.96875,
+          "right": 700,
+          "width": 768
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 512.75,
+          "right": 719,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/coaching",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "LEARN.",
+          "left": 28,
+          "right": 244.359375,
+          "width": 768
+        },
+        {
+          "text": "BUILD.",
+          "left": 28,
+          "right": 225.953125,
+          "width": 768
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 28,
+          "right": 282.421875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Ask About Coaching",
+          "left": 53,
+          "right": 715,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/tentang",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "I’M",
+          "left": 28,
+          "right": 132.109375,
+          "width": 768
+        },
+        {
+          "text": "SYAHMI",
+          "left": 28,
+          "right": 284.3125,
+          "width": 768
+        },
+        {
+          "text": "AOF.",
+          "left": 28,
+          "right": 166.171875,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 28,
+          "right": 668.796875,
+          "width": 768
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 28,
+          "right": 668.796875,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/hubungi",
+      "width": 768,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "YOUR IDEA.",
+          "left": 28,
+          "right": 370.140625,
+          "width": 768
+        },
+        {
+          "text": "LET’S BUILD.",
+          "left": 28,
+          "right": 408.640625,
+          "width": 768
+        }
+      ],
+      "controls": [
+        {
+          "text": "Prepare Inquiry",
+          "left": 53,
+          "right": 496.890625,
+          "width": 768
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "WEB YANG",
+          "left": 20,
+          "right": 247,
+          "width": 390
+        },
+        {
+          "text": "BUKAN BIASA.",
+          "left": 20,
+          "right": 322.953125,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 20,
+          "right": 181.859375,
+          "width": 390
+        },
+        {
+          "text": "Mulakan Projek",
+          "left": 191.859375,
+          "right": 359.015625,
+          "width": 390
+        },
+        {
+          "text": "Terokai Servis",
+          "left": 20,
+          "right": 189.828125,
+          "width": 390
+        },
+        {
+          "text": "Semua Projek",
+          "left": 20,
+          "right": 187.46875,
+          "width": 390
+        },
+        {
+          "text": "Kira Anggaran Projek",
+          "left": 20,
+          "right": 236.859375,
+          "width": 390
+        },
+        {
+          "text": "Terokai Coaching 1:1",
+          "left": 20,
+          "right": 230.9375,
+          "width": 390
+        },
+        {
+          "text": "Kenali Saya",
+          "left": 20,
+          "right": 170.59375,
+          "width": 390
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 20,
+          "right": 370,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/servis",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IDEA.",
+          "left": 20,
+          "right": 246.390625,
+          "width": 390
+        },
+        {
+          "text": "LANCAR WEB.",
+          "left": 20,
+          "right": 322.234375,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Pakej",
+          "left": 42,
+          "right": 348,
+          "width": 390
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 42,
+          "right": 348,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/portfolio",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA JADI",
+          "left": 20,
+          "right": 232.203125,
+          "width": 390
+        },
+        {
+          "text": "REALITI.",
+          "left": 20,
+          "right": 190.421875,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Semua Projek",
+          "left": 20,
+          "right": 222.390625,
+          "width": 390
+        },
+        {
+          "text": "Bincang Projek Serupa",
+          "left": 20,
+          "right": 248.390625,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/harga",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BINA IKUT",
+          "left": 20,
+          "right": 230.15625,
+          "width": 390
+        },
+        {
+          "text": "BAJET.",
+          "left": 20,
+          "right": 174.8125,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Dapatkan Sebut Harga",
+          "left": 58,
+          "right": 332,
+          "width": 390
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 39,
+          "right": 351,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/coaching",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BELAJAR.",
+          "left": 20,
+          "right": 227.84375,
+          "width": 390
+        },
+        {
+          "text": "BINA.",
+          "left": 20,
+          "right": 135.328125,
+          "width": 390
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 20,
+          "right": 197.65625,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Tanya Slot Coaching",
+          "left": 41,
+          "right": 349,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/tentang",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "SAYA",
+          "left": 20,
+          "right": 131.4375,
+          "width": 390
+        },
+        {
+          "text": "SYAHMI",
+          "left": 20,
+          "right": 198.96875,
+          "width": 390
+        },
+        {
+          "text": "AOF.",
+          "left": 20,
+          "right": 116.46875,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Lihat Portfolio",
+          "left": 20,
+          "right": 190,
+          "width": 390
+        },
+        {
+          "text": "Bincang Projek",
+          "left": 200,
+          "right": 370,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "ms",
+      "route": "/hubungi",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEA KAU.",
+          "left": 20,
+          "right": 231.4375,
+          "width": 390
+        },
+        {
+          "text": "KITA BINA.",
+          "left": 20,
+          "right": 243.1875,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Sediakan Pertanyaan",
+          "left": 41,
+          "right": 349,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "ANYTHING BUT",
+          "left": 20,
+          "right": 290.453125,
+          "width": 390
+        },
+        {
+          "text": "ORDINARY.",
+          "left": 20,
+          "right": 221.75,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 20,
+          "right": 179.484375,
+          "width": 390
+        },
+        {
+          "text": "Start a Project",
+          "left": 189.484375,
+          "right": 352.8125,
+          "width": 390
+        },
+        {
+          "text": "Explore Services",
+          "left": 20,
+          "right": 208.203125,
+          "width": 390
+        },
+        {
+          "text": "All Projects",
+          "left": 20,
+          "right": 170.5,
+          "width": 390
+        },
+        {
+          "text": "Estimate Your Project",
+          "left": 20,
+          "right": 242.859375,
+          "width": 390
+        },
+        {
+          "text": "Explore 1:1 Coaching",
+          "left": 20,
+          "right": 232.640625,
+          "width": 390
+        },
+        {
+          "text": "Meet the Developer",
+          "left": 20,
+          "right": 225.015625,
+          "width": 390
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 20,
+          "right": 370,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/servis",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD IDEAS.",
+          "left": 20,
+          "right": 297.375,
+          "width": 390
+        },
+        {
+          "text": "LAUNCH WEB.",
+          "left": 20,
+          "right": 322.9375,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Packages",
+          "left": 42,
+          "right": 348,
+          "width": 390
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 42,
+          "right": 348,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/portfolio",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "IDEAS MADE",
+          "left": 20,
+          "right": 290.203125,
+          "width": 390
+        },
+        {
+          "text": "REAL.",
+          "left": 20,
+          "right": 140.625,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Explore the Projects",
+          "left": 20,
+          "right": 228.3125,
+          "width": 390
+        },
+        {
+          "text": "Discuss a Similar Project",
+          "left": 20,
+          "right": 262.4375,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/harga",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "BUILD TO",
+          "left": 20,
+          "right": 187.671875,
+          "width": 390
+        },
+        {
+          "text": "YOUR BUDGET.",
+          "left": 20,
+          "right": 293.65625,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Request a Quote",
+          "left": 58,
+          "right": 332,
+          "width": 390
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 39,
+          "right": 351,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/coaching",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "LEARN.",
+          "left": 20,
+          "right": 171.078125,
+          "width": 390
+        },
+        {
+          "text": "BUILD.",
+          "left": 20,
+          "right": 158.21875,
+          "width": 390
+        },
+        {
+          "text": "DEPLOY.",
+          "left": 20,
+          "right": 197.65625,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Ask About Coaching",
+          "left": 41,
+          "right": 349,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/tentang",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "I’M",
+          "left": 20,
+          "right": 92.703125,
+          "width": 390
+        },
+        {
+          "text": "SYAHMI",
+          "left": 20,
+          "right": 198.96875,
+          "width": 390
+        },
+        {
+          "text": "AOF.",
+          "left": 20,
+          "right": 116.46875,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "View Portfolio",
+          "left": 20,
+          "right": 190,
+          "width": 390
+        },
+        {
+          "text": "Discuss a Project",
+          "left": 200,
+          "right": 370,
+          "width": 390
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "route": "/hubungi",
+      "width": 390,
+      "overflow": false,
+      "headings": [
+        {
+          "text": "YOUR IDEA.",
+          "left": 20,
+          "right": 237.1875,
+          "width": 390
+        },
+        {
+          "text": "LET’S BUILD.",
+          "left": 20,
+          "right": 261.625,
+          "width": 390
+        }
+      ],
+      "controls": [
+        {
+          "text": "Prepare Inquiry",
+          "left": 41,
+          "right": 349,
+          "width": 390
+        }
+      ]
+    }
+  ]
+}

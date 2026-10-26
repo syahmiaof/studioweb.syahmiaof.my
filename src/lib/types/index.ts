@@ -1,4 +1,6 @@
-export type Locale = "ms" | "en";
+export type Locale = "ms" | "en" | "zh-Hans";
+export type LocalizedText = { ms: string; en: string; "zh-Hans"?: string };
+export type LocalizedList = { ms: string[]; en: string[]; "zh-Hans"?: string[] };
 
 export type ServiceCategory = "website-ui" | "full-stack" | "coaching";
 export type MaintenanceId =
@@ -94,29 +96,15 @@ export interface CoachingPackage {
   includes: { ms: string[]; en: string[] };
 }
 
+export type ProjectStatus = "completed" | "on-hold" | "in-progress";
+
 export interface ProjectItem {
   id: string;
   slug: string;
   title: string;
-  category: "Frontend UI" | "Full-Stack Concept" | "Design System" | "Mobile Prototype";
-  status: "DEMO KONSEP" | "PROJEK SEBENAR";
-  statusEn: "CONCEPT DEMO" | "REAL PROJECT";
-  tagline: {
-    ms: string;
-    en: string;
-  };
-  description: {
-    ms: string;
-    en: string;
-  };
-  stack: string[];
-  role: string;
-  image: string;
+  category: LocalizedText;
+  status: ProjectStatus;
   liveUrl?: string;
-  demoNote?: {
-    ms: string;
-    en: string;
-  };
 }
 
 export interface CoachingTopic {

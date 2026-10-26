@@ -1,4 +1,5 @@
 "use client";
+import { localized, localizedPriceLabel } from "@/lib/localized";
 import { Monitor, Database } from "lucide-react";
 import type { Locale } from "@/lib/types";
 import { SERVICES_DATA } from "@/content/services";
@@ -24,13 +25,15 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
       <section className="studio-scene scene-light services-scene" id="servis">
         <Architecture variant="services" priority={!embedded} />
         <div className="services-copy">
-          <SceneLabel number="02">{c("SERVIS", "SERVICES")}</SceneLabel>
+          <SceneLabel number="03">{c("SERVIS", "SERVICES")}</SceneLabel>
           <DisplayTitle
             level={2}
             lines={
               locale === "ms"
                 ? ["BINA IDEA.", "LANCAR WEB."]
-                : ["BUILD IDEAS.", "LAUNCH WEB."]
+                : locale === "zh-Hans"
+                  ? ["构思创意。", "发布网站。"]
+                  : ["BUILD IDEAS.", "LAUNCH WEB."]
             }
           />
           <p className="scene-intro">
@@ -51,7 +54,7 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
                     <h2>
                       {i
                         ? c("SISTEM TEMPAHAN", "BOOKING REQUEST")
-                        : "WEBSITE FRONTEND"}
+                        : locale === "zh-Hans" ? "网站前端" : "WEBSITE FRONTEND"}
                     </h2>
                   </div>
                   {i ? <Database /> : <Monitor />}
@@ -59,7 +62,7 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
                 <span>{i ? c("Harga", "Price") : c("Bermula", "From")}</span>
                 <strong className="service-price">
                   {i
-                    ? SYSTEM_OFFERS[0].priceDisplay
+                    ? localizedPriceLabel(SYSTEM_OFFERS[0].priceDisplay, locale)
                     : formatMYR(PRICING_PACKAGES[0].basePrice)}
                 </strong>
                 <p>
@@ -85,18 +88,18 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
       <section className="service-details">
         {SERVICES_DATA.map((service) => (
           <article key={service.id} id={service.id === "fullstack" ? "fullstack" : "frontend"} data-reveal>
-            <h2>{service.title[locale]}</h2>
-            <p>{service.description[locale]}</p>
+            <h2>{localized(service.title, locale)}</h2>
+            <p>{localized(service.description, locale)}</p>
             <h3>{c("Apa yang diserahkan", "What you receive")}</h3>
             <ul>
-              {service.deliverables[locale].map((item) => (
+              {localized(service.deliverables, locale).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
             <details>
               <summary>{c("Skop & batasan", "Scope & boundaries")}</summary>
               <ul>
-                {service.boundaries[locale].map((item) => (
+                {localized(service.boundaries, locale).map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -106,9 +109,9 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
                 <summary>{c("Pilihan sistem dan harga", "System options and prices")}</summary>
                 {SYSTEM_OFFERS.map((offer) => (
                   <div key={offer.id}>
-                    <h3>{offer.name[locale]} — {offer.priceDisplay}</h3>
-                    <p>{offer.scopeSummary[locale]}</p>
-                    <ul>{offer.deliverables[locale].map((item) => <li key={item}>{item}</li>)}</ul>
+                    <h3>{localized(offer.name, locale)} — {localizedPriceLabel(offer.priceDisplay, locale)}</h3>
+                    <p>{localized(offer.scopeSummary, locale)}</p>
+                    <ul>{localized(offer.deliverables, locale).map((item) => <li key={item}>{item}</li>)}</ul>
                     <ActionLink blue href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "full-stack", package: offer.id }))}>
                       {c("Hubungi untuk Sebut Harga", "Contact for a Quote")}
                     </ActionLink>
@@ -121,10 +124,10 @@ export function ServicesView({ locale, embedded = false }: { locale: Locale; emb
                 <summary>{c("Pelan penjagaan pilihan", "Optional maintenance plans")}</summary>
                 {MAINTENANCE_OPTIONS.filter((option) => option.id !== "none").map((option) => (
                   <div key={option.id}>
-                    <h3>{option.name[locale]} — {option.priceDisplay[locale]}</h3>
-                    <p>{option.description[locale]}</p>
-                    <ul>{option.includes[locale].map((item) => <li key={item}>{item}</li>)}</ul>
-                    <p>{c("Tidak termasuk:", "Excludes:")} {option.excludes[locale].join(" · ")}</p>
+                    <h3>{localized(option.name, locale)} — {localized(option.priceDisplay, locale)}</h3>
+                    <p>{localized(option.description, locale)}</p>
+                    <ul>{localized(option.includes, locale).map((item) => <li key={item}>{item}</li>)}</ul>
+                    <p>{c("Tidak termasuk:", "Excludes:")} {localized(option.excludes, locale).join(" · ")}</p>
                     <ActionLink blue href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "full-stack", maintenance: option.id }))}>
                       {c("Tanya Tentang Penjagaan", "Ask About Maintenance")}
                     </ActionLink>

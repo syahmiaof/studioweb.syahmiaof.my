@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Website packages from RM299, a basic booking request for RM499 and scoped quotes for custom business systems.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/harga",
+    canonical: "https://studioweb.syahmiaof.my/en/harga",
     languages: {
-      ms: "https://studio.syahmiaof.my/harga",
-      en: "https://studio.syahmiaof.my/en/harga",
+      ms: "https://studioweb.syahmiaof.my/harga",
+      en: "https://studioweb.syahmiaof.my/en/harga",
     },
   },
 };

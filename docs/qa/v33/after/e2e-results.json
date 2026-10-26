@@ -1,5 +1,5 @@
 {
-  "base": "http://localhost:3461",
+  "base": "http://127.0.0.1:3461",
   "checks": [
     "Malay homepage returns one rendered page",
     "Hero copy uses the approved V3.3 headline",
@@ -7,14 +7,15 @@
     "Professional title sits above the existing wordmark",
     "One header and footer wrap the whole experience",
     "All seven real sections render in required order",
+    "Legacy home anchor remains available",
     "Legacy homepage teaser sections are removed",
     "Only the hero is an H1",
-    "Anchor utama scrolls with sticky-header offset and active indicator",
+    "Anchor home scrolls with sticky-header offset and active indicator",
+    "Anchor tentang scrolls with sticky-header offset and active indicator",
     "Anchor servis scrolls with sticky-header offset and active indicator",
     "Anchor portfolio scrolls with sticky-header offset and active indicator",
     "Anchor harga scrolls with sticky-header offset and active indicator",
     "Anchor coaching scrolls with sticky-header offset and active indicator",
-    "Anchor tentang scrolls with sticky-header offset and active indicator",
     "Anchor hubungi scrolls with sticky-header offset and active indicator",
     "Browser back and forward restore anchor history",
     "Legacy route redirects to its section and preserves quote context",
@@ -64,12 +65,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -85,12 +86,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -106,12 +107,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -127,12 +128,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -148,12 +149,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -169,12 +170,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -190,12 +191,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     },
@@ -211,12 +212,12 @@
         }
       ],
       "sectionIds": [
-        "utama",
+        "home",
+        "tentang",
         "servis",
         "portfolio",
         "harga",
         "coaching",
-        "tentang",
         "hubungi"
       ]
     }

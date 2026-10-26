@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -7,12 +7,12 @@ import { getTranslations } from "@/i18n";
 import type { Locale } from "@/lib/types";
 
 const SECTION_IDS = [
-  "utama",
+  "home",
+  "tentang",
   "servis",
   "portfolio",
   "harga",
   "coaching",
-  "tentang",
   "hubungi",
 ] as const;
 
@@ -21,25 +21,45 @@ function HeaderBar({ locale }: { locale: Locale }) {
   const params = useSearchParams();
   const t = getTranslations(locale);
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("utama");
+  const [activeSection, setActiveSection] = useState("home");
   const toggle = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const navLinks = useRef(new Map<string, HTMLAnchorElement>());
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const routes = SECTION_IDS.map((id, index) => ({
     id,
     label: [
       t.nav.home,
+      t.nav.about,
       t.nav.services,
       t.nav.portfolio,
       t.nav.pricing,
       t.nav.coaching,
-      t.nav.about,
       t.nav.contact,
     ][index],
   }));
-  const prefix = locale === "en" ? "/en" : "";
-  const alternate = locale === "ms" ? "/en" : "/";
+  const prefix = locale === "en" ? "/en" : locale === "zh-Hans" ? "/zh" : "";
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const measure = () => {
+      const link = navLinks.current.get(activeSection);
+      if (!link) return;
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setIndicator({ left: linkRect.left - navRect.left, width: linkRect.width });
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(nav);
+    navLinks.current.forEach((link) => observer.observe(link));
+    document.fonts?.ready.then(measure);
+    window.addEventListener("resize", measure);
+    return () => { observer.disconnect(); window.removeEventListener("resize", measure); };
+  }, [activeSection, locale, pathname]);
   useEffect(() => {
     let frame = 0;
     let initialHashFrame = 0;
@@ -104,11 +124,11 @@ function HeaderBar({ locale }: { locale: Locale }) {
   return (
     <header className="studio-header">
       <a className="skip-link" href="#main-content">
-        {locale === "ms" ? "Terus ke kandungan" : "Skip to content"}
+        {locale === "ms" ? "Terus ke kandungan" : locale === "zh-Hans" ? "跳至正文" : "Skip to content"}
       </a>
       <Link
         className="studio-brand"
-        href={`${prefix}#utama`}
+        href={`${prefix}#home`}
         aria-label="SYAHMIAOF Studio"
       >
         <span className="brand-role">FULL-STACK DEVELOPER</span>
@@ -117,8 +137,9 @@ function HeaderBar({ locale }: { locale: Locale }) {
         </span>
       </Link>
       <nav
-        aria-label={locale === "ms" ? "Navigasi utama" : "Main navigation"}
+        aria-label={locale === "ms" ? "Navigasi utama" : locale === "zh-Hans" ? "主导航" : "Main navigation"}
         id="studio-navigation"
+        ref={navRef}
         className={"studio-nav " + (open ? "is-open" : "")}
       >
         {routes.map((route) => {
@@ -126,6 +147,7 @@ function HeaderBar({ locale }: { locale: Locale }) {
           return (
             <Link
               key={route.id}
+              ref={(node) => { if (node) navLinks.current.set(route.id, node); else navLinks.current.delete(route.id); }}
               href={href}
               aria-current={activeSection === route.id ? "location" : undefined}
               onClick={() => setOpen(false)}
@@ -134,22 +156,21 @@ function HeaderBar({ locale }: { locale: Locale }) {
             </Link>
           );
         })}
+        <span className="nav-active-indicator" aria-hidden="true" style={{ left: indicator.left, width: indicator.width }} />
       </nav>
       <div className="header-actions">
-        <Link
-          className="language-switch"
-          href={`${alternate}${params.toString() ? `?${params.toString()}` : ""}#${activeSection}`}
-          aria-label={locale === "ms" ? "EN" : "BM"}
-        >
-          <span className={locale === "ms" ? "current-language" : ""}>BM</span>
-          <span>/</span>
-          <span className={locale === "en" ? "current-language" : ""}>EN</span>
-        </Link>
+        <div className="language-switch" role="group" aria-label={locale === "zh-Hans" ? "选择语言" : locale === "ms" ? "Pilih bahasa" : "Choose language"}>
+          {([ ["ms", "BM"], ["en", "EN"], ["zh-Hans", "中文"] ] as const).map(([target, label]) => {
+            const destination = target === "ms" ? "/" : target === "en" ? "/en" : "/zh";
+            const query = params.toString();
+            return <Link key={target} href={`${destination}${query ? `?${query}` : ""}#${activeSection}`} aria-current={locale === target ? "true" : undefined} aria-label={target === "ms" ? "Bahasa Melayu" : target === "en" ? "English" : "简体中文"}>{label}</Link>;
+          })}
+        </div>
         <button
           className="menu-toggle"
           ref={toggle}
           aria-label={
-            locale === "ms" ? "Buka menu navigasi" : "Toggle navigation menu"
+            locale === "ms" ? "Buka menu navigasi" : locale === "zh-Hans" ? "打开导航菜单" : "Toggle navigation menu"
           }
           aria-expanded={open}
           aria-controls="studio-navigation"

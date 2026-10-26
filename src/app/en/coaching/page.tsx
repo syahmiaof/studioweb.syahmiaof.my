@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Personalized 1:1 mentorship sessions with Syahmi AOF. Web fundamentals, React/Next.js architecture, and real-world project code review.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/coaching",
+    canonical: "https://studioweb.syahmiaof.my/en/coaching",
     languages: {
-      ms: "https://studio.syahmiaof.my/coaching",
-      en: "https://studio.syahmiaof.my/en/coaching",
+      ms: "https://studioweb.syahmiaof.my/coaching",
+      en: "https://studioweb.syahmiaof.my/en/coaching",
     },
   },
 };

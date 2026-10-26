@@ -1,0 +1,21 @@
+export const zhTranslations = {
+  nav: { home: "首页", services: "服务", portfolio: "作品", pricing: "价格", coaching: "辅导", about: "关于", contact: "联系", ctaStart: "开始项目", langSwitch: "Bahasa Melayu" },
+  home: {
+    heroTag: "现代网站开发与定制系统工作室", headlinePart1: "网站设计", headlinePart2: "不止于此。",
+    subhead: "由 Syahmi AOF 主理的网站工程工作室。为有抱负的品牌打造高冲击力的 Digital Brutalism 网页界面与定制全栈系统。",
+    ctaPortfolio: "查看作品", ctaProject: "开始项目", statusBadge: "开放预约 · 2026 年第四季度", heroCoord: "马来西亚登嘉楼 // 05.83° N, 102.55° E",
+    serviceTeaser: { badge: "工作室服务", title: "以 Digital Brutalism 打造网页工程", desc: "构建大胆而易用的现代网页界面。", link: "查看全部服务" },
+    portfolioTeaser: { badge: "精选作品", title: "数字实验与原型", desc: "精选设计系统、概念原型与互动网页展示。", link: "浏览全部作品" },
+    pricingTeaser: { badge: "透明定价", title: "项目费用估算器", desc: "网站配套 RM299 起，查看服务范围并咨询商业系统报价。", link: "计算项目费用" },
+    coachingTeaser: { badge: "一对一辅导", title: "与 Syahmi 学习网站开发", desc: "从 HTML/CSS 基础到现代 Next.js 架构，逐步提升编程技能。", link: "查看辅导主题" },
+    aboutTeaser: { badge: "真实背景", title: "SYAHMIAOF STUDIO 背后", desc: "由网页开发者兼 TVETMARA Besut 云计算专业学生 Syahmi AOF 打造。", link: "阅读个人简介" },
+    finalCta: { headline: "你的想法，我们来实现。", desc: "别让品牌淹没在普通网页模板里。现在就打造鲜明的数字体验。", button: "提交项目简介" },
+  },
+  services: { badge: "工程服务范围", title: "构思创意，发布网站。", subhead: "两类核心服务：高视觉表现的前端界面开发，或数据库驱动的全栈定制系统。", tabs: { frontend: "前端与网站界面", fullstack: "全栈定制系统" }, deliverablesLabel: "交付内容", boundariesLabel: "范围与技术边界", fromLabel: "起始费用" },
+  portfolio: { badge: "作品展示", title: "让想法成为现实。", subhead: "透明标注的网站界面原型、设计概念与组件架构。", statusFilterAll: "全部", stackLabel: "技术", roleLabel: "职责", noteLabel: "说明" },
+  pricing: { badge: "报价估算器", title: "按预算打造。", subhead: "选择前端配套并添加所需功能，费用即时透明计算。", basePackagesLabel: "1. 选择基础配套", addonsLabel: "2. 选择附加功能（选填）", summaryLabel: "费用估算", baseLabel: "基础配套", addonsTotalLabel: "附加功能小计", totalLabel: "预估总额", disclaimer: "仅供估算。域名、托管及定制功能另行计算；正式报价将在确认需求后提供。", ctaQuote: "索取正式报价", ctaConsult: "咨询定制系统", fullstackNotice: "全栈定制系统需先确认技术范围，再提供人工报价。" },
+  coaching: { badge: "一对一辅导", title: "学习 · 实作 · 发布", subhead: "与 Syahmi AOF 进行一对一辅导。选择适合目标的技能主题与时长。", topicsLabel: "1. 选择辅导主题", durationLabel: "2. 选择时长", keyTakeawaysLabel: "学习重点", notice: "价格与时段将在初步沟通后确认。本页面不会自动收费。", ctaAskSlot: "咨询辅导时段" },
+  about: { badge: "身份与背景", title: "我是 SYAHMI AOF。", role: "网页开发者与云计算专业 IT 学生", institution: "TVETMARA Besut，登嘉楼", bio1: "我是 Syahmi AOF，专注打造高冲击力的现代网页界面与实用数字系统。目前在 TVETMARA Besut 修读信息技术（云计算）。", bio2: "拥有自由职业网页项目与 DFK INC 数字营销、界面自动化项目的实践经验。重视整洁代码、性能与鲜明的视觉表达。", characterBadge: "品牌视觉角色", characterNotice: "戴墨镜的科技服装角色是工作室的虚构品牌形象，并非 Syahmi AOF 的真实照片。", skillsTitle: "技术技能与能力", skills: [{ category: "前端", items: "Next.js, React, TypeScript, Tailwind CSS, GSAP ScrollTrigger" }, { category: "后端与数据库", items: "Node.js, Route Handlers, PostgreSQL, Supabase, REST APIs" }, { category: "云与 DevOps", items: "云计算（TVETMARA）, Vercel, Git/GitHub, Docker 基础" }, { category: "自动化与 AI", items: "工作流自动化, LLM 提示工程, 数据集成" }] },
+  contact: { badge: "下一步", title: "你的想法，我们来实现。", subhead: "准备好打造令人瞩目的网站或定制系统了吗？请在下方提交项目简介。", directEmailTitle: "工作室电子邮件", directEmail: "hello@syahmiaof.my", whatsappTitle: "WhatsApp 联系", whatsappPending: "工作室 WhatsApp 链接即将启用。", formTitle: "项目简介表格", fieldService: "服务类别", serviceOptions: { websiteUi: "网站开发 / 前端界面", fullStack: "全栈定制系统", coaching: "一对一辅导" }, fieldName: "姓名", fieldNamePlaceholder: "个人或公司名称", fieldContact: "电子邮件或 WhatsApp 号码", fieldContactPlaceholder: "例如：name@email.com 或 +60123456789", fieldMessage: "项目简介 / 咨询", fieldMessagePlaceholder: "请简单说明项目目标、期望完成日期及参考资料……", pricingContextLabel: "估价器费用参考", coachingContextLabel: "辅导课程参考", submitButton: "提交项目简介", submitSuccess: "谢谢！已收到你的项目简介，我们会尽快联系。", submitError: "提交失败。请直接发送邮件至 hello@syahmiaof.my。", emailFallbackNotice: "邮件服务仍在配置中。你可以直接联系 hello@syahmiaof.my。" },
+  footer: { brandDesc: "由 Syahmi AOF 主理、注重性能的 Digital Brutalism 网页工程工作室。", quickLinks: "快速链接", contactInfo: "联系", rights: "版权所有。", builtWith: "使用 Next.js、TypeScript、Tailwind CSS 与 GSAP 构建。" },
+} as const;

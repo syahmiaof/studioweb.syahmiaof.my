@@ -30,9 +30,9 @@ export const InquirySchema = z.object({
     .trim()
     .min(10, { message: "Sila berikan butiran taklimat projek sekurang-kurangnya 10 aksara." })
     .max(2000, { message: "Mesej terlalu panjang (had maksimum 2000 aksara)." }),
-  packageId: z.string().optional(),
-  packageName: z.string().optional(),
-  addons: z.array(z.string()).optional(),
+  packageId: z.string().max(80).optional(),
+  packageName: z.string().max(120).optional(),
+  addons: z.array(z.string().max(80)).max(8).optional(),
   estimatedTotal: z.number().optional(),
   coachingTopic: z.string().optional(),
   coachingDuration: z.enum(["60", "90", "120"]).optional(),

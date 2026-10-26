@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Factual background of Syahmi AOF, Web Developer & IT (Cloud Computing) student at TVETMARA Besut. Engineering integrity and no false claims.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/tentang",
+    canonical: "https://studioweb.syahmiaof.my/en/tentang",
     languages: {
-      ms: "https://studio.syahmiaof.my/tentang",
-      en: "https://studio.syahmiaof.my/en/tentang",
+      ms: "https://studioweb.syahmiaof.my/tentang",
+      en: "https://studioweb.syahmiaof.my/en/tentang",
     },
   },
 };

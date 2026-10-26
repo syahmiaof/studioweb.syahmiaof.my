@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Koleksi prototaip, konsep reka bentuk antaramuka dan sistem komponen web oleh Syahmi AOF. Dilabelkan secara telus & jujur.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/portfolio",
+    canonical: "https://studioweb.syahmiaof.my/portfolio",
     languages: {
-      ms: "https://studio.syahmiaof.my/portfolio",
-      en: "https://studio.syahmiaof.my/en/portfolio",
+      ms: "https://studioweb.syahmiaof.my/portfolio",
+      en: "https://studioweb.syahmiaof.my/en/portfolio",
     },
   },
 };

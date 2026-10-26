@@ -1,4 +1,5 @@
 "use client";
+import { localized, localizedPriceLabel } from "@/lib/localized";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -21,7 +22,7 @@ import {
   PRICING_ADDONS,
 } from "@/lib/pricing/calculator";
 import { COACHING_PACKAGES } from "@/content/coaching";
-import { PROJECTS } from "@/content/projects";
+import { PROJECTS, PROJECT_STATUS_LABELS } from "@/content/projects";
 import {
   StudioPage,
   DisplayTitle,
@@ -64,15 +65,15 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
     : undefined;
   const project = PROJECTS.find((item) => item.slug === params.get("project"));
   const contextText = [
-    quoteActive ? pkg!.name[locale] + " — " + formatMYR(total!) + c(" (sekali bayar)", " (one-time)") : "",
-    systemOfferActive ? systemOffer!.name[locale] + " — " + systemOffer!.priceDisplay : "",
+    quoteActive ? localized(pkg!.name, locale) + " — " + formatMYR(total!) + c(" (sekali bayar)", " (one-time)") : "",
+    systemOfferActive ? localized(systemOffer!.name, locale) + " — " + localizedPriceLabel(systemOffer!.priceDisplay, locale) : "",
     quoteActive
       ? addons
-          .map((id) => PRICING_ADDONS.find((a) => a.id === id)!.name[locale])
+          .map((id) => localized(PRICING_ADDONS.find((a) => a.id === id)!.name, locale))
           .join(", ")
       : "",
-    maintenanceActive ? maintenance!.name[locale] + " — " + maintenance!.priceDisplay[locale] : "",
-    coachingPackage ? coachingPackage.name[locale] + " / " + (coachingPackage.durationMinutes / 60) + c(" jam — RM", " hours — RM") + coachingPackage.price : "",
+    maintenanceActive ? localized(maintenance!.name, locale) + " — " + localized(maintenance!.priceDisplay, locale) : "",
+    coachingPackage ? localized(coachingPackage.name, locale) + " / " + (coachingPackage.durationMinutes / 60) + c(" jam — RM", " hours — RM") + coachingPackage.price : "",
     project ? c("Rujukan projek: ", "Project reference: ") + project.title : "",
   ]
     .filter(Boolean)
@@ -98,7 +99,7 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
     encodeURIComponent(c("Pertanyaan Studio: ", "Studio Inquiry: ") + name) +
     "&body=" +
     encodeURIComponent(body);
-  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(
+  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "60107965236").replace(
     /[+\s-]/g,
     "",
   );
@@ -133,10 +134,10 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
           locale === "ms"
             ? issue.message
             : {
-                name: "Enter a name with 2–100 characters.",
-                contact: "Enter a valid email or WhatsApp number.",
-                message: "Write a brief with 10–2,000 characters.",
-              }[key] || "Check this field.";
+                name: locale === "zh-Hans" ? "请输入 2 至 100 个字符的姓名。" : "Enter a name with 2–100 characters.",
+                contact: locale === "zh-Hans" ? "请输入有效的电子邮件或 WhatsApp 号码。" : "Enter a valid email or WhatsApp number.",
+                message: locale === "zh-Hans" ? "请填写 10 至 2,000 个字符的项目简介。" : "Write a brief with 10–2,000 characters.",
+              }[key] || (locale === "zh-Hans" ? "请检查此栏位。" : "Check this field.");
       }
       setErrors(next);
       document.getElementById("inquiry-" + Object.keys(next)[0])?.focus();
@@ -182,11 +183,7 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
           <SceneLabel number="07">{c("HUBUNGI", "CONTACT")}</SceneLabel>
           <DisplayTitle
             level={2}
-            lines={
-              locale === "ms"
-                ? ["IDEA KAU.", "KITA BINA."]
-                : ["YOUR IDEA.", "LET’S BUILD."]
-            }
+            lines={locale === "ms" ? ["IDEA KAU.", "KITA BINA."] : locale === "zh-Hans" ? ["你的想法。", "我们来实现。"] : ["YOUR IDEA.", "LET’S BUILD."]}
           />
           <p className="scene-intro">
             {c(
@@ -208,14 +205,14 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
                 rel="noopener noreferrer"
               >
                 <MessageCircle />
-                Chat WhatsApp
+                {c("Chat WhatsApp", "Chat WhatsApp")}
                 <ArrowRight />
               </a>
             ) : (
               <div>
                 <button className="whatsapp-link" disabled>
                   <MessageCircle />
-                  Chat WhatsApp
+                  {c("Chat WhatsApp", "Chat WhatsApp")}
                   <ArrowRight />
                 </button>
                 <small>
@@ -238,14 +235,14 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
           </h2>
           {quoteActive && (
             <div className="handoff-summary" data-testid="quote-summary">
-              <strong>{pkg!.name[locale]}</strong>
+              <strong>{localized(pkg!.name, locale)}</strong>
               <span>{c("Anggaran sekali bayar: ", "One-time estimate: ")}{formatMYR(total!)}</span>
               {addons.length > 0 && (
                 <small>
                   {addons
                     .map(
                       (id) =>
-                        PRICING_ADDONS.find((a) => a.id === id)!.name[locale],
+                        localized(PRICING_ADDONS.find((a) => a.id === id)!.name, locale),
                     )
                     .join(" · ")}
                 </small>
@@ -254,21 +251,21 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
           )}
           {systemOfferActive && (
             <div className="handoff-summary" data-testid="system-summary">
-              <strong>{systemOffer!.name[locale]}</strong>
-              <span>{systemOffer!.priceDisplay}</span>
-              <small>{systemOffer!.scopeSummary[locale]}</small>
+              <strong>{localized(systemOffer!.name, locale)}</strong>
+              <span>{localizedPriceLabel(systemOffer!.priceDisplay, locale)}</span>
+              <small>{localized(systemOffer!.scopeSummary, locale)}</small>
             </div>
           )}
           {maintenanceActive && (
             <div className="handoff-summary" data-testid="maintenance-summary">
-              <strong>{maintenance!.name[locale]}</strong>
-              <span>{maintenance!.priceDisplay[locale]}</span>
+              <strong>{localized(maintenance!.name, locale)}</strong>
+              <span>{localized(maintenance!.priceDisplay, locale)}</span>
               <small>{maintenance!.cadence === "monthly" ? c("Caj berulang bulanan; berasingan daripada jumlah sekali bayar.", "Recurring monthly charge; separate from the one-time total.") : c("Caj ikut tugasan; berasingan daripada jumlah sekali bayar.", "Per-task charge; separate from the one-time total.")}</small>
             </div>
           )}
           {coachingPackage && (
             <div className="handoff-summary" data-testid="coaching-summary">
-              <strong>{coachingPackage.name[locale]}</strong>
+              <strong>{localized(coachingPackage.name, locale)}</strong>
               <span>RM{coachingPackage.price} · {coachingPackage.durationMinutes / 60} {c("jam", "hours")}</span>
             </div>
           )}
@@ -276,7 +273,7 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
             <div className="handoff-summary" data-testid="project-summary">
               <strong>{c("Rujukan projek", "Project reference")}</strong>
               <span>{project.title}</span>
-              <small>{locale === "ms" ? project.status : project.statusEn}</small>
+              <small>{PROJECT_STATUS_LABELS[locale][project.status]}</small>
             </div>
           )}
           <form onSubmit={submit} noValidate>
@@ -318,9 +315,9 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
                       <span>
                         {
                           [
-                            "Website UI",
+                            locale === "zh-Hans" ? "网站界面" : "Website UI",
                             c("Sistem Lengkap", "Full-Stack"),
-                            "Coaching 1:1",
+                            locale === "zh-Hans" ? "一对一辅导" : "Coaching 1:1",
                           ][i]
                         }
                       </span>

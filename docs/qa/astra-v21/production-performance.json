@@ -1,0 +1,356 @@
+{
+  "base": "http://localhost:3461",
+  "environment": "Local production build, Chromium, unthrottled, fresh browser context per route. Laboratory samples, not field Core Web Vitals.",
+  "checks": [
+    "Production calculator RM2,145",
+    "Production quote reaches contact",
+    "Production API truthfully unavailable",
+    "Production email fallback rendered",
+    "/ 1440 production render",
+    "/servis 1440 production render",
+    "/portfolio 1440 production render",
+    "/harga 1440 production render",
+    "/coaching 1440 production render",
+    "/tentang 1440 production render",
+    "/hubungi 1440 production render",
+    "/ 390 production render",
+    "/servis 390 production render",
+    "/portfolio 390 production render",
+    "/harga 390 production render",
+    "/coaching 390 production render",
+    "/tentang 390 production render",
+    "/hubungi 390 production render"
+  ],
+  "samples": [
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 228,
+      "cls": 0,
+      "domContentLoaded": 54.699999928474426,
+      "load": 242,
+      "resourceBytes": 863156,
+      "imageBytes": 490906,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        },
+        {
+          "naturalWidth": 359,
+          "displayWidth": 509.921875,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=384&q=75"
+        },
+        {
+          "naturalWidth": 359,
+          "displayWidth": 382.4375,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=384&q=75"
+        },
+        {
+          "naturalWidth": 359,
+          "displayWidth": 382.4375,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=384&q=75"
+        },
+        {
+          "naturalWidth": 702,
+          "displayWidth": 619.203125,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=1080&q=75"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/servis",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 176,
+      "cls": 0,
+      "domContentLoaded": 41.799999952316284,
+      "load": 128.89999997615814,
+      "resourceBytes": 738911,
+      "imageBytes": 364510,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/portfolio",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 176,
+      "cls": 0,
+      "domContentLoaded": 40.800000071525574,
+      "load": 129.30000007152557,
+      "resourceBytes": 727367,
+      "imageBytes": 353418,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F03-portfolio-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/harga",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 220,
+      "cls": 0.0003107975461355453,
+      "domContentLoaded": 50.799999952316284,
+      "load": 136.69999992847443,
+      "resourceBytes": 759436,
+      "imageBytes": 382852,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/coaching",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 180,
+      "cls": 0.00006646452224794238,
+      "domContentLoaded": 31.100000023841858,
+      "load": 77.69999992847443,
+      "resourceBytes": 820243,
+      "imageBytes": 446282,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/tentang",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 208,
+      "cls": 0,
+      "domContentLoaded": 48.5,
+      "load": 166.89999997615814,
+      "resourceBytes": 792806,
+      "imageBytes": 421056,
+      "images": [
+        {
+          "naturalWidth": 1254,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/hubungi",
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "lcp": 188,
+      "cls": 0.0001955665368602109,
+      "domContentLoaded": 45.89999997615814,
+      "load": 98.59999990463257,
+      "resourceBytes": 707934,
+      "imageBytes": 335706,
+      "images": [
+        {
+          "naturalWidth": 1253,
+          "displayWidth": 1440,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-plate.webp%3Fv%3D21-final&w=1920&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 180,
+      "cls": 0.007794782021621602,
+      "domContentLoaded": 43.800000071525574,
+      "load": 179.40000009536743,
+      "resourceBytes": 632398,
+      "imageBytes": 285728,
+      "images": [
+        {
+          "naturalWidth": 390,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F01-home-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        },
+        {
+          "naturalWidth": 351,
+          "displayWidth": 350,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fsymi-ui.webp&w=750&q=75"
+        },
+        {
+          "naturalWidth": 351,
+          "displayWidth": 315,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Flamborghini-concept.webp&w=750&q=75"
+        },
+        {
+          "naturalWidth": 351,
+          "displayWidth": 332.5,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Foptimized%2Fuberpokmi-ui.webp&w=750&q=75"
+        },
+        {
+          "naturalWidth": 0,
+          "displayWidth": 350,
+          "source": ""
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/servis",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 148,
+      "cls": 0,
+      "domContentLoaded": 61.89999997615814,
+      "load": 157.30000007152557,
+      "resourceBytes": 674394,
+      "imageBytes": 317420,
+      "images": [
+        {
+          "naturalWidth": 316,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F02-services-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/portfolio",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 232,
+      "cls": 0,
+      "domContentLoaded": 52.799999952316284,
+      "load": 125.70000004768372,
+      "resourceBytes": 614767,
+      "imageBytes": 293138,
+      "images": [
+        {
+          "naturalWidth": 299,
+          "displayWidth": 348,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-symi.webp&w=750&q=95"
+        },
+        {
+          "naturalWidth": 201,
+          "displayWidth": 348,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-lamborghini.webp&w=750&q=95"
+        },
+        {
+          "naturalWidth": 205,
+          "displayWidth": 348,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2Fproject-uberpokmi.webp&w=750&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/harga",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 184,
+      "cls": 0,
+      "domContentLoaded": 39.699999928474426,
+      "load": 82.69999992847443,
+      "resourceBytes": 618024,
+      "imageBytes": 294166,
+      "images": [
+        {
+          "naturalWidth": 367,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F04-pricing-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/coaching",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 364,
+      "cls": 0,
+      "domContentLoaded": 44.699999928474426,
+      "load": 92.09999990463257,
+      "resourceBytes": 674436,
+      "imageBytes": 328460,
+      "images": [
+        {
+          "naturalWidth": 390,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F05-coaching-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/tentang",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 124,
+      "cls": 0,
+      "domContentLoaded": 39.699999928474426,
+      "load": 110.89999997615814,
+      "resourceBytes": 715818,
+      "imageBytes": 365274,
+      "images": [
+        {
+          "naturalWidth": 390,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F06-about-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/hubungi",
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "lcp": 384,
+      "cls": 0,
+      "domContentLoaded": 38.39999997615814,
+      "load": 96,
+      "resourceBytes": 578461,
+      "imageBytes": 237364,
+      "images": [
+        {
+          "naturalWidth": 390,
+          "displayWidth": 390,
+          "source": "http://localhost:3461/_next/image?url=%2Fassets%2Fastra-v21%2F07-contact-mobile.webp%3Fv%3D21-final&w=828&q=95"
+        }
+      ],
+      "overflow": false
+    }
+  ]
+}

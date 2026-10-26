@@ -1,4 +1,5 @@
 "use client";
+import { localized } from "@/lib/localized";
 import { Suspense, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { COACHING_PACKAGES } from "@/content/coaching";
@@ -23,7 +24,7 @@ function Coaching({ locale, embedded = false }: { locale: Locale; embedded?: boo
       : COACHING_PACKAGES[0].id;
   });
   const selected = COACHING_PACKAGES.find((item) => item.id === packageId)!;
-  const c = (ms: string, en: string) => copy(locale, ms, en);
+  const c = (ms: string, en: string, zh?: string) => copy(locale, ms, en, zh);
   const select = (nextPackageId: string) => {
     const next = COACHING_PACKAGES.find((item) => item.id === nextPackageId);
     if (!next) return;
@@ -43,8 +44,8 @@ function Coaching({ locale, embedded = false }: { locale: Locale; embedded?: boo
       <section className="studio-scene coaching-scene" id="coaching">
         <Architecture variant="coaching" word="05" priority={!embedded} />
         <div className="coaching-copy">
-          <SceneLabel number="05">COACHING 1:1</SceneLabel>
-          <DisplayTitle level={2} lines={[c("BELAJAR.", "LEARN."), c("BINA.", "BUILD."), "DEPLOY."]} />
+          <SceneLabel number="06">{c("COACHING 1:1", "COACHING 1:1", "一对一辅导")}</SceneLabel>
+          <DisplayTitle level={2} lines={[c("BELAJAR.", "LEARN."), c("BINA.", "BUILD."), c("TERBITKAN.", "DEPLOY.", "发布。")]} />
           <p className="scene-intro">
             {c(
               "Pilih sesi 1:1 untuk asas frontend, React/Next.js atau sistem full-stack.",
@@ -67,7 +68,7 @@ function Coaching({ locale, embedded = false }: { locale: Locale; embedded?: boo
                       checked={packageId === item.id}
                       onChange={() => select(item.id)}
                     />
-                    <span>{item.name[locale]} · RM{item.price}</span>
+                    <span>{localized(item.name, locale)} · RM{item.price}</span>
                   </label>
                 ))}
               </div>
@@ -91,7 +92,7 @@ function Coaching({ locale, embedded = false }: { locale: Locale; embedded?: boo
               {c("Tanya Slot Coaching", "Ask About a Coaching Slot")}
             </ActionLink>
             <p>
-              Online · 1:1 · {c("Bahasa Melayu", "Malay")}
+              {locale === "zh-Hans" ? "线上 · 1:1 · 马来语" : <>Online · 1:1 · {c("Bahasa Melayu", "Malay")}</>}
               <br />
               <span>
                 {c(
@@ -106,10 +107,10 @@ function Coaching({ locale, embedded = false }: { locale: Locale; embedded?: boo
       <section className="coaching-detail">
         <div>
           <span className="chapter-line">{c("TENTANG PAKEJ INI", "ABOUT THIS PACKAGE")}</span>
-          <h2>{selected.name[locale]}</h2>
-          <p>{selected.description[locale]}</p>
+          <h2>{localized(selected.name, locale)}</h2>
+          <p>{localized(selected.description, locale)}</p>
         </div>
-        <ul>{selected.includes[locale].map((item) => <li key={item}>{item}</li>)}</ul>
+        <ul>{localized(selected.includes, locale).map((item) => <li key={item}>{item}</li>)}</ul>
       </section>
     </StudioPage>
   );

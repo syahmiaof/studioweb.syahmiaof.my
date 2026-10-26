@@ -1,0 +1,284 @@
+[
+  {
+    "route": "/",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 1440,
+    "height": 900,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 1920,
+    "height": 1080,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 768,
+    "height": 1024,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [
+      "http://localhost:3460/_next/image?url=%2Fassets%2Foptimized%2F03_character_creator_laptop.webp&w=3840&q=75"
+    ],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/servis",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/portfolio",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/harga",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/coaching",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/tentang",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  },
+  {
+    "route": "/hubungi",
+    "width": 390,
+    "height": 844,
+    "status": 200,
+    "overflow": false,
+    "brokenImages": [],
+    "font": "StudioDisplay, sans-serif",
+    "errors": []
+  }
+]

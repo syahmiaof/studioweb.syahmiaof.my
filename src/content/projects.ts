@@ -1,73 +1,33 @@
-import { ProjectItem } from "../lib/types";
+import type { Locale, ProjectItem, ProjectStatus } from "../lib/types";
 
 export const PROJECTS: ProjectItem[] = [
-  {
-    id: "symi-ui",
-    slug: "symi-ui",
-    title: "SYMI UI",
-    category: "Frontend UI",
-    status: "DEMO KONSEP",
-    statusEn: "CONCEPT DEMO",
-    tagline: {
-      ms: "Konsep Pengalaman Web Frozen Yogurt",
-      en: "Frozen Yogurt Website Concept",
-    },
-    description: {
-      ms: "Visual konsep laman frozen yogurt dengan tipografi editorial, fotografi produk dan komposisi biru navy serta krim, seperti yang ditunjukkan dalam mockup diluluskan.",
-      en: "A frozen yogurt website concept with editorial typography, product imagery and a navy-and-cream composition, as shown in the approved mockup.",
-    },
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Radix UI"],
-    role: "Frontend Architecture & UI Engineering",
-    image: "/assets/projects/symi-ui.png",
-    demoNote: {
-      ms: "Paparan konsep daripada rujukan reka bentuk; bukan bukti projek pelanggan berbayar.",
-      en: "Concept presentation from the design reference; not evidence of a paid client engagement.",
-    },
-  },
-  {
-    id: "lamborghini-concept",
-    slug: "lamborghini-concept",
-    title: "LAMBORGHINI CONCEPT",
-    category: "Frontend UI",
-    status: "DEMO KONSEP",
-    statusEn: "CONCEPT DEMO",
-    tagline: {
-      ms: "Pengalaman Pendaratan Jenama Supercar Tidak Rasmi",
-      en: "Unofficial Supercar High-Performance Landing Experience",
-    },
-    description: {
-      ms: "Eksperimen interaktif web sinematik bertemakan jentera prestasi tinggi dengan peralihan skrol 3D, tipografi gergasi dan kesan visual agresif.",
-      en: "Cinematic interactive web experiment themed around high-performance supercars featuring 3D scroll transitions, massive typography, and aggressive visuals.",
-    },
-    stack: ["React", "GSAP ScrollTrigger", "CSS 3D Transforms", "Web Audio API"],
-    role: "Creative Development & Motion Design",
-    image: "/assets/projects/lamborghini-concept.png",
-    demoNote: {
-      ms: "Eksperimen konsep reka bentuk tidak rasmi; tiada kaitan atau tajaan rasmi daripada jenama automotif tersebut.",
-      en: "Unofficial design concept experiment; no official affiliation or endorsement by the automotive brand.",
-    },
-  },
-  {
-    id: "uberpokmi-ui",
-    slug: "uberpokmi-ui",
-    title: "UBERPOKMI UI",
-    category: "Mobile Prototype",
-    status: "DEMO KONSEP",
-    statusEn: "CONCEPT DEMO",
-    tagline: {
-      ms: "Prototaip Antaramuka Superapp Penghantaran & Tempahan",
-      en: "On-Demand Ride & Delivery Superapp UI Prototype",
-    },
-    description: {
-      ms: "Konsep antaramuka tempahan perjalanan dan penghantaran. Paparan ini menunjukkan arah visual, bukan perkhidmatan tempahan atau penjejakan langsung.",
-      en: "A ride and delivery interface concept. This presentation shows the visual direction, not a live booking or tracking service.",
-    },
-    stack: ["Next.js", "Tailwind CSS", "Zustand", "Lucide Icons"],
-    role: "UI/UX Prototyping & Frontend Engineering",
-    image: "/assets/projects/uberpokmi-ui.png",
-    demoNote: {
-      ms: "Prototaip simulasi aliran antaramuka pengguna; tidak disambungkan kepada pangkalan data pengeluaran sebenar.",
-      en: "Simulated UI flow prototype; not connected to a live production backend.",
-    },
-  },
+  { id: "sakura-store", slug: "sakura-store", title: "Sakura Store", category: { ms: "E-dagang · Kedai", en: "E-Commerce · Store", "zh-Hans": "电子商务 · 商店" }, status: "completed", liveUrl: "https://sakurastore.syahmiaof.my" },
+  { id: "uber-pokmi", slug: "uber-pokmi", title: "Uber Pokmi", category: { ms: "UI Frontend · Aplikasi perjalanan", en: "Frontend UI · Ride App", "zh-Hans": "前端界面 · 出行应用" }, status: "completed", liveUrl: "https://uberpokmi.syahmiaof.my" },
+  { id: "ayam-gepuk-pokmi", slug: "ayam-gepuk-pokmi", title: "Ayam Gepuk Pokmi", category: { ms: "UI Frontend · Makanan & minuman", en: "Frontend UI · Food & Beverage", "zh-Hans": "前端界面 · 餐饮" }, status: "completed", liveUrl: "https://ayamgepukpokmi.syahmiaof.my" },
+  { id: "sistem-aduan-asrama", slug: "sistem-aduan-asrama-ikm-besut", title: "Sistem Aduan Asrama IKM Besut", category: { ms: "Sistem web · Pengurusan", en: "Web System · Management", "zh-Hans": "网站系统 · 管理" }, status: "completed", liveUrl: "https://sistemaduanasrama.syahmiaof.my" },
+  { id: "nurizmabridal", slug: "nurizmabridal", title: "Nurizmabridal", category: { ms: "Servis pengantin & inai", en: "Bridal & Henna Service", "zh-Hans": "新娘与海娜服务" }, status: "completed", liveUrl: "https://henna.nurizmabridal.my" },
+  { id: "gayongx-platform", slug: "gayongx-platform", title: "GayongX — Website, Account & CMS", category: { ms: "Platform web Silat Gayong", en: "Silat Gayong Web Platform", "zh-Hans": "Gayong 武术网站平台" }, status: "on-hold", liveUrl: "https://gayongx.syahmiaof.my" },
+  { id: "gayongx-warisan", slug: "gayongx-warisan", title: "Game GayongX: WARISAN", category: { ms: "Permainan web · Warisan silat", en: "Web Game · Silat Heritage", "zh-Hans": "网页游戏 · 武术文化传承" }, status: "completed", liveUrl: "https://gamegayongx-warisan.syahmiaof.my" },
+  { id: "gayongx-athlete-analytics", slug: "gayongx-athlete-analytics", title: "GayongX Athlete Analytics", category: { ms: "Sains sukan · Analitik atlet", en: "Sports Science · Athlete Analytics", "zh-Hans": "运动科学 · 运动员分析" }, status: "on-hold", liveUrl: "https://gxaa.syahmiaof.my" },
+  { id: "lamborghini", slug: "lamborghini", title: "Lamborghini", category: { ms: "Showcase · Pengalaman web", en: "Showcase · Web Experience", "zh-Hans": "展示项目 · 网页体验" }, status: "completed", liveUrl: "https://lamborghini.syahmiaof.my" },
+  { id: "modul-meta-ads-ai", slug: "modul-meta-ads-ai", title: "Modul Meta Ads + AI", category: { ms: "Pendidikan · Platform pemasaran", en: "Education · Marketing Platform", "zh-Hans": "教育 · 营销平台" }, status: "completed", liveUrl: "https://modul-meta-ads.syahmiaof.my" },
+  { id: "statushd", slug: "statushd", title: "StatusHD", category: { ms: "Alat web · Utiliti media", en: "Web Tool · Media Utility", "zh-Hans": "网页工具 · 媒体实用工具" }, status: "on-hold", liveUrl: "https://statushd.syahmiaof.my" },
+  { id: "jarvis", slug: "jarvis", title: "Jarvis", category: { ms: "Sistem pembantu AI", en: "AI Assistant System", "zh-Hans": "AI 助手系统" }, status: "on-hold", liveUrl: "https://jarvis.syahmiaof.my" },
+  { id: "cerviscan-ai", slug: "cerviscan-ai", title: "CerviScan-AI", category: { ms: "HealthTech · Imbasan perubatan AI", en: "HealthTech · AI Medical Scan", "zh-Hans": "医疗科技 · AI 医学扫描" }, status: "on-hold", liveUrl: "https://cerviscan-ai.syahmiaof.my" },
+  { id: "crypto-ai", slug: "crypto-ai", title: "Crypto AI", category: { ms: "Web3 · Analitik dagangan", en: "Web3 · Trading Analytics", "zh-Hans": "Web3 · 交易分析" }, status: "on-hold", liveUrl: "https://cryptoai.syahmiaof.my" },
+  { id: "nemo", slug: "nemo", title: "Nemo", category: { ms: "Produktiviti peribadi · Second brain", en: "Personal Productivity · Second Brain", "zh-Hans": "个人效率 · 第二大脑" }, status: "completed", liveUrl: "https://nemo.syahmiaof.my" },
+  { id: "siapsatu", slug: "siapsatu", title: "SiapSatu", category: { ms: "Automasi bisnes · Agensi", en: "Business Automation · Agency", "zh-Hans": "商业自动化 · 代理机构" }, status: "on-hold", liveUrl: "https://siapsatu.syahmiaof.my" },
+  { id: "syahmiaof-portfolio", slug: "syahmiaof-portfolio", title: "Website Portfolio Syahmiaof", category: { ms: "Portfolio & bio peribadi", en: "Personal Portfolio & Bio", "zh-Hans": "个人作品集与简介" }, status: "completed", liveUrl: "https://syahmiaof.my" },
+  { id: "symi-yogurt", slug: "symi-ui", title: "Symi Yogurt", category: { ms: "Makanan & minuman · Showcase jenama", en: "Food & Beverage · Brand Showcase", "zh-Hans": "餐饮 · 品牌展示" }, status: "on-hold", liveUrl: "https://symi.syahmiaof.my" },
+  { id: "greetly", slug: "greetly", title: "Greetly", category: { ms: "SaaS · Penjana kad ucapan", en: "SaaS · Greeting Card Generator", "zh-Hans": "SaaS · 贺卡生成器" }, status: "completed", liveUrl: "https://greetly.syahmiaof.my" },
+  { id: "daeng-kuning", slug: "daeng-kuning", title: "Daeng Kuning", category: { ms: "Jenama · Laman warisan", en: "Brand · Heritage Website", "zh-Hans": "品牌 · 文化传承网站" }, status: "completed", liveUrl: "https://daengkuning.my" },
+  { id: "jiwa-fighter", slug: "jiwa-fighter-official", title: "Jiwa Fighter Official Website", category: { ms: "Platform jenama & media", en: "Brand & Media Platform", "zh-Hans": "品牌与媒体平台" }, status: "in-progress" },
+  { id: "story-syahmiaof", slug: "story-syahmiaof", title: "Story Syahmiaof", category: { ms: "Cerita peribadi · Blog", en: "Personal Stories · Blog", "zh-Hans": "个人故事 · 博客" }, status: "in-progress" },
+  { id: "studio-syahmiaof", slug: "studio-syahmiaof", title: "Studio Syahmiaof", category: { ms: "Studio kreatif · Agensi", en: "Creative Studio · Agency", "zh-Hans": "创意工作室 · 代理机构" }, status: "in-progress" },
 ];
+
+export const PROJECT_STATUS_LABELS: Record<Locale, Record<ProjectStatus, string>> = {
+  ms: { completed: "Selesai", "in-progress": "Sedang dibina", "on-hold": "Ditangguhkan" },
+  en: { completed: "Completed", "in-progress": "In progress", "on-hold": "On hold" },
+  "zh-Hans": { completed: "已完成", "in-progress": "进行中", "on-hold": "暂缓" },
+};

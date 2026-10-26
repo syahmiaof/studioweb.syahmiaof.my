@@ -1,0 +1,188 @@
+[
+  {
+    "source": "public\\assets\\characters\\02_character_builder_laptop.png",
+    "target": "public\\assets\\optimized\\02_character_builder_laptop.webp",
+    "originalBytes": 1595569,
+    "bytes": 149554,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 731,
+    "height": 1473,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 731,
+      "height": 1473
+    }
+  },
+  {
+    "source": "public\\assets\\characters\\03_character_creator_laptop.png",
+    "target": "public\\assets\\optimized\\03_character_creator_laptop.webp",
+    "originalBytes": 2223500,
+    "bytes": 262524,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 908,
+    "height": 1408,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 908,
+      "height": 1408
+    }
+  },
+  {
+    "source": "public\\assets\\characters\\04_character_consultant_laptop.png",
+    "target": "public\\assets\\optimized\\04_character_consultant_laptop.webp",
+    "originalBytes": 1470124,
+    "bytes": 131270,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 487,
+    "height": 1475,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 487,
+      "height": 1475
+    }
+  },
+  {
+    "source": "public\\assets\\characters\\05_character_pointing_throw.png",
+    "target": "public\\assets\\optimized\\05_character_pointing_throw.webp",
+    "originalBytes": 1351138,
+    "bytes": 172872,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 1100,
+    "height": 1301,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 1100,
+      "height": 1301
+    }
+  },
+  {
+    "source": "public\\assets\\characters\\06_laptop_closed_floating.png",
+    "target": "public\\assets\\optimized\\06_laptop_closed_floating.webp",
+    "originalBytes": 656478,
+    "bytes": 56214,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 839,
+    "height": 831,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 839,
+      "height": 831
+    }
+  },
+  {
+    "source": "public\\assets\\characters\\07_hero_seated_character.png",
+    "target": "public\\assets\\optimized\\07_hero_seated_character.webp",
+    "originalBytes": 1306317,
+    "bytes": 162698,
+    "format": "webp",
+    "mediaType": "image/webp",
+    "width": 1031,
+    "height": 1299,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "isProgressive": false,
+    "isPalette": false,
+    "hasProfile": false,
+    "hasAlpha": true,
+    "autoOrient": {
+      "width": 1031,
+      "height": 1299
+    }
+  },
+  {
+    "source": "design/references/06-about.png",
+    "target": "public/assets/optimized/concrete.webp",
+    "region": {
+      "left": 1450,
+      "top": 650,
+      "width": 180,
+      "height": 95
+    },
+    "role": "Decorative crop only; no live UI",
+    "bytes": 5228
+  },
+  {
+    "source": "design/references/02-services.png",
+    "target": "public/assets/optimized/paper.webp",
+    "region": {
+      "left": 260,
+      "top": 80,
+      "width": 430,
+      "height": 60
+    },
+    "role": "Decorative crop only; no live UI",
+    "bytes": 3674
+  },
+  {
+    "source": "design/references/05-coaching.png",
+    "target": "public/assets/optimized/carbon.webp",
+    "region": {
+      "left": 290,
+      "top": 80,
+      "width": 340,
+      "height": 55
+    },
+    "role": "Decorative crop only; no live UI",
+    "bytes": 3520
+  },
+  {
+    "source": "design/references/01-home.png",
+    "target": "public/assets/optimized/home-terrace.webp",
+    "region": {
+      "left": 100,
+      "top": 590,
+      "width": 650,
+      "height": 198
+    },
+    "role": "Decorative crop only; no live UI",
+    "bytes": 26248
+  },
+  {
+    "source": "design/references/04-pricing.png",
+    "target": "public/assets/optimized/pricing-monument.webp",
+    "region": {
+      "left": 0,
+      "top": 490,
+      "width": 760,
+      "height": 451
+    },
+    "role": "Decorative crop only; no live UI",
+    "bytes": 106254
+  }
+]

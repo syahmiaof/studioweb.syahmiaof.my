@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "Pembangunan Frontend berimpak visual tinggi, animasi GSAP, dan Sistem Khas Full-Stack berasaskan pangkalan data oleh Syahmi AOF.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/servis",
+    canonical: "https://studioweb.syahmiaof.my/servis",
     languages: {
-      ms: "https://studio.syahmiaof.my/servis",
-      en: "https://studio.syahmiaof.my/en/servis",
+      ms: "https://studioweb.syahmiaof.my/servis",
+      en: "https://studioweb.syahmiaof.my/en/servis",
     },
   },
 };

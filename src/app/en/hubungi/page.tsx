@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     "YOUR VISION. WE BUILD. Send your web development project brief, bespoke systems inquiry, or 1:1 coaching request to Syahmi AOF.",
   alternates: {
-    canonical: "https://studio.syahmiaof.my/en/hubungi",
+    canonical: "https://studioweb.syahmiaof.my/en/hubungi",
     languages: {
-      ms: "https://studio.syahmiaof.my/hubungi",
-      en: "https://studio.syahmiaof.my/en/hubungi",
+      ms: "https://studioweb.syahmiaof.my/hubungi",
+      en: "https://studioweb.syahmiaof.my/en/hubungi",
     },
   },
 };

@@ -1,0 +1,725 @@
+{
+  "originals": [
+    {
+      "file": "design/originals/01_hero_B_realistic.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2283484,
+      "alpha": false,
+      "sha256": "e39ee61953bed41bd507363000230f9da86b0f4ddb34b938327bba14cb568853",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/02_character_builder_laptop.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1595569,
+      "alpha": true,
+      "sha256": "b333375818baf6a0ca48502dc2a6cb2f033a8191391d9283597f7ddeb58e4a4e",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/03_character_creator_laptop.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2223500,
+      "alpha": true,
+      "sha256": "f025ed8adfa4bdb07768590338c76026f3ccd48456a408d64e4eb31cb45a4a27",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/04_character_consultant_laptop.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1470124,
+      "alpha": true,
+      "sha256": "e2c4fc806c7d9cada91dff1d2b96fb083899ad425242f86a83c879eb297d81b7",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/05_character_pointing_throw.png",
+      "width": 1116,
+      "height": 1410,
+      "bytes": 1351138,
+      "alpha": true,
+      "sha256": "dc480066e5cdb026a5e7ae9f717f60c5affffe02bd2e998c539a44bee5fe3fb4",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/06_laptop_closed_floating.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 656478,
+      "alpha": true,
+      "sha256": "fecad2ba09fdf0d8d2fc7cc3442b5f346c3ede494068ea651553a9fef36eef77",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/About Me UI annotation repositioned.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2333043,
+      "alpha": false,
+      "sha256": "deab7c3ecf2f924828046cd6882865d412e82cd609782710b23b0022ee01f351",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/Brutalist pricing studio configurator.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2306000,
+      "alpha": false,
+      "sha256": "58346dbdded6a454408fbae493f32a81fd9cb0cc8949e726776ed6dc728bc87a",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/Brutalist web services section with laptop portrait.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2331418,
+      "alpha": false,
+      "sha256": "e0f3d6334f6efd43e1e1cf35531876c63625cc14c29c85e03858e34c3fd4eeba",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/Cobalt brutalist coaching page with concrete 05.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2621427,
+      "alpha": false,
+      "sha256": "e3190039d74d28eed95584bd984170b135041a8525d3ee0d09c401fd420532ca",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/MULA PROJEK ANDA contact panel.png",
+      "width": 1671,
+      "height": 941,
+      "bytes": 2054285,
+      "alpha": false,
+      "sha256": "bea76303d9a8ef349154d08667e87955b1f7cdf67b65407ca8cc343b741b7eec",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/Neon brutalist project gallery.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2348924,
+      "alpha": false,
+      "sha256": "e985d1ae2a2952c6a643015ba727aaa8eb1a77a8a560e7037addb8877cf7b11a",
+      "incomingIdentical": true
+    },
+    {
+      "file": "design/originals/Seated techwear hero cutout.png",
+      "width": 1200,
+      "height": 1310,
+      "bytes": 1306317,
+      "alpha": true,
+      "sha256": "e4f21cb7f2d0a02b6cbcdee9409adeabc5b1a84ded52f9f984fea0ebc20a7532",
+      "incomingIdentical": true
+    }
+  ],
+  "plates": [
+    {
+      "source": "design/references/01-home.png",
+      "sourceSHA256": "e39ee61953bed41bd507363000230f9da86b0f4ddb34b938327bba14cb568853",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2283484,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          60,
+          126,
+          415,
+          29
+        ],
+        [
+          58,
+          166,
+          705,
+          290
+        ],
+        [
+          65,
+          461,
+          675,
+          33
+        ],
+        [
+          61,
+          513,
+          505,
+          66
+        ],
+        [
+          1526,
+          194,
+          131,
+          112
+        ],
+        [
+          1423,
+          409,
+          125,
+          48
+        ],
+        [
+          52,
+          722,
+          34,
+          40
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 294122,
+      "preservedPixels": 1279230,
+      "target": "public/assets/astra-v21/01-home-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 712,
+      "targetBytes": 283432,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/01_hero_B_realistic.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/02-services.png",
+      "sourceSHA256": "e0f3d6334f6efd43e1e1cf35531876c63625cc14c29c85e03858e34c3fd4eeba",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2331418,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          59,
+          109,
+          151,
+          29
+        ],
+        [
+          58,
+          144,
+          786,
+          311
+        ],
+        [
+          62,
+          457,
+          702,
+          33
+        ],
+        [
+          87,
+          531,
+          313,
+          78
+        ],
+        [
+          450,
+          533,
+          59,
+          58
+        ],
+        [
+          88,
+          637,
+          245,
+          109
+        ],
+        [
+          87,
+          745,
+          380,
+          32
+        ],
+        [
+          90,
+          792,
+          275,
+          67
+        ],
+        [
+          573,
+          527,
+          370,
+          88
+        ],
+        [
+          951,
+          532,
+          55,
+          58
+        ],
+        [
+          573,
+          635,
+          310,
+          114
+        ],
+        [
+          575,
+          744,
+          270,
+          34
+        ],
+        [
+          581,
+          791,
+          285,
+          67
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 454887,
+      "preservedPixels": 1118465,
+      "target": "public/assets/astra-v21/02-services-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 864,
+      "targetBytes": 390060,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/Brutalist web services section with laptop portrait.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/03-portfolio.png",
+      "sourceSHA256": "e985d1ae2a2952c6a643015ba727aaa8eb1a77a8a560e7037addb8877cf7b11a",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2348924,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          61,
+          126,
+          238,
+          30
+        ],
+        [
+          58,
+          164,
+          513,
+          291
+        ],
+        [
+          63,
+          462,
+          595,
+          31
+        ],
+        [
+          62,
+          513,
+          286,
+          65
+        ],
+        [
+          731,
+          143,
+          123,
+          56
+        ]
+      ],
+      "polygons": [
+        [
+          [
+            404,
+            552
+          ],
+          [
+            746,
+            494
+          ],
+          [
+            748,
+            538
+          ],
+          [
+            405,
+            595
+          ]
+        ],
+        [
+          [
+            1258,
+            383
+          ],
+          [
+            1537,
+            412
+          ],
+          [
+            1539,
+            458
+          ],
+          [
+            1255,
+            430
+          ]
+        ]
+      ],
+      "editedPixels": 228436,
+      "preservedPixels": 1344916,
+      "target": "public/assets/astra-v21/03-portfolio-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 778,
+      "targetBytes": 368148,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/Neon brutalist project gallery.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/04-pricing.png",
+      "sourceSHA256": "58346dbdded6a454408fbae493f32a81fd9cb0cc8949e726776ed6dc728bc87a",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2306000,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          58,
+          109,
+          154,
+          29
+        ],
+        [
+          58,
+          143,
+          602,
+          311
+        ],
+        [
+          57,
+          452,
+          555,
+          42
+        ],
+        [
+          823,
+          120,
+          747,
+          147
+        ],
+        [
+          824,
+          251,
+          747,
+          521
+        ],
+        [
+          849,
+          809,
+          692,
+          83
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 758386,
+      "preservedPixels": 814966,
+      "target": "public/assets/astra-v21/04-pricing-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 864,
+      "targetBytes": 415458,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/Brutalist pricing studio configurator.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/05-coaching.png",
+      "sourceSHA256": "e3190039d74d28eed95584bd984170b135041a8525d3ee0d09c401fd420532ca",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2621427,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          59,
+          109,
+          213,
+          29
+        ],
+        [
+          59,
+          145,
+          564,
+          361
+        ],
+        [
+          62,
+          507,
+          610,
+          34
+        ],
+        [
+          69,
+          552,
+          662,
+          329
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 448319,
+      "preservedPixels": 1125033,
+      "target": "public/assets/astra-v21/05-coaching-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 864,
+      "targetBytes": 478930,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/Cobalt brutalist coaching page with concrete 05.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/06-about.png",
+      "sourceSHA256": "deab7c3ecf2f924828046cd6882865d412e82cd609782710b23b0022ee01f351",
+      "width": 1672,
+      "height": 941,
+      "sourceBytes": 2333043,
+      "sourceAlpha": false,
+      "generatedWidth": 1672,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          59,
+          109,
+          227,
+          29
+        ],
+        [
+          58,
+          143,
+          568,
+          398
+        ],
+        [
+          60,
+          542,
+          670,
+          94
+        ],
+        [
+          61,
+          650,
+          805,
+          234
+        ],
+        [
+          1358,
+          763,
+          143,
+          40
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 489717,
+      "preservedPixels": 1083635,
+      "target": "public/assets/astra-v21/06-about-plate.webp",
+      "targetWidth": 1672,
+      "targetHeight": 864,
+      "targetBytes": 444986,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/About Me UI annotation repositioned.png",
+      "sourceHashStillMatches": true
+    },
+    {
+      "source": "design/references/07-contact.png",
+      "sourceSHA256": "bea76303d9a8ef349154d08667e87955b1f7cdf67b65407ca8cc343b741b7eec",
+      "width": 1671,
+      "height": 941,
+      "sourceBytes": 2054285,
+      "sourceAlpha": false,
+      "generatedWidth": 1671,
+      "generatedHeight": 941,
+      "regions": [
+        [
+          61,
+          149,
+          193,
+          31
+        ],
+        [
+          58,
+          188,
+          660,
+          302
+        ],
+        [
+          62,
+          492,
+          559,
+          36
+        ],
+        [
+          61,
+          536,
+          412,
+          124
+        ],
+        [
+          936,
+          163,
+          558,
+          123
+        ],
+        [
+          936,
+          255,
+          563,
+          48
+        ],
+        [
+          939,
+          289,
+          558,
+          545
+        ]
+      ],
+      "polygons": [],
+      "editedPixels": 651173,
+      "preservedPixels": 921238,
+      "target": "public/assets/astra-v21/07-contact-plate.webp",
+      "targetWidth": 1671,
+      "targetHeight": 807,
+      "targetBytes": 367292,
+      "method": "Localized inpaint composite; original pixels outside edit mask unchanged; header/footer cropped away.",
+      "outsideMaskDifferentPixels": 0,
+      "originalFile": "design/originals/MULA PROJEK ANDA contact panel.png",
+      "sourceHashStillMatches": true
+    }
+  ],
+  "derivatives": [
+    {
+      "file": "public/assets/astra-v21/01-home-mobile.webp",
+      "width": 982,
+      "height": 712,
+      "bytes": 216722,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/01-home-plate.webp",
+      "width": 1672,
+      "height": 712,
+      "bytes": 283432,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/02-services-mobile.webp",
+      "width": 672,
+      "height": 864,
+      "bytes": 183180,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/02-services-plate.webp",
+      "width": 1672,
+      "height": 864,
+      "bytes": 390060,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/03-portfolio-plate.webp",
+      "width": 1672,
+      "height": 778,
+      "bytes": 368148,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/04-pricing-mobile.webp",
+      "width": 780,
+      "height": 451,
+      "bytes": 157964,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/04-pricing-plate.webp",
+      "width": 1672,
+      "height": 864,
+      "bytes": 415458,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/05-coaching-mobile.webp",
+      "width": 912,
+      "height": 864,
+      "bytes": 346476,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/05-coaching-plate.webp",
+      "width": 1672,
+      "height": 864,
+      "bytes": 478930,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/06-about-mobile.webp",
+      "width": 962,
+      "height": 864,
+      "bytes": 285210,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/06-about-plate.webp",
+      "width": 1672,
+      "height": 864,
+      "bytes": 444986,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/07-contact-mobile.webp",
+      "width": 903,
+      "height": 807,
+      "bytes": 237482,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/07-contact-plate.webp",
+      "width": 1671,
+      "height": 807,
+      "bytes": 367292,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/concrete-surface.webp",
+      "width": 640,
+      "height": 460,
+      "bytes": 77660,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/project-lamborghini.webp",
+      "width": 430,
+      "height": 356,
+      "bytes": 42174,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/project-symi.webp",
+      "width": 640,
+      "height": 540,
+      "bytes": 108086,
+      "alpha": false
+    },
+    {
+      "file": "public/assets/astra-v21/project-uberpokmi.webp",
+      "width": 440,
+      "height": 472,
+      "bytes": 82690,
+      "alpha": false
+    }
+  ],
+  "totalDerivativeBytes": 4485950
+}
