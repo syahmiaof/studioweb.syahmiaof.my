@@ -21,9 +21,9 @@ export const PROJECTS: ProjectItem[] = [
   { id: "symi-yogurt", slug: "symi-ui", title: "Symi Yogurt", category: { ms: "Makanan & minuman · Showcase jenama", en: "Food & Beverage · Brand Showcase", "zh-Hans": "餐饮 · 品牌展示" }, status: "on-hold", liveUrl: "https://symi.syahmiaof.my" },
   { id: "greetly", slug: "greetly", title: "Greetly", category: { ms: "SaaS · Penjana kad ucapan", en: "SaaS · Greeting Card Generator", "zh-Hans": "SaaS · 贺卡生成器" }, status: "completed", liveUrl: "https://greetly.syahmiaof.my" },
   { id: "daeng-kuning", slug: "daeng-kuning", title: "Daeng Kuning", category: { ms: "Jenama · Laman warisan", en: "Brand · Heritage Website", "zh-Hans": "品牌 · 文化传承网站" }, status: "completed", liveUrl: "https://daengkuning.my" },
-  { id: "jiwa-fighter", slug: "jiwa-fighter-official", title: "Jiwa Fighter Official Website", category: { ms: "Platform jenama & media", en: "Brand & Media Platform", "zh-Hans": "品牌与媒体平台" }, status: "in-progress" },
-  { id: "story-syahmiaof", slug: "story-syahmiaof", title: "Story Syahmiaof", category: { ms: "Cerita peribadi · Blog", en: "Personal Stories · Blog", "zh-Hans": "个人故事 · 博客" }, status: "in-progress" },
-  { id: "studio-syahmiaof", slug: "studio-syahmiaof", title: "Studio Syahmiaof", category: { ms: "Studio kreatif · Agensi", en: "Creative Studio · Agency", "zh-Hans": "创意工作室 · 代理机构" }, status: "in-progress" },
+  { id: "jiwa-fighter", slug: "jiwa-fighter-official", title: "Jiwa Fighter Official Website", category: { ms: "Platform jenama & media", en: "Brand & Media Platform", "zh-Hans": "品牌与媒体平台" }, status: "completed", liveUrl: "https://jiwafighter.syahmiaof.my/" },
+  { id: "story-syahmiaof", slug: "story-syahmiaof", title: "Story Syahmiaof", category: { ms: "Cerita peribadi · Blog", en: "Personal Stories · Blog", "zh-Hans": "个人故事 · 博客" }, status: "completed", liveUrl: "https://story.syahmiaof.my/" },
+  { id: "studio-syahmiaof", slug: "studio-syahmiaof", title: "Studio Syahmiaof", category: { ms: "Studio kreatif · Agensi", en: "Creative Studio · Agency", "zh-Hans": "创意工作室 · 代理机构" }, status: "completed", liveUrl: "https://studioweb.syahmiaof.my/" },
 ];
 
 export const PROJECT_STATUS_LABELS: Record<Locale, Record<ProjectStatus, string>> = {
