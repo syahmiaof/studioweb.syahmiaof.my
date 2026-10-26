@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { CoachingView } from "@/components/pages/CoachingView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Sesi Coaching 1:1 Web Development — SYAHMIAOF STUDIO",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CoachingPage() {
-  return <CoachingView locale="ms" />;
+export default function CoachingPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("ms", "coaching", searchParams);
 }

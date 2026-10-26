@@ -1,9 +1,12 @@
-# SYAHMIAOF STUDIO — Digital Brutalism Web Platform (V1)
+# SYAHMIAOF STUDIO — ASTRA V2
 
 **Live Local Production Build:** Next.js 14 App Router, TypeScript, Tailwind CSS, GSAP 3.  
 **Target Domain:** `studio.syahmiaof.my` (local build only; not yet connected).  
-**Lead Engineering Owner:** JEBAT.  
 **Brand:** SYAHMIAOF STUDIO — Frontend Development, Custom Full-Stack Systems & 1:1 Web-Dev Coaching.  
+
+Current local reconstruction evidence: [ASTRA V2 audit](docs/qa/ASTRA_V2_VISUAL_AUDIT.md) and [seven-page before/after comparison](docs/qa/ASTRA_V2_COMPARISON.html). Open the HTML file in a browser. Original references and PNGs are preserved. Earlier QA documents describe V1 and are not current verification.
+
+No deployment was performed. Direct inquiry delivery is not integrated; the UI offers an explicit email-app handoff and never claims a message was sent. WhatsApp stays disabled until a real `NEXT_PUBLIC_WHATSAPP_NUMBER` is configured.
 
 ---
 
@@ -13,19 +16,26 @@
 # Install dependencies
 npm install
 
-# Run Vitest unit tests (14/14 tests passing)
+# Run Vitest unit tests
 npm test
 
-# Run full automated Playwright E2E audit & capture fresh screenshots
-npm run test:e2e
-
-# Run local development server
-npm run dev
+# Run local development server (separate .next-dev output)
+npm run dev -- --port 3460
 
 # Run production build and start production server
 npm run build
-npm start
+npm start -- --port 3461
+
+# In another terminal, with the production server running on 3461
+npm run test:e2e
+npm run test:e2e:focused
+npm run typecheck
+
+# Capture all 7 BM pages at 4 sizes (defaults to dev port 3460)
+npm run test:visual -- after
 ```
+
+Override the browser scripts' server in PowerShell with `$env:BASE_URL='http://localhost:3461'`. Production and development use separate build folders. The old V1 audit remains available as `npm run test:e2e:legacy`; its selectors describe the old UI.
 
 ---
 
@@ -58,8 +68,9 @@ studio.syahmiaof.my/
     incoming/                          # Safely relocated loose assets
   public/
     assets/
-      characters/                      # Optimized transparent character cutouts (WebP)
-      projects/                        # Verified project screenshot assets
+      characters/                      # Preserved original transparent PNG cutouts
+      optimized/                       # Alpha WebP derivatives and decorative crops
+      projects/                        # Concept imagery cropped from approved mockups
   src/
     app/                               # Next.js 14 App Router routes (BM & EN)
       api/inquiries/route.ts           # Zod-validated inquiry Route Handler
@@ -72,7 +83,8 @@ studio.syahmiaof.my/
       hubungi/page.tsx                 # Route 07 Contact (BM)
       en/                              # Full English routes (/en, /en/servis, etc.)
     components/
-      layout/                          # Header (bilingual, sticky) & Footer
+      layout/                          # Bilingual responsive Header & Footer
+      scene/                           # Scoped GSAP scene, architecture and character primitives
       pages/                           # Reusable view components for each route
     content/                           # Structured TypeScript content (projects, services, coaching)
     i18n/                              # Bilingual dictionary (ms.ts, en.ts, index.ts)
@@ -89,11 +101,11 @@ studio.syahmiaof.my/
 
 ## 3. Commercial & Technical Integrity Decisions
 
-1. **Deterministic Pricing Engine:** Base Landing RM645, Business RM1,745, Premium RM2,995. Add-ons: GSAP Animation (+RM400), Second Language (+RM250). Business + Animation = RM2,145; Business + Both = RM2,395. Full-Stack package (from RM3,250) is isolated for custom scoping.
+1. **Deterministic Pricing Engine:** Landing Page RM299, Business Website RM499, Premium Custom Website RM999. Add-ons: Extra standard page (+RM99), Advanced Animation (+RM99) or Cinematic Animation (+RM199; mutually exclusive). Booking request RM499, SME Dashboard Lite from RM999, and advanced systems above RM2,099 require scoped contact flows. Maintenance remains optional and separately billed.
 2. **Seamless URL Handoff:** Parameter state is preserved when moving from `/harga` or `/coaching` to `/hubungi`, and across `ms` ↔ `en` language switches.
 3. **No Fake Reviews or Testimonials:** Zero fabricated five-star quotes. Concepts are clearly labeled as `KONSEP DEMO` / `EKSPERIMENTAL`.
 4. **Mascot Transparency:** Techwear character is explicitly declared as a visual brand mascot, not a photo of Syahmi AOF.
-5. **Zero Data-Loss Inquiry Fallback:** When server email keys are absent, the system logs submissions locally and provides a prefilled one-click `mailto:hello@syahmiaof.my` fallback.
+5. **Truthful Inquiry Fallback:** No email provider adapter is integrated. Valid requests receive HTTP 503 with `success: false` and a prefilled `mailto:hello@syahmiaof.my` fallback. Submissions are not stored or logged. Users must complete sending in their email application; environment keys alone do not enable delivery.
 
 ---
 
@@ -130,3 +142,14 @@ The three individual character assets are RGBA PNGs with transparent backgrounds
 - Keep the character from obscuring text or CTAs, especially on mobile.
 - Load large images only when needed, provide appropriately sized variants and avoid continuous GPU-heavy effects.
 - Visually check face, hands, laptop anatomy and hair-cutout edges before production use. AI-created variants can have small continuity differences.
+
+## ASTRA V2.1 — image-first reconstruction (26 October 2026)
+
+- Approved originals: `design/references/01-home.png` through `07-contact.png`.
+- Live UI: `src/components/pages/`, `src/components/scene/StudioScene.tsx`, and `src/styles/astra-v21.css`.
+- Runtime plates/crops: `public/assets/astra-v21/`. Lossless clean masters, edit masks and inpaint inputs: `design/derived/astra-v21/`.
+- Review: `docs/qa/ASTRA_V21_COMPARISON.html` and `docs/qa/ASTRA_V21_VISUAL_AUDIT.md`.
+- Rebuild assets: `node scripts/prepare-astra-v21.cjs`; verify originals and unchanged pixels outside masks: `node scripts/audit-astra-v21-assets.cjs`.
+- Visual QA: `node tests/e2e/astra-v21-capture.cjs after`. Set `BASE_URL` for the server, `DPR=2` and `WIDTHS=1440,390` for high-density checks. Do not reuse a stale Next image cache after regenerating plates; update the image version query when changing artwork.
+- Production smoke/performance: `node tests/e2e/astra-v21-production.cjs` (default localhost:3461).
+- No deployment performed. Original raster resolution limits remain; the project does not claim 4K artwork.

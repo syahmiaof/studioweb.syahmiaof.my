@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { AboutView } from "@/components/pages/AboutView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "About Syahmi AOF — SYAHMIAOF STUDIO",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishAboutPage() {
-  return <AboutView locale="en" />;
+export default function EnglishAboutPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("en", "tentang", searchParams);
 }

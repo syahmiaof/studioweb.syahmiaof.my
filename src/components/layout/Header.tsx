@@ -1,202 +1,176 @@
 "use client";
-
-import React, { useState, useEffect, Suspense } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Locale } from "@/lib/types";
+import { Menu, X } from "lucide-react";
 import { getTranslations } from "@/i18n";
-import { Menu, X, ArrowUpRight, Globe } from "lucide-react";
+import type { Locale } from "@/lib/types";
 
-interface HeaderProps {
-  locale: Locale;
-}
+const SECTION_IDS = [
+  "utama",
+  "servis",
+  "portfolio",
+  "harga",
+  "coaching",
+  "tentang",
+  "hubungi",
+] as const;
 
-function HeaderBar({ locale }: HeaderProps) {
-  const t = getTranslations(locale);
+function HeaderBar({ locale }: { locale: Locale }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
+  const params = useSearchParams();
+  const t = getTranslations(locale);
+  const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("utama");
+  const toggle = useRef<HTMLButtonElement>(null);
+  const routes = SECTION_IDS.map((id, index) => ({
+    id,
+    label: [
+      t.nav.home,
+      t.nav.services,
+      t.nav.portfolio,
+      t.nav.pricing,
+      t.nav.coaching,
+      t.nav.about,
+      t.nav.contact,
+    ][index],
+  }));
+  const prefix = locale === "en" ? "/en" : "";
+  const alternate = locale === "ms" ? "/en" : "/";
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    setOpen(false);
+  }, [pathname]);
+  useEffect(() => {
+    let frame = 0;
+    let initialHashFrame = 0;
+    let initialHashAttempts = 0;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const headerOffset =
+          document.querySelector(".studio-header")?.getBoundingClientRect().height ?? 72;
+        let current: string = SECTION_IDS[0];
+        const atDocumentEnd =
+          window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+        if (atDocumentEnd) {
+          current = SECTION_IDS[SECTION_IDS.length - 1];
+        } else {
+          for (const id of SECTION_IDS) {
+            const section = document.getElementById(id);
+            if (section && section.getBoundingClientRect().top <= headerOffset + 24) {
+              current = id;
+            }
+          }
+        }
+        setActiveSection(current);
+      });
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Compute alternate locale URL while preserving search parameters
-  const getToggleUrl = () => {
-    const targetLocale = locale === "ms" ? "en" : "ms";
-    const queryString = searchParams?.toString() ? `?${searchParams.toString()}` : "";
-
-    if (targetLocale === "en") {
-      // Switching from ms to en: prefix with /en
-      if (pathname === "/") return `/en${queryString}`;
-      return `/en${pathname}${queryString}`;
-    } else {
-      // Switching from en to ms: strip /en prefix
-      const stripped = pathname.replace(/^\/en(\/|$)/, "/");
-      return `${stripped === "" ? "/" : stripped}${queryString}`;
-    }
-  };
-
-  const navLinks = [
-    { href: locale === "en" ? "/en" : "/", label: t.nav.home },
-    { href: locale === "en" ? "/en/servis" : "/servis", label: t.nav.services },
-    { href: locale === "en" ? "/en/portfolio" : "/portfolio", label: t.nav.portfolio },
-    { href: locale === "en" ? "/en/harga" : "/harga", label: t.nav.pricing },
-    { href: locale === "en" ? "/en/coaching" : "/coaching", label: t.nav.coaching },
-    { href: locale === "en" ? "/en/tentang" : "/tentang", label: t.nav.about },
-    { href: locale === "en" ? "/en/hubungi" : "/hubungi", label: t.nav.contact },
-  ];
-
-  const isActive = (href: string) => {
-    if (href === "/" || href === "/en") {
-      return pathname === href;
-    }
-    return pathname.startsWith(href);
-  };
-
+    const scrollToInitialHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const target = id ? document.getElementById(id) : null;
+      if (target) {
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
+        return;
+      }
+      if (initialHashAttempts++ < 120) {
+        initialHashFrame = requestAnimationFrame(scrollToInitialHash);
+      }
+    };
+    update();
+    if (window.location.hash) initialHashFrame = requestAnimationFrame(scrollToInitialHash);
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    window.addEventListener("hashchange", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(initialHashFrame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("hashchange", update);
+    };
+  }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", escape);
+    return () => document.removeEventListener("keydown", escape);
+  }, [open]);
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b ${
-        scrolled
-          ? "bg-ink/95 backdrop-blur-md border-ink-border py-3"
-          : "bg-ink/80 backdrop-blur-sm border-transparent py-4"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Studio Logo */}
-        <Link
-          href={locale === "en" ? "/en" : "/"}
-          className="group flex items-center gap-2 tracking-tighter"
-        >
-          <span className="w-3 h-3 bg-acid inline-block group-hover:scale-125 transition-transform" />
-          <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-white uppercase">
-            SYAHMIAOF<span className="text-acid">.STUDIO</span>
-          </span>
-          <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 border border-zinc-800 text-zinc-400 uppercase">
-            V1.0
-          </span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative px-3 py-1.5 text-xs lg:text-sm font-medium tracking-wide uppercase transition-colors ${
-                  active
-                    ? "text-acid font-bold"
-                    : "text-zinc-300 hover:text-white hover:bg-zinc-900/60"
-                }`}
-              >
-                {link.label}
-                {active && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-acid shadow-[0_0_8px_#F3FF00]" />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Actions: Language Toggle & CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Language Switcher */}
-          <Link
-            href={getToggleUrl()}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono border border-zinc-800 hover:border-acid text-zinc-300 hover:text-acid transition-colors"
-            title={`Switch to ${locale === "ms" ? "English" : "Bahasa Melayu"}`}
-          >
-            <Globe className="w-3.5 h-3.5" />
-            <span className="font-bold">{locale === "ms" ? "EN" : "BM"}</span>
-          </Link>
-
-          {/* Quick Contact CTA */}
-          <Link
-            href={locale === "en" ? "/en/hubungi" : "/hubungi"}
-            className="flex items-center gap-1 px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-acid text-ink hover:bg-acid-hover transition-colors shadow-brutal"
-          >
-            <span>{t.nav.ctaStart}</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <div className="flex md:hidden items-center gap-2">
-          <Link
-            href={getToggleUrl()}
-            className="flex items-center justify-center min-h-[44px] min-w-[44px] px-2.5 py-2 text-xs font-mono border border-zinc-800 text-zinc-300 hover:text-acid hover:border-acid transition-colors"
-            title={`Switch to ${locale === "ms" ? "English" : "Bahasa Melayu"}`}
-          >
-            <span className="font-bold">{locale === "ms" ? "EN" : "BM"}</span>
-          </Link>
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="min-h-[44px] min-w-[44px] p-2.5 flex items-center justify-center border border-zinc-800 text-zinc-200 hover:text-acid hover:border-acid transition-colors"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-ink/98 border-b border-zinc-800 px-4 pt-3 pb-6 space-y-1.5 animate-fadeIn max-h-[calc(100vh-4rem)] overflow-y-auto">
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`min-h-[44px] flex items-center px-4 py-3 text-sm font-semibold uppercase tracking-wider border-l-2 transition-colors ${
-                  active
-                    ? "border-acid text-acid bg-zinc-900/40"
-                    : "border-transparent text-zinc-300 hover:text-white hover:border-zinc-500"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <div className="pt-3 border-t border-zinc-800 flex flex-col gap-2">
+    <header className="studio-header">
+      <a className="skip-link" href="#main-content">
+        {locale === "ms" ? "Terus ke kandungan" : "Skip to content"}
+      </a>
+      <Link
+        className="studio-brand"
+        href={`${prefix}#utama`}
+        aria-label="SYAHMIAOF Studio"
+      >
+        <span className="brand-role">FULL-STACK DEVELOPER</span>
+        <span className="brand-wordmark">
+          SYAHMIAOF<span className="brand-dot">.</span>
+        </span>
+      </Link>
+      <nav
+        aria-label={locale === "ms" ? "Navigasi utama" : "Main navigation"}
+        id="studio-navigation"
+        className={"studio-nav " + (open ? "is-open" : "")}
+      >
+        {routes.map((route) => {
+          const href = `#${route.id}`;
+          return (
             <Link
-              href={locale === "en" ? "/en/hubungi" : "/hubungi"}
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-1.5 min-h-[44px] py-3.5 text-xs font-bold uppercase tracking-wider bg-acid text-ink hover:bg-acid-hover transition-colors shadow-brutal"
+              key={route.id}
+              href={href}
+              aria-current={activeSection === route.id ? "location" : undefined}
+              onClick={() => setOpen(false)}
             >
-              <span>{t.nav.ctaStart}</span>
-              <ArrowUpRight className="w-4 h-4" />
+              {route.label}
             </Link>
-          </div>
-        </div>
-      )}
+          );
+        })}
+      </nav>
+      <div className="header-actions">
+        <Link
+          className="language-switch"
+          href={`${alternate}${params.toString() ? `?${params.toString()}` : ""}#${activeSection}`}
+          aria-label={locale === "ms" ? "EN" : "BM"}
+        >
+          <span className={locale === "ms" ? "current-language" : ""}>BM</span>
+          <span>/</span>
+          <span className={locale === "en" ? "current-language" : ""}>EN</span>
+        </Link>
+        <button
+          className="menu-toggle"
+          ref={toggle}
+          aria-label={
+            locale === "ms" ? "Buka menu navigasi" : "Toggle navigation menu"
+          }
+          aria-expanded={open}
+          aria-controls="studio-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
     </header>
   );
 }
-
-export const Header: React.FC<HeaderProps> = (props) => {
+export function Header({ locale }: { locale: Locale }) {
   return (
     <Suspense
       fallback={
-        <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-ink border-b border-zinc-800">
-          <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-            <span className="font-display font-black text-xl text-white">SYAHMIAOF.STUDIO</span>
-          </div>
+        <header className="studio-header">
+          <span className="studio-brand">SYAHMIAOF.</span>
         </header>
       }
     >
-      <HeaderBar {...props} />
+      <HeaderBar locale={locale} />
     </Suspense>
   );
-};
-
+}

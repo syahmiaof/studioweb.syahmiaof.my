@@ -9,7 +9,7 @@ describe("Inquiry Form & API Schema Validation", () => {
       contact: "farhan@example.com",
       message: "Kami berminat untuk membina landing page syarikat baru.",
       packageId: "landing",
-      estimatedTotal: 645,
+      estimatedTotal: 299,
     };
     const res = validateInquiry(input);
     expect(res.success).toBe(true);
@@ -20,12 +20,37 @@ describe("Inquiry Form & API Schema Validation", () => {
       service: "coaching",
       name: "Siti Sarah",
       contact: "0123456789",
-      message: "Ingin bertanya tentang kekosongan slot mentoring Next.js 90 minit.",
-      coachingTopic: "react-next",
-      coachingDuration: "90",
+      message: "Ingin bertanya tentang slot coaching Frontend Lanjutan dua jam.",
+      coachingPackageId: "advanced-frontend",
+      coachingTopic: "advanced-frontend",
+      coachingDuration: "120",
     };
     const res = validateInquiry(input);
     expect(res.success).toBe(true);
+  });
+
+  it("accepts a scoped system offer and optional recurring maintenance", () => {
+    const res = validateInquiry({
+      service: "full-stack",
+      name: "Tan Wei Meng",
+      contact: "tan@example.com",
+      message: "Saya mahu tanya tentang dashboard rekod pelanggan.",
+      packageId: "dashboard-lite",
+      maintenanceId: "system-care",
+    });
+    expect(res.success).toBe(true);
+  });
+
+  it("rejects unsupported coaching packages and maintenance values", () => {
+    const res = validateInquiry({
+      service: "coaching",
+      name: "Ali Ahmad",
+      contact: "ali@example.com",
+      message: "Saya ingin bertanya tentang sesi coaching.",
+      coachingPackageId: "unapproved-package",
+      maintenanceId: "unapproved-plan",
+    });
+    expect(res.success).toBe(false);
   });
 
   it("passes validation with international phone number format", () => {

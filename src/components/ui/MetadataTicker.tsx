@@ -37,7 +37,7 @@ export const MetadataTicker: React.FC<MetadataTickerProps> = ({
             ) : (
               <span className="text-zinc-300 font-medium">{item.value}</span>
             )}
-            {idx < items.length - 1 && <span className="text-zinc-800 ml-4 hidden md:inline">//</span>}
+            {idx < items.length - 1 && <span className="text-zinc-800 ml-4 hidden md:inline">{"//"}</span>}
           </div>
         ))}
       </div>

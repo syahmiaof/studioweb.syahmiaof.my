@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { PricingView } from "@/components/pages/PricingView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Pricing Studio & Cost Estimator — SYAHMIAOF STUDIO",
   description:
-    "Transparent pricing calculator for your next web project. Frontend packages from RM645, custom systems from RM3,250.",
+    "Website packages from RM299, a basic booking request for RM499 and scoped quotes for custom business systems.",
   alternates: {
     canonical: "https://studio.syahmiaof.my/en/harga",
     languages: {
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishPricingPage() {
-  return <PricingView locale="en" />;
+export default function EnglishPricingPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("en", "harga", searchParams);
 }

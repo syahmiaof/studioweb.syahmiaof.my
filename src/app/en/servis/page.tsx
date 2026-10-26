@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ServicesView } from "@/components/pages/ServicesView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Web Services & Bespoke Systems — SYAHMIAOF STUDIO",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishServicesPage() {
-  return <ServicesView locale="en" />;
+export default function EnglishServicesPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("en", "servis", searchParams);
 }

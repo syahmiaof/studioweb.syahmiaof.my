@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import "@/styles/astra-v21.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://studio.syahmiaof.my"),
-  title: "SYAHMIAOF STUDIO — Digital Brutalism Web Development & 1:1 Coaching",
+  title: "Freelance Web Services — SYAHMIAOF STUDIO",
   description:
-    "Studio pembangunan web oleh Syahmi AOF. Rekaan Digital Brutalism berimpak tinggi, pantas, interaktif & sistem khas berprestasi tinggi di Besut, Terengganu.",
+    "Landing page, website bisnes dan sistem custom premium, interaktif dan responsif oleh Syahmi AOF.",
   keywords: [
     "Syahmi AOF",
     "SYAHMIAOF STUDIO",
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Syahmi AOF", url: "https://studio.syahmiaof.my" }],
   openGraph: {
-    title: "SYAHMIAOF STUDIO — WEB YANG BUKAN BIASA",
+    title: "Freelance Web Services — SYAHMIAOF STUDIO",
     description:
-      "Rekaan web Digital Brutalism sinematik, pantas & berorientasikan konversi oleh Syahmi AOF.",
+      "Landing page, websites and custom systems crafted by SYAHMIAOF Studio.",
     url: "https://studio.syahmiaof.my",
     siteName: "SYAHMIAOF STUDIO",
     images: [
@@ -53,12 +54,7 @@ export default function RootLayout({
   return (
     <html lang="ms" className="dark">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preload" href="/fonts/Anton-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
       </head>
       <body className="antialiased bg-ink text-white font-sans selection:bg-acid selection:text-ink">
         {children}

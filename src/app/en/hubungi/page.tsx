@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ContactView } from "@/components/pages/ContactView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Contact & Start Project — SYAHMIAOF STUDIO",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishContactPage() {
-  return <ContactView locale="en" />;
+export default function EnglishContactPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("en", "hubungi", searchParams);
 }

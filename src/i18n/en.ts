@@ -35,7 +35,7 @@ export const enTranslations = {
     pricingTeaser: {
       badge: "TRANSPARENT PRICING",
       title: "PRICING STUDIO ESTIMATOR",
-      desc: "Instant, transparent cost estimates for your next web project. Frontend packages from RM645.",
+      desc: "Choose a website package from RM299, review the scope and enquire about a business system quote.",
       link: "Calculate Project Cost",
     },
     coachingTeaser: {

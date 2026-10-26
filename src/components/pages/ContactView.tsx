@@ -1,501 +1,438 @@
 "use client";
-
-import React, { useState, useEffect, useRef } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Locale, ServiceCategory } from "@/lib/types";
-import { getTranslations } from "@/i18n";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { ArchitecturalNumeral07 } from "@/components/ui/ArchitecturalNumeral07";
-import { BrutalistArrow } from "@/components/ui/BrutalistArrow";
-import { ReflectiveFloor } from "@/components/ui/ReflectiveFloor";
-import { IndustrialGrid } from "@/components/ui/IndustrialGrid";
-import { gsap, useGSAP } from "@/lib/motion/gsapSetup";
 import {
-  Terminal,
+  ArrowRight,
   Mail,
-  AlertCircle,
-  CheckCircle2,
-  ArrowUpRight,
-  Calculator,
-  GraduationCap,
-  Info,
-  Laptop,
+  MessageCircle,
+  Monitor,
   Database,
-  UserCheck,
+  UserRound,
 } from "lucide-react";
-import { formatMYR, getPackageById } from "@/lib/pricing/calculator";
-
-interface ContactViewProps {
-  locale: Locale;
-}
-
-function ContactFormContent({ locale }: ContactViewProps) {
-  const t = getTranslations(locale);
-  const searchParams = useSearchParams();
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      // Standard Motion: Desktop & Tablets
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
-          defaults: { ease: "power3.out", duration: 0.65 },
-        });
-
-        // 1. Slogan
-        tl.from(".motion-contact-title", {
-          opacity: 0,
-          y: 40,
-          stagger: 0.12,
-          duration: 0.7,
-        })
-          // 2. Direct Email & WhatsApp Fast Channel cards
-          .from(
-            ".motion-contact-channel",
-            { opacity: 0, y: 20, stagger: 0.1 },
-            "-=0.4"
-          )
-          // 3. Yellow Curved Arrow & Numeral 07
-          .from(
-            ".motion-curved-arrow",
-            { opacity: 0, scale: 0.9, duration: 0.6 },
-            "-=0.35"
-          )
-          .from(
-            ".motion-numeral07",
-            { opacity: 0, scale: 0.95, duration: 0.8 },
-            "-=0.5"
-          )
-          // 4. Industrial Terminal Console Form
-          .from(
-            ".motion-terminal-console",
-            { opacity: 0, y: 35, duration: 0.65 },
-            "-=0.4"
-          );
-
-        tl.eventCallback("onComplete", () => {
-          gsap.set(
-            ".motion-contact-title, .motion-contact-channel, .motion-curved-arrow, .motion-numeral07, .motion-terminal-console",
-            { clearProps: "all" }
-          );
-        });
-
-        // Parallax on Desktop (min-width: 768px)
-        gsap.to(".motion-numeral07", {
-          scrollTrigger: {
-            trigger: ".contact-hero-grid",
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.6,
-          },
-          yPercent: 12,
-          ease: "none",
-        });
-
-        gsap.to(".motion-curved-arrow", {
-          scrollTrigger: {
-            trigger: ".contact-hero-grid",
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.6,
-          },
-          yPercent: -8,
-          ease: "none",
-        });
-      });
-
-      // Reduced Motion: Accessibility Fallback
-      mm.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.set(
-          ".motion-contact-title, .motion-contact-channel, .motion-curved-arrow, .motion-numeral07, .motion-terminal-console",
-          { opacity: 1, clearProps: "all" }
-        );
-      });
-    },
-    { scope: containerRef }
-  );
-
-  // Query parameter state prefill
-  const paramService = (searchParams?.get("service") as ServiceCategory) || "website-ui";
-  const paramPackage = searchParams?.get("package") || "";
-  const paramAddons = searchParams?.get("addons") || "";
-  const paramEstimate = searchParams?.get("estimate") || "";
-  const paramTopic = searchParams?.get("topic") || "";
-  const paramDuration = (searchParams?.get("duration") as "60" | "90") || undefined;
-
-  const [service, setService] = useState<ServiceCategory>(paramService);
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [message, setMessage] = useState("");
-  const [honeypot, setHoneypot] = useState("");
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitResult, setSubmitResult] = useState<{
-    success?: boolean;
-    error?: string;
-    mailtoFallback?: string;
-  } | null>(null);
-
+import type { Locale, ServiceCategory } from "@/lib/types";
+import { validateInquiry } from "@/lib/validation/inquiry";
+import {
+  calculateFrontendEstimate,
+  formatMYR,
+  getMaintenanceOptionById,
+  getPackageById,
+  getSystemOfferById,
+  normalizeFrontendAddonIds,
+  PRICING_ADDONS,
+} from "@/lib/pricing/calculator";
+import { COACHING_PACKAGES } from "@/content/coaching";
+import { PROJECTS } from "@/content/projects";
+import {
+  StudioPage,
+  DisplayTitle,
+  SceneLabel,
+  Architecture,
+  copy,
+} from "@/components/scene/StudioScene";
+const services = ["website-ui", "full-stack", "coaching"] as const;
+function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: boolean }) {
+  const params = useSearchParams(),
+    c = (ms: string, en: string) => copy(locale, ms, en);
+  const paramService = params.get("service");
+  const initialService = services.includes(paramService as ServiceCategory)
+    ? (paramService as ServiceCategory)
+    : "website-ui";
+  const [service, setService] = useState<ServiceCategory>(initialService);
+  const [name, setName] = useState(""),
+    [contact, setContact] = useState(""),
+    [message, setMessage] = useState(""),
+    [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({}),
+    [busy, setBusy] = useState(false),
+    [fallback, setFallback] = useState(""),
+    [notice, setNotice] = useState("");
   useEffect(() => {
-    if (paramService) {
-      setService(paramService);
-    }
-  }, [paramService]);
-
-  const packageInfo = paramPackage ? getPackageById(paramPackage) : undefined;
-
-  const handleSubmit = async (e: React.FormEvent) => {
+    setService(initialService);
+  }, [initialService]);
+  const packageId = params.get("package") || "";
+  const pkg = getPackageById(packageId);
+  const systemOffer = getSystemOfferById(packageId);
+  const addons = normalizeFrontendAddonIds((params.get("addons") || "").split(","));
+  const quoteActive = service === "website-ui" && !!pkg;
+  const systemOfferActive = service === "full-stack" && !!systemOffer;
+  const total = quoteActive ? calculateFrontendEstimate(pkg!.id, addons).total : undefined;
+  const maintenanceId = params.get("maintenance") || "none";
+  const maintenance = getMaintenanceOptionById(maintenanceId);
+  const maintenanceActive = service !== "coaching" && !!maintenance && maintenance.id !== "none";
+  const coachingPackage = service === "coaching"
+    ? COACHING_PACKAGES.find((item) => item.id === params.get("coachingPackage"))
+    : undefined;
+  const project = PROJECTS.find((item) => item.slug === params.get("project"));
+  const contextText = [
+    quoteActive ? pkg!.name[locale] + " — " + formatMYR(total!) + c(" (sekali bayar)", " (one-time)") : "",
+    systemOfferActive ? systemOffer!.name[locale] + " — " + systemOffer!.priceDisplay : "",
+    quoteActive
+      ? addons
+          .map((id) => PRICING_ADDONS.find((a) => a.id === id)!.name[locale])
+          .join(", ")
+      : "",
+    maintenanceActive ? maintenance!.name[locale] + " — " + maintenance!.priceDisplay[locale] : "",
+    coachingPackage ? coachingPackage.name[locale] + " / " + (coachingPackage.durationMinutes / 60) + c(" jam — RM", " hours — RM") + coachingPackage.price : "",
+    project ? c("Rujukan projek: ", "Project reference: ") + project.title : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const body = [
+    c("Nama: ", "Name: ") + name,
+    c("Hubungi: ", "Contact: ") + contact,
+    c("Servis: ", "Service: ") + service,
+    contextText,
+    "",
+    message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const whatsappBody = [
+    c("Pertanyaan SYAHMIAOF Studio", "SYAHMIAOF Studio enquiry"),
+    c("Servis: ", "Service: ") + service,
+    contextText,
+    c("Saya ingin bertanya tentang slot dan langkah seterusnya.", "I would like to ask about availability and next steps."),
+  ].filter(Boolean).join("\n");
+  const mailto =
+    "mailto:hello@syahmiaof.my?subject=" +
+    encodeURIComponent(c("Pertanyaan Studio: ", "Studio Inquiry: ") + name) +
+    "&body=" +
+    encodeURIComponent(body);
+  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(
+    /[+\s-]/g,
+    "",
+  );
+  const whatsappReady = /^[1-9]\d{7,14}$/.test(number);
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitResult(null);
-
+    setFallback("");
+    setNotice("");
+    const payload = {
+      service,
+      name,
+      contact,
+      message,
+      honeypot,
+      locale,
+      packageId: quoteActive ? pkg!.id : systemOfferActive ? systemOffer!.id : undefined,
+      addons: quoteActive ? addons : undefined,
+      estimatedTotal: total,
+      coachingTopic: coachingPackage?.id,
+      coachingPackageId: coachingPackage?.id,
+      coachingDuration: coachingPackage
+        ? String(coachingPackage.durationMinutes) as "60" | "120"
+        : undefined,
+      maintenanceId: maintenanceActive ? maintenance!.id : undefined,
+    };
+    const validation = validateInquiry(payload);
+    if (!validation.success) {
+      const next: Record<string, string> = {};
+      for (const issue of validation.error.issues) {
+        const key = String(issue.path[0]);
+        next[key] =
+          locale === "ms"
+            ? issue.message
+            : {
+                name: "Enter a name with 2–100 characters.",
+                contact: "Enter a valid email or WhatsApp number.",
+                message: "Write a brief with 10–2,000 characters.",
+              }[key] || "Check this field.";
+      }
+      setErrors(next);
+      document.getElementById("inquiry-" + Object.keys(next)[0])?.focus();
+      return;
+    }
+    setErrors({});
+    setBusy(true);
     try {
-      const payload = {
-        service,
-        name,
-        contact,
-        message,
-        packageId: paramPackage || undefined,
-        packageName: packageInfo ? packageInfo.name[locale] : undefined,
-        addons: paramAddons ? paramAddons.split(",") : undefined,
-        estimatedTotal: paramEstimate ? Number(paramEstimate) : undefined,
-        coachingTopic: paramTopic || undefined,
-        coachingDuration: paramDuration || undefined,
-        honeypot,
-      };
-
-      const res = await fetch("/api/inquiries", {
+      const response = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setSubmitResult({ success: true });
-        setName("");
-        setContact("");
-        setMessage("");
-      } else if (data.status === "PROVIDER_PENDING_CONFIG") {
-        setSubmitResult({
-          error: data.message,
-          mailtoFallback: data.directMailto,
-        });
+      const result = await response.json();
+      if (response.ok && result.success === true) {
+        setNotice(c("Pertanyaan berjaya dihantar.", "Inquiry delivered."));
       } else {
-        setSubmitResult({
-          error: data.error || t.contact.submitError,
-        });
+        setNotice(
+          c(
+            "Pertanyaan belum dihantar. Buka aplikasi emel untuk menghantarnya kepada kami.",
+            "Your inquiry has not been sent. Open your email app to send it to us.",
+          ),
+        );
+        setFallback(mailto);
       }
-    } catch (err) {
-      setSubmitResult({
-        error: t.contact.submitError,
-        mailtoFallback: `mailto:hello@syahmiaof.my?subject=${encodeURIComponent(
-          `Pertanyaan Projek Web: ${name || "Klien"}`
-        )}&body=${encodeURIComponent(
-          `Nama: ${name}\nHubungi: ${contact}\n\nMesej:\n${message}`
-        )}`,
-      });
+    } catch {
+      setNotice(
+        c(
+          "Sambungan gagal. Anda masih boleh teruskan melalui emel.",
+          "Connection failed. You can still continue by email.",
+        ),
+      );
+      setFallback(mailto);
     } finally {
-      setIsSubmitting(false);
+      setBusy(false);
     }
   };
-
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-ink text-white flex flex-col selection:bg-acid selection:text-ink overflow-x-hidden relative"
-    >
-      <Header locale={locale} />
-
-      <main className="flex-grow pt-24 pb-20 relative">
-        <IndustrialGrid density="standard" coordinates="07 // TERMINAL_INGRESS" className="opacity-20" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="contact-hero-grid grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start min-h-[640px]">
-            {/* Left 5 Cols: Headlines, Channels & Sweeping Curved Arrow */}
-            <div className="lg:col-span-5 space-y-8 relative z-20">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-acid">
-                <Terminal className="w-4 h-4" />
-                <span>[ 07 / HUBUNGI ] {t.contact.badge}</span>
-              </div>
-
-              {/* Monumental Headline */}
+    <StudioPage locale={locale} embedded={embedded}>
+      <section className="studio-scene contact-scene" id="hubungi">
+        <Architecture variant="contact" word="07" priority={!embedded} />
+        <div className="contact-copy">
+          <SceneLabel number="07">{c("HUBUNGI", "CONTACT")}</SceneLabel>
+          <DisplayTitle
+            level={2}
+            lines={
+              locale === "ms"
+                ? ["IDEA KAU.", "KITA BINA."]
+                : ["YOUR IDEA.", "LET’S BUILD."]
+            }
+          />
+          <p className="scene-intro">
+            {c(
+              "Ceritakan projek anda. Saya bantu jadikan ia realiti.",
+              "Tell me about your project. Let’s bring it to life.",
+            )}
+          </p>
+          <div className="contact-channels scene-actions">
+            {whatsappReady ? (
+              <a
+                className="whatsapp-link"
+                href={
+                  "https://wa.me/" +
+                  number +
+                  "?text=" +
+                  encodeURIComponent(whatsappBody)
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle />
+                Chat WhatsApp
+                <ArrowRight />
+              </a>
+            ) : (
               <div>
-                <h1 className="font-display font-black text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.95] text-white motion-contact-title">
-                  IDEA KAU.
-                  <span className="block text-acid drop-shadow-[0_4px_20px_rgba(243,255,0,0.2)]">
-                    KITA BINA.
-                  </span>
-                </h1>
+                <button className="whatsapp-link" disabled>
+                  <MessageCircle />
+                  Chat WhatsApp
+                  <ArrowRight />
+                </button>
+                <small>
+                  {c(
+                    "Nombor belum ditetapkan. Hubungi melalui emel.",
+                    "Number not configured. Please use email.",
+                  )}
+                </small>
               </div>
-
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-md">
-                {t.contact.subhead}
-              </p>
-
-              {/* Official Direct Email Channel */}
-              <div className="motion-contact-channel border-2 border-zinc-800 bg-surface p-6 space-y-3 shadow-xl">
-                <span className="text-[10px] font-mono uppercase text-acid font-bold tracking-widest block">
-                  SALURAN RASMI
-                </span>
-                <h3 className="font-display font-bold text-xl uppercase text-white">
-                  {t.contact.directEmailTitle}
-                </h3>
-                <a
-                  href="mailto:hello@syahmiaof.my"
-                  className="flex items-center gap-3 p-3.5 bg-ink border border-zinc-800 text-zinc-200 hover:text-acid hover:border-acid transition-colors font-mono text-sm"
-                >
-                  <Mail className="w-4 h-4 text-acid shrink-0" />
-                  <span>hello@syahmiaof.my</span>
-                  <ArrowUpRight className="w-4 h-4 ml-auto text-zinc-500" />
-                </a>
-                <p className="text-xs text-zinc-400 font-mono">
-                  Respon rasmi dalam tempoh 24 jam hari bekerja.
-                </p>
-              </div>
-
-              {/* WhatsApp Fast Channel (Honest Pending Status) */}
-              <div className="motion-contact-channel border-2 border-zinc-800 bg-surface p-6 space-y-3 shadow-xl">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase text-zinc-400 font-bold tracking-widest">
-                    SALURAN PANTAS
-                  </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-zinc-900 border border-zinc-700 text-amber-400">
-                    STATUS: MENUNGGU NOMBOR RASMI
-                  </span>
-                </div>
-                <h3 className="font-display font-bold text-xl uppercase text-white">
-                  {t.contact.whatsappTitle}
-                </h3>
-                <div className="p-3 bg-ink border border-dashed border-zinc-800 text-xs font-mono text-zinc-400 flex items-start gap-2">
-                  <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">{t.contact.whatsappPending}</p>
-                </div>
-              </div>
-
-              {/* Sweeping Dynamic Yellow Curved Arrow Stage */}
-              <div className="motion-curved-arrow relative pt-4 hidden lg:block">
-                <div className="w-64 xl:w-80 pointer-events-none">
-                  <BrutalistArrow variant="curved-contact" className="w-full h-auto" />
-                </div>
-              </div>
-            </div>
-
-            {/* Right 7 Cols: Industrial Terminal Console Form */}
-            <div className="lg:col-span-7 relative z-20">
-              {/* Architectural 3D Numeral "07" in background */}
-              <div className="motion-numeral07 absolute -top-12 -right-8 w-72 sm:w-88 opacity-25 pointer-events-none z-0">
-                <ArchitecturalNumeral07 />
-              </div>
-
-              <div className="motion-terminal-console border-2 border-zinc-700/80 bg-zinc-950/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 space-y-6 shadow-[0_25px_60px_rgba(0,0,0,0.95)] relative z-10">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
-                  <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-white">
-                    MULA <span className="text-acid">PROJEK ANDA</span>
-                  </h2>
-                  <span className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase">
-                    CONSOLE // V2.0
-                  </span>
-                </div>
-
-                {/* Active Ingress Quote / Coaching Summary Banner */}
-                {paramEstimate && (
-                  <div className="p-4 bg-acid/10 border-2 border-acid/80 font-mono text-xs space-y-1">
-                    <div className="flex items-center gap-2 text-acid font-bold">
-                      <Calculator className="w-4 h-4" />
-                      <span>[ SEBUT HARGA AKTIF: {packageInfo?.name[locale] || paramPackage} ]</span>
-                    </div>
-                    <div className="text-zinc-200">
-                      Anggaran: <span className="font-bold text-acid">{formatMYR(Number(paramEstimate))}</span>
-                      {paramAddons && <span className="text-zinc-400"> • Ciri: {paramAddons}</span>}
-                    </div>
-                  </div>
-                )}
-
-                {paramTopic && (
-                  <div className="p-4 bg-cobalt/20 border-2 border-cobalt font-mono text-xs space-y-1">
-                    <div className="flex items-center gap-2 text-cobalt-light font-bold">
-                      <GraduationCap className="w-4 h-4" />
-                      <span>[ SESI COACHING AKTIF: {paramTopic.toUpperCase()} ]</span>
-                    </div>
-                    <div className="text-zinc-200">
-                      Tempoh: <span className="font-bold text-cobalt-light">{paramDuration || "90"} Minit</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Submission Success Notice */}
-                {submitResult?.success && (
-                  <div className="p-4 bg-emerald-950/60 border-2 border-emerald-500 text-emerald-200 text-xs font-mono flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                    <p>{t.contact.submitSuccess}</p>
-                  </div>
-                )}
-
-                {/* Honest Fallback Alert (HTTP 503 Provider Pending Config) */}
-                {submitResult?.error && (
-                  <div className="p-4 bg-amber-950/60 border-2 border-amber-500 text-amber-200 text-xs font-mono space-y-3">
-                    <div className="flex items-start gap-2 font-bold">
-                      <AlertCircle className="w-5 h-5 text-amber-400 shrink-0" />
-                      <span>{submitResult.error}</span>
-                    </div>
-                    {submitResult.mailtoFallback && (
-                      <div>
-                        <a
-                          href={submitResult.mailtoFallback}
-                          className="inline-flex items-center gap-2 min-h-[44px] px-4 py-3 bg-amber-400 text-ink font-bold uppercase text-xs hover:bg-amber-300 transition-colors shadow-md"
-                        >
-                          <Mail className="w-4 h-4" />
-                          <span>Hantar Terus Melalui Emel (hello@syahmiaof.my)</span>
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Inquiry Form */}
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Honeypot field (hidden bot trap) */}
-                  <input
-                    type="text"
-                    name="website_pot"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                    className="hidden"
-                    aria-hidden="true"
-                  />
-
-                  {/* 1. Service Category Selection */}
-                  <div className="space-y-2">
-                    <label className="text-xs font-mono text-zinc-300 uppercase block font-bold">
-                      1. {t.contact.fieldService} *
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                      {[
-                        { id: "website-ui", label: "Website UI", icon: Laptop },
-                        { id: "full-stack", label: "Sistem Lengkap", icon: Database },
-                        { id: "coaching", label: "Coaching 1:1", icon: UserCheck },
-                      ].map((item) => {
-                        const Icon = item.icon;
-                        const isSelected = service === item.id;
-                        return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => setService(item.id as ServiceCategory)}
-                            className={`min-h-[44px] p-3.5 text-left text-xs font-mono border-2 transition-all flex items-center justify-between ${
-                              isSelected
-                                ? "bg-acid text-ink border-acid font-bold shadow-brutal"
-                                : "bg-ink border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 truncate">
-                              <Icon className="w-3.5 h-3.5 shrink-0" />
-                              <span className="truncate">{item.label}</span>
-                            </div>
-                            <span
-                              className={`w-3 h-3 rounded-full border flex items-center justify-center shrink-0 ${
-                                isSelected ? "border-ink" : "border-zinc-700"
-                              }`}
-                            >
-                              {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-ink" />}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* 2. Name Input */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-zinc-300 uppercase block font-bold">
-                      2. {t.contact.fieldName} *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder={t.contact.fieldNamePlaceholder}
-                      className="w-full bg-ink border-2 border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-acid focus:outline-none font-mono"
-                    />
-                  </div>
-
-                  {/* 3. Contact Input */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-zinc-300 uppercase block font-bold">
-                      3. {t.contact.fieldContact} *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                      placeholder={t.contact.fieldContactPlaceholder}
-                      className="w-full bg-ink border-2 border-zinc-800 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-acid focus:outline-none font-mono"
-                    />
-                  </div>
-
-                  {/* 4. Message / Brief Input */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-zinc-300 uppercase block font-bold">
-                      4. {t.contact.fieldMessage} *
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder={t.contact.fieldMessagePlaceholder}
-                      className="w-full bg-ink border-2 border-zinc-800 p-4 text-sm text-white placeholder-zinc-600 focus:border-acid focus:outline-none font-mono leading-relaxed"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 bg-acid text-ink font-display font-black text-base uppercase tracking-wider hover:bg-white transition-colors shadow-brutal disabled:opacity-50 flex items-center justify-center gap-2"
-                  >
-                    <span>{isSubmitting ? "Memproses..." : t.contact.submitButton}</span>
-                    <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-                  </button>
-
-                  <p className="text-[11px] font-mono text-zinc-500 text-center leading-normal">
-                    {t.contact.emailFallbackNotice}
-                  </p>
-                </form>
-              </div>
-            </div>
+            )}
+            <a className="email-channel" href="mailto:hello@syahmiaof.my">
+              <Mail size={20} />
+              hello@syahmiaof.my
+            </a>
           </div>
         </div>
-
-        {/* Reflective Ground Floor Surface */}
-        <ReflectiveFloor glowColor="dual" className="mt-12" />
-      </main>
-
-      <Footer locale={locale} />
-    </div>
+        <div className="console contact-console">
+          <h2>
+            {c("MULA", "START")} <span>{c("PROJEK ANDA", "YOUR PROJECT")}</span>
+          </h2>
+          {quoteActive && (
+            <div className="handoff-summary" data-testid="quote-summary">
+              <strong>{pkg!.name[locale]}</strong>
+              <span>{c("Anggaran sekali bayar: ", "One-time estimate: ")}{formatMYR(total!)}</span>
+              {addons.length > 0 && (
+                <small>
+                  {addons
+                    .map(
+                      (id) =>
+                        PRICING_ADDONS.find((a) => a.id === id)!.name[locale],
+                    )
+                    .join(" · ")}
+                </small>
+              )}
+            </div>
+          )}
+          {systemOfferActive && (
+            <div className="handoff-summary" data-testid="system-summary">
+              <strong>{systemOffer!.name[locale]}</strong>
+              <span>{systemOffer!.priceDisplay}</span>
+              <small>{systemOffer!.scopeSummary[locale]}</small>
+            </div>
+          )}
+          {maintenanceActive && (
+            <div className="handoff-summary" data-testid="maintenance-summary">
+              <strong>{maintenance!.name[locale]}</strong>
+              <span>{maintenance!.priceDisplay[locale]}</span>
+              <small>{maintenance!.cadence === "monthly" ? c("Caj berulang bulanan; berasingan daripada jumlah sekali bayar.", "Recurring monthly charge; separate from the one-time total.") : c("Caj ikut tugasan; berasingan daripada jumlah sekali bayar.", "Per-task charge; separate from the one-time total.")}</small>
+            </div>
+          )}
+          {coachingPackage && (
+            <div className="handoff-summary" data-testid="coaching-summary">
+              <strong>{coachingPackage.name[locale]}</strong>
+              <span>RM{coachingPackage.price} · {coachingPackage.durationMinutes / 60} {c("jam", "hours")}</span>
+            </div>
+          )}
+          {project && (
+            <div className="handoff-summary" data-testid="project-summary">
+              <strong>{c("Rujukan projek", "Project reference")}</strong>
+              <span>{project.title}</span>
+              <small>{locale === "ms" ? project.status : project.statusEn}</small>
+            </div>
+          )}
+          <form onSubmit={submit} noValidate>
+            <input
+              name="website_pot"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              className="hidden"
+              tabIndex={-1}
+              aria-hidden="true"
+              autoComplete="off"
+            />
+            <p className="form-note">
+              {c(
+                "Butiran ini digunakan untuk memahami dan membalas pertanyaan anda. Jangan sertakan kata laluan atau maklumat sulit.",
+                "These details help us understand and respond to your enquiry. Do not include passwords or sensitive information.",
+              )}
+            </p>
+            <fieldset>
+              <legend>1. {c("SERVIS DIPERLUKAN", "SERVICE REQUIRED")}</legend>
+              <div className="contact-services">
+                {services.map((value, i) => {
+                  const Icon = [Monitor, Database, UserRound][i];
+                  return (
+                    <label
+                      key={value}
+                      className={
+                        "choice-option " + (service === value ? "selected" : "")
+                      }
+                    >
+                      <input
+                        type="radio"
+                        name="service"
+                        value={value}
+                        checked={service === value}
+                        onChange={() => setService(value)}
+                      />
+                      <Icon size={18} />
+                      <span>
+                        {
+                          [
+                            "Website UI",
+                            c("Sistem Lengkap", "Full-Stack"),
+                            "Coaching 1:1",
+                          ][i]
+                        }
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+            <div className="form-field">
+              <label htmlFor="inquiry-name">2. {c("NAMA", "NAME")}</label>
+              <input
+                id="inquiry-name"
+                name="name"
+                autoComplete="name"
+                maxLength={100}
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={c("Contoh: Ali bin Ahmad", "Your full name")}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? "error-name" : undefined}
+              />
+              {errors.name && (
+                <p className="field-error" id="error-name">
+                  {errors.name}
+                </p>
+              )}
+            </div>
+            <div className="form-field">
+              <label htmlFor="inquiry-contact">
+                3. {c("EMEL / WHATSAPP", "EMAIL / WHATSAPP")}
+              </label>
+              <input
+                id="inquiry-contact"
+                name="contact"
+                autoComplete="email"
+                maxLength={254}
+                required
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                placeholder="ali@email.com / 012-345 6789"
+                aria-invalid={!!errors.contact}
+                aria-describedby={errors.contact ? "error-contact" : undefined}
+              />
+              {errors.contact && (
+                <p className="field-error" id="error-contact">
+                  {errors.contact}
+                </p>
+              )}
+            </div>
+            <div className="form-field">
+              <label htmlFor="inquiry-message">
+                4. {c("CERITAKAN IDEA ANDA", "TELL ME YOUR IDEA")}
+              </label>
+              <textarea
+                id="inquiry-message"
+                name="message"
+                rows={3}
+                maxLength={2000}
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder={c(
+                  "Apa yang anda nak bina? Ceritakan matlamat dan skop projek.",
+                  "What would you like to build? Share your goals and project scope.",
+                )}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? "error-message" : undefined}
+              />
+              {errors.message && (
+                <p className="field-error" id="error-message">
+                  {errors.message}
+                </p>
+              )}
+            </div>
+            <button className="studio-button" type="submit" disabled={busy}>
+              {busy
+                ? c("Menyemak…", "Checking…")
+                : c("Sediakan Pertanyaan", "Prepare Inquiry")}
+              <ArrowRight />
+            </button>
+            <p className="form-note">
+              {c(
+                "Penghantaran terus belum diaktifkan. Semak butiran dan teruskan melalui aplikasi emel anda.",
+                "Direct delivery is not enabled. Check your details and continue through your email app.",
+              )}
+            </p>
+            <div aria-live="polite">
+              {notice && <p className="form-notice">{notice}</p>}
+              {fallback && (
+                <a className="studio-button button-secondary" href={fallback}>
+                  <Mail />
+                  {c("Buka Emel untuk Hantar", "Open Email to Send")}
+                </a>
+              )}
+            </div>
+          </form>
+        </div>
+      </section>
+    </StudioPage>
   );
 }
-
-export const ContactView: React.FC<ContactViewProps> = (props) => {
+export function ContactView({ locale, embedded = false }: { locale: Locale; embedded?: boolean }) {
   return (
-    <React.Suspense
+    <Suspense
       fallback={
-        <div className="min-h-screen bg-ink text-white flex items-center justify-center font-mono text-xs text-acid">
-          MEMUATKAN BORANG HUBUNGI...
+        <div className="route-loading">
+          {locale === "ms" ? "Memuatkan borang…" : "Loading form…"}
         </div>
       }
     >
-      <ContactFormContent {...props} />
-    </React.Suspense>
+      <ContactForm locale={locale} embedded={embedded} />
+    </Suspense>
   );
-};
+}

@@ -1,236 +1,120 @@
-export interface ServiceFeature {
-  title: {
-    ms: string;
-    en: string;
-  };
-  description: {
-    ms: string;
-    en: string;
-  };
-}
-
-export interface ServiceCategoryDetail {
-  id: "frontend" | "fullstack";
-  badge: {
-    ms: string;
-    en: string;
-  };
-  title: {
-    ms: string;
-    en: string;
-  };
-  tagline: {
-    ms: string;
-    en: string;
-  };
-  description: {
-    ms: string;
-    en: string;
-  };
-  features: ServiceFeature[];
-  deliverables: {
-    ms: string[];
-    en: string[];
-  };
-  boundaries: {
-    ms: string[];
-    en: string[];
-  };
-  startingPrice: string;
-  ctaText: {
-    ms: string;
-    en: string;
-  };
-  ctaLink: string;
-}
+import type { ServiceCategoryDetail } from "../lib/types";
 
 export const SERVICES_DATA: ServiceCategoryDetail[] = [
   {
     id: "frontend",
-    badge: {
-      ms: "KATEGORI 01",
-      en: "CATEGORY 01",
-    },
-    title: {
-      ms: "Pembangunan Frontend & Antaramuka UI",
-      en: "Frontend & UI Website Development",
-    },
+    badge: { ms: "KATEGORI 01", en: "CATEGORY 01" },
+    title: { ms: "Website Frontend", en: "Frontend Websites" },
     tagline: {
-      ms: "Laman web berimpak visual tinggi, pantas, interaktif & berorientasikan konversi.",
-      en: "High-visual impact, lightning-fast, interactive & conversion-oriented websites.",
+      ms: "Laman responsif untuk memperkenalkan bisnes, servis atau kempen anda.",
+      en: "Responsive websites to introduce your business, services or campaign.",
     },
     description: {
-      ms: "Khusus untuk perniagaan, jenama peribadi, dan produk digital yang inginkan penampilan web bertaraf antarabangsa dengan identiti Digital Brutalism yang memukau dan navigasi yang mudah.",
-      en: "Built specifically for businesses, personal brands, and digital products demanding world-class web presence with stunning Digital Brutalism aesthetics and intuitive navigation.",
+      ms: "Pilih Landing Page RM299, Laman Web Bisnes RM499 atau Laman Web Premium RM999. Harga pakej dan skop ringkas dipaparkan di Pricing Studio.",
+      en: "Choose a RM299 Landing Page, RM499 Business Website or RM999 Premium Custom Website. Package prices and scope are listed in Pricing Studio.",
     },
     features: [
       {
-        title: {
-          ms: "Landing Page & Web Korporat",
-          en: "Landing Pages & Corporate Sites",
-        },
-        description: {
-          ms: "Struktur visual terancang untuk menyampaikan nilai tawaran anda dengan jelas dan mendorong tindakan pelawat.",
-          en: "Engineered page structure designed to articulate your value proposition and drive visitor conversion.",
-        },
+        title: { ms: "Reka Bentuk Responsif", en: "Responsive Design" },
+        description: { ms: "Susun atur disesuaikan untuk telefon dan desktop.", en: "Layouts adapted for mobile and desktop." },
       },
       {
-        title: {
-          ms: "Animasi Sinematik GSAP",
-          en: "Cinematic GSAP Animations",
-        },
-        description: {
-          ms: "Peralihan skrol interaktif, efek kedalaman perspektif dan mikro-interaksi tanpa mengorbankan kelajuan.",
-          en: "Interactive scroll timelines, perspective depth effects, and micro-interactions without performance loss.",
-        },
+        title: { ms: "Pautan Hubungan", en: "Contact Links" },
+        description: { ms: "Pautan WhatsApp dan media sosial termasuk tanpa caj.", en: "WhatsApp and social media links are included at no extra charge." },
       },
       {
-        title: {
-          ms: "Responsif Desktop & Mudah Alih",
-          en: "Desktop & Mobile Responsive",
-        },
-        description: {
-          ms: "Pengalaman paparan kemas di semua saiz skrin: 360px hingga skrin ultra-lebar 1920px+.",
-          en: "Pixel-disciplined experience across all viewport sizes from 360px mobile up to ultra-wide displays.",
-        },
-      },
-      {
-        title: {
-          ms: "Kelajuan Core Web Vitals",
-          en: "Core Web Vitals Speed",
-        },
-        description: {
-          ms: "Kod bersih Next.js, aset imej dioptimumkan dan masa pemuatan pantas (LCP & CLS terkawal).",
-          en: "Clean Next.js architecture, optimized assets, and rapid load times with controlled LCP and CLS.",
-        },
+        title: { ms: "SEO Asas", en: "Basic SEO" },
+        description: { ms: "SEO asas pada halaman disertakan; tiada jaminan kedudukan Google.", en: "Basic on-page SEO is included; Google rankings are not guaranteed." },
       },
     ],
     deliverables: {
       ms: [
-        "Kod sumber penuh (Next.js / TypeScript / Tailwind)",
-        "Struktur komponen kemas & mudah diselenggara",
-        "Integrasi borang pertanyaan & pautan WhatsApp",
-        "Konfigurasi SEO & metadata perkongsian sosial",
-        "Penyerahan dan panduan pelancaran tempatan",
+        "Landing Page: 1 halaman, hingga 6 seksyen, penyesuaian asas dan 2 pusingan revisi",
+        "Laman Web Bisnes: hingga 5 halaman responsif dan 2 pusingan revisi",
+        "Premium: hingga 5 halaman, arah visual tersuai, animasi asas dan 2 pusingan revisi",
+        "Pautan media sosial dan SEO asas termasuk tanpa caj",
       ],
       en: [
-        "Complete source code (Next.js / TypeScript / Tailwind)",
-        "Clean, modular, and maintainable component structure",
-        "Inquiry form & WhatsApp action integrations",
-        "SEO configuration & social sharing metadata",
-        "Deployment handover and local setup guide",
+        "Landing Page: 1 page, up to 6 sections, basic customization and 2 revision rounds",
+        "Business Website: up to 5 responsive pages and 2 revision rounds",
+        "Premium: up to 5 pages, custom visual direction, basic animation and 2 revision rounds",
+        "Social media links and basic SEO included at no extra charge",
       ],
     },
     boundaries: {
       ms: [
-        "Tidak merangkumi pangkalan data atau autentikasi pengguna (disediakan dalam pakej Full-Stack)",
-        "Tidak merangkumi gerbang pembayaran langsung (payment gateway)",
-        "Domain dan langganan hosting diuruskan atau dibil secara berasingan",
+        "Halaman standard tambahan RM99; tidak termasuk modul dashboard",
+        "Animasi Lanjutan RM99 atau Animasi Sinematik RM199 untuk urutan yang sama — pilih satu sahaja",
+        "Domain, hosting dan langganan pihak ketiga tidak termasuk; sebut harga berasingan atau dibayar pelanggan",
+        "SEO asas tidak menjamin kedudukan dalam Google",
+        "Laman pelbagai bahasa memerlukan sebut harga berasingan",
       ],
       en: [
-        "Does not include custom database or user authentication (scoped in Full-Stack)",
-        "Does not include integrated payment gateway transactions",
-        "Domain name registration and hosting infrastructure billed separately",
+        "Extra standard page RM99; dashboard modules are excluded",
+        "Advanced Animation RM99 or Cinematic Animation RM199 for the same sequence — choose one",
+        "Domain, hosting and third-party subscriptions are excluded; quoted separately or client-paid",
+        "Basic SEO does not guarantee Google rankings",
+        "Multilingual websites require a separate quotation",
       ],
     },
-    startingPrice: "Bermula RM645",
-    ctaText: {
-      ms: "Kira Anggaran di Pricing Studio",
-      en: "Calculate Estimate in Pricing Studio",
-    },
+    startingPrice: "Bermula RM299",
+    ctaText: { ms: "Kira Anggaran Website", en: "Estimate a Website" },
     ctaLink: "/harga",
   },
   {
     id: "fullstack",
-    badge: {
-      ms: "KATEGORI 02",
-      en: "CATEGORY 02",
-    },
-    title: {
-      ms: "Sistem Khas & Seni Bina Full-Stack",
-      en: "Custom Full-Stack Systems & Architecture",
-    },
+    badge: { ms: "KATEGORI 02", en: "CATEGORY 02" },
+    title: { ms: "Sistem Bisnes", en: "Business Systems" },
     tagline: {
-      ms: "Aplikasi web dengan pangkalan data, peranan pengguna, dashboard pentadbir & automasi.",
-      en: "Web applications featuring databases, user roles, admin dashboards & automations.",
+      ms: "Daripada permintaan tempahan ringkas kepada modul pengurusan tersuai.",
+      en: "From a simple booking request to a custom management module.",
     },
     description: {
-      ms: "Penyelesaian digital tersuai untuk operasi perniagaan yang memerlukan logik pelayan, penyimpanan data selamat, pengurusan pesanan, atau integrasi API kompleks.",
-      en: "Tailored digital solutions for operations requiring server-side logic, secure persistent storage, workflow management, or complex API integrations.",
+      ms: "Permintaan Tempahan Asas RM499 menggunakan satu borang untuk satu servis dan bisnes mengesahkan tempahan secara manual. Dashboard SME Lite bermula RM999 untuk satu modul kecil. Sistem lanjutan berharga lebih RM2,099 dan memerlukan sebut harga selepas skop ditentukan.",
+      en: "The RM499 Basic Booking Request uses one form for one service; the business confirms bookings manually. SME Dashboard Lite starts at RM999 for one small module. Advanced systems cost more than RM2,099 and require a scoped quotation.",
     },
     features: [
       {
-        title: {
-          ms: "Pangkalan Data & Pengurusan Data",
-          en: "Databases & Data Architecture",
-        },
-        description: {
-          ms: "Seni bina pangkalan data relasional (PostgreSQL / Supabase / Cloud SQL) yang pantas dan selamat.",
-          en: "Robust relational database design (PostgreSQL / Supabase / Cloud SQL) built for integrity and speed.",
-        },
+        title: { ms: "Permintaan Tempahan", en: "Booking Requests" },
+        description: { ms: "Borang permintaan asas; pengesahan dibuat manual oleh bisnes.", en: "A basic request form; the business confirms each booking manually." },
       },
       {
-        title: {
-          ms: "Autentikasi & Kawalan Akses (RBAC)",
-          en: "Authentication & Role Access",
-        },
-        description: {
-          ms: "Daftar masuk selamat, pengesahan e-mel, dan penetapan kuasa akses berperingkat (admin, staf, klien).",
-          en: "Secure login, session control, and granular role-based permissions (admin, staff, client).",
-        },
+        title: { ms: "Dashboard SME Lite", en: "SME Dashboard Lite" },
+        description: { ms: "Satu modul kecil, satu role admin dan satu aliran pengurusan rekod asas.", en: "One small module, one admin role and one basic record-management workflow." },
       },
       {
-        title: {
-          ms: "Panel Kawalan Pentadbir (Dashboard)",
-          en: "Admin Control Dashboards",
-        },
-        description: {
-          ms: "Antaramuka pengurusan data, analitik operasi, dan visualisasi metrik utama secara langsung.",
-          en: "Intuitive data management tables, operation analytics, and real-time business metrics.",
-        },
-      },
-      {
-        title: {
-          ms: "Integrasi API & Webhook Automasi",
-          en: "API & Webhook Automations",
-        },
-        description: {
-          ms: "Penyambungan sistem luar, automasi pemberitahuan e-mel/WhatsApp, dan pengurusan aliran data.",
-          en: "Seamless third-party connectivity, email/WhatsApp notification dispatch, and data pipelines.",
-        },
+        title: { ms: "Sistem Tersuai", en: "Custom Systems" },
+        description: { ms: "Fungsi dan integrasi lanjutan ditentukan selepas discovery bertulis.", en: "Advanced features and integrations are scoped after written discovery." },
       },
     ],
     deliverables: {
       ms: [
-        "Seni bina sistem penuh (Frontend + Backend API + Database)",
-        "Skema pangkalan data dan fail migrasi",
-        "Dokumentasi API dan aliran logik sistem",
-        "Sesi penemuan skop teknikal terperinci",
-        "Sokongan audit keselamatan dan pengujian fungsi",
+        "Booking Asas RM499: satu servis, borang permintaan, validasi/notifikasi asas dan pengesahan manual",
+        "Dashboard SME Lite dari RM999: satu modul kecil, satu peranan admin dan satu workflow rekod asas",
+        "Sistem Lanjutan lebih RM2,099: sebut harga selepas semakan keperluan, integrasi dan kerumitan",
       ],
       en: [
-        "Complete system architecture (Frontend + API Routes + Database)",
-        "Relational database schemas and migration scripts",
-        "API endpoint documentation and system flow diagrams",
-        "In-depth technical discovery and requirements specification",
-        "Security audit support and comprehensive functional testing",
+        "Basic Booking RM499: one service, request form, basic validation/notification and manual confirmation",
+        "SME Dashboard Lite from RM999: one small module, one admin role and one basic record workflow",
+        "Advanced System above RM2,099: quoted after reviewing requirements, integrations and complexity",
       ],
     },
     boundaries: {
       ms: [
-        "Skop dan harga bergantung kepada spesifikasi teknikal selepas sesi penemuan",
-        "Kos pelayan awan (Cloud/DB hosting) ditanggung oleh pemilik projek mengikut penggunaan",
+        "Booking Asas bukan platform pengurusan tempahan lengkap: tiada kalendar, pengesahan automatik, akaun, bayaran atau sejarah database",
+        "Dashboard Lite tidak merangkumi lebih daripada satu modul atau fungsi yang belum dipersetujui dalam skop bertulis",
+        "Domain, hosting, database dan penggunaan API dibil atau dibayar berasingan",
+        "Integrasi, modul baharu dan kerja di luar skop memerlukan kelulusan serta sebut harga",
       ],
       en: [
-        "Scope and quotation finalized following formal discovery assessment",
-        "Cloud database and server compute costs are billed directly to client accounts",
+        "Basic Booking is not a full booking platform: no calendar, automatic confirmation, accounts, payments or database history",
+        "Dashboard Lite excludes more than one module and any function not agreed in the written scope",
+        "Domain, hosting, database and API usage are quoted separately or client-paid",
+        "Integrations, new modules and out-of-scope work require approval and a separate quote",
       ],
     },
-    startingPrice: "Bermula RM3,250 (Sebut Harga Manual)",
-    ctaText: {
-      ms: "Bincang Keperluan Sistem",
-      en: "Discuss System Requirements",
-    },
+    startingPrice: "Dari RM499",
+    ctaText: { ms: "Bincang Keperluan Sistem", en: "Discuss a System" },
     ctaLink: "/hubungi?service=full-stack",
   },
 ];

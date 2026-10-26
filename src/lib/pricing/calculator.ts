@@ -1,165 +1,278 @@
-import { PricingPackage, PricingAddon } from "../types";
+import type {
+  MaintenanceOption,
+  PricingAddon,
+  PricingPackage,
+  SystemOffer,
+} from "../types";
 
 export const PRICING_PACKAGES: PricingPackage[] = [
   {
     id: "landing",
-    name: {
-      ms: "Frontend Landing",
-      en: "Frontend Landing",
-    },
+    name: { ms: "Landing Page", en: "Landing Page" },
     tagline: {
-      ms: "Halaman pendaratan tunggal berimpak tinggi & konversi maksimum.",
-      en: "High-impact single landing page designed for maximum conversion.",
+      ms: "Satu halaman responsif untuk terangkan tawaran dan mudahkan pelanggan menghubungi anda.",
+      en: "One responsive page to explain your offer and help customers get in touch.",
     },
-    basePrice: 645,
-    priceDisplay: "RM645",
+    basePrice: 299,
+    priceDisplay: "RM299",
     scopeSummary: {
-      ms: "1 Halaman Fokus • Responsif Penuh • Integrasi WhatsApp • SEO Asas",
-      en: "1 Focus Page • Fully Responsive • WhatsApp Integration • Basic SEO",
+      ms: "1 halaman responsif · Hingga 6 seksyen · 2 pusingan revisi",
+      en: "1 responsive page · Up to 6 sections · 2 revision rounds",
     },
     deliverables: {
       ms: [
-        "1 Halaman responsif desktop & mobile",
-        "Hero section brutalist berimpak tinggi",
-        "Salinan jualan & borang ringkas / butang WhatsApp",
-        "Optimum kelajuan Core Web Vitals",
-        "Penyerahan kod sumber penuh",
+        "1 halaman responsif dengan sehingga 6 seksyen kandungan",
+        "Penyesuaian reka bentuk asas",
+        "Pautan WhatsApp dan media sosial",
+        "SEO asas pada halaman",
+        "2 pusingan revisi terkumpul",
       ],
       en: [
-        "1 responsive page (desktop & mobile)",
-        "High-impact brutalist hero section",
-        "Sales copy layout & quick WhatsApp/contact CTA",
-        "Core Web Vitals speed optimization",
-        "Full clean source code delivery",
+        "1 responsive page with up to 6 content sections",
+        "Basic design customization",
+        "WhatsApp and social media links",
+        "Basic on-page SEO",
+        "2 consolidated revision rounds",
       ],
     },
   },
   {
     id: "business",
-    name: {
-      ms: "Frontend Business",
-      en: "Frontend Business",
-    },
+    name: { ms: "Laman Web Bisnes", en: "Business Website" },
     tagline: {
-      ms: "Laman web perniagaan lengkap ~5 halaman dengan identiti visual tersendiri.",
-      en: "Complete ~5-page corporate website with distinctive brand identity.",
+      ms: "Laman beberapa halaman untuk memperkenalkan bisnes, servis dan cara pelanggan menghubungi anda.",
+      en: "A multi-page site to introduce your business, services and contact options.",
     },
-    basePrice: 1745,
-    priceDisplay: "RM1,745",
+    basePrice: 499,
+    priceDisplay: "RM499",
     scopeSummary: {
-      ms: "~5 Halaman (Utama, Servis, Tentang, Portfolio, Hubungi) • Navigasi Penuh",
-      en: "~5 Pages (Home, Services, About, Portfolio, Contact) • Full Navigation",
+      ms: "Hingga 5 halaman responsif · Navigasi · 2 pusingan revisi",
+      en: "Up to 5 responsive pages · Navigation · 2 revision rounds",
     },
     deliverables: {
       ms: [
-        "Struktur ~5 halaman tersusun",
-        "Seni visual Digital Brutalism konsisten",
-        "Borang pertanyaan interaktif dengan pengesahan",
-        "Integrasi analitik & metadata SEO lengkap",
-        "Penyelarasan micro-interactions asas",
+        "Hingga 5 halaman responsif",
+        "Sistem reka bentuk standard yang konsisten",
+        "Navigasi dan pautan hubungan",
+        "SEO asas pada halaman",
+        "2 pusingan revisi terkumpul",
       ],
       en: [
-        "Structured ~5-page architecture",
-        "Consistent Digital Brutalism art direction",
-        "Interactive inquiry form with validation",
-        "Analytics integration & full SEO metadata",
-        "Subtle UI micro-interactions",
+        "Up to 5 responsive pages",
+        "Consistent standard design system",
+        "Navigation and contact links",
+        "Basic on-page SEO",
+        "2 consolidated revision rounds",
       ],
     },
   },
   {
     id: "premium",
-    name: {
-      ms: "Frontend Premium",
-      en: "Frontend Premium",
-    },
+    name: { ms: "Laman Web Premium", en: "Premium Custom Website" },
     tagline: {
-      ms: "Pengalaman web bertaraf galeri antarabangsa dengan visual sinematik tersuai.",
-      en: "International gallery-grade web experience with custom cinematic visuals.",
+      ms: "Arah visual tersuai dengan kemasan UI/UX yang lebih terperinci.",
+      en: "A custom visual direction with more refined UI/UX.",
     },
-    basePrice: 2995,
-    priceDisplay: "RM2,995",
+    basePrice: 999,
+    priceDisplay: "RM999",
     scopeSummary: {
-      ms: "Skop Tersuai • Interaktiviti Penuh • Arahan Seni Eksklusif",
-      en: "Custom Scope • Full Interactivity • Exclusive Art Direction",
+      ms: "Hingga 5 halaman responsif · Arah visual tersuai · 2 pusingan revisi",
+      en: "Up to 5 responsive pages · Custom visual direction · 2 revision rounds",
     },
     deliverables: {
       ms: [
-        "Struktur halaman komprehensif & interaktif",
-        "Animasi tersuai GSAP ScrollTrigger",
-        "Komposisi visual 3D & perspektif dinamik",
-        "Audit kebolehcapaian & ujian prestasi mendalam",
-        "Sokongan teknikal keutamaan selepas pelancaran",
+        "Hingga 5 halaman responsif",
+        "Arah visual tersuai dan UI/UX lebih terperinci",
+        "Animasi hover dan entrance asas",
+        "SEO asas pada halaman",
+        "2 pusingan revisi terkumpul",
       ],
       en: [
-        "Comprehensive & interactive page structure",
-        "Custom GSAP ScrollTrigger timelines",
-        "3D visual composition & dynamic perspective",
-        "Accessibility audit & in-depth performance tests",
-        "Priority post-launch technical support",
-      ],
-    },
-  },
-  {
-    id: "custom-system",
-    name: {
-      ms: "Sistem Khas / Full-Stack",
-      en: "Custom Full-Stack System",
-    },
-    tagline: {
-      ms: "Aplikasi web berpusat pangkalan data, panel kawalan admin & automasi.",
-      en: "Database-backed web application, admin dashboards & custom workflows.",
-    },
-    basePrice: 3250,
-    priceDisplay: "Bermula RM3,250",
-    isFullStack: true,
-    scopeSummary: {
-      ms: "Pangkalan Data • Autentikasi Pengguna • Dashboard Pengurusan • Integrasi API",
-      en: "Database • User Auth • Management Dashboard • API Integrations",
-    },
-    deliverables: {
-      ms: [
-        "Senibina Next.js + Pangkalan Data (PostgreSQL/Supabase/Cloud SQL)",
-        "Sistem pengesahan identiti pengguna & peranan (RBAC)",
-        "Panel kawalan pentadbir (Admin Dashboard)",
-        "Integrasi API pihak ketiga / Webhooks",
-        "Sesi penemuan skop teknikal & sebut harga terperinci",
-      ],
-      en: [
-        "Next.js + Database Architecture (PostgreSQL/Supabase/Cloud SQL)",
-        "User authentication & role-based access control (RBAC)",
-        "Secure Admin Management Dashboard",
-        "Third-party API & Webhook integrations",
-        "Technical discovery session & detailed formal quotation",
+        "Up to 5 responsive pages",
+        "Custom visual direction and refined UI/UX",
+        "Basic hover and entrance animations",
+        "Basic on-page SEO",
+        "2 consolidated revision rounds",
       ],
     },
   },
 ];
 
-export const PRICING_ADDONS: PricingAddon[] = [
+export const SYSTEM_OFFERS: SystemOffer[] = [
   {
-    id: "animation",
-    name: {
-      ms: "Animasi Interaktif Lanjutan (GSAP)",
-      en: "Advanced Interactive Animation (GSAP)",
+    id: "booking-request",
+    name: { ms: "Permintaan Tempahan Asas", en: "Basic Booking Request" },
+    priceDisplay: "RM499",
+    priceKind: "fixed",
+    scopeSummary: {
+      ms: "Satu servis · Borang permintaan · Pengesahan tempahan dibuat secara manual oleh bisnes",
+      en: "One service · Request form · Booking confirmed manually by the business",
     },
-    description: {
-      ms: "Peralihan skrol sinematik, efek perspektif kad 3D & micro-interactions interaktif.",
-      en: "Cinematic scroll transitions, 3D card perspective effects & interactive micro-interactions.",
+    deliverables: {
+      ms: [
+        "Borang ringkas untuk meminta satu jenis servis",
+        "Pengesahan input asas dan notifikasi",
+        "Bisnes mengesahkan tempahan secara manual",
+      ],
+      en: [
+        "Simple request form for one service",
+        "Basic validation and notification",
+        "The business confirms each booking manually",
+      ],
     },
-    price: 400,
   },
   {
-    id: "second-lang",
-    name: {
-      ms: "Bahasa Tambahan Laman Web (Klien)",
-      en: "Client Website Additional Language",
+    id: "dashboard-lite",
+    name: { ms: "Dashboard SME Lite", en: "SME Dashboard Lite" },
+    priceDisplay: "Dari RM999",
+    priceKind: "from",
+    scopeSummary: {
+      ms: "Satu modul operasi kecil · Satu peranan admin · Satu aliran rekod asas",
+      en: "One small operational module · One admin role · One basic record workflow",
     },
+    deliverables: {
+      ms: [
+        "Satu modul operasi kecil yang ditentukan bersama",
+        "Satu peranan admin dan satu aliran pengurusan rekod asas",
+        "Pengesahan asas dan antaramuka dashboard",
+        "Fungsi akhir ditetapkan dalam skop bertulis",
+      ],
+      en: [
+        "One small operational module defined together",
+        "One admin role and one basic record-management workflow",
+        "Basic validation and dashboard UI",
+        "Final functions are defined in a written scope",
+      ],
+    },
+  },
+  {
+    id: "advanced-system",
+    name: { ms: "Sistem Khas Lanjutan", en: "Advanced Custom System" },
+    priceDisplay: "Lebih RM2,099",
+    priceKind: "quote",
+    scopeSummary: {
+      ms: "Sebut harga selepas semakan keperluan, integrasi dan kerumitan fungsi",
+      en: "Custom quote after reviewing requirements, integrations and feature complexity",
+    },
+    deliverables: {
+      ms: [
+        "Keperluan dan aliran kerja ditentukan semasa discovery",
+        "Fungsi, integrasi dan harga dipersetujui dalam sebut harga bertulis",
+        "Tiada jumlah tetap sebelum skop diluluskan",
+      ],
+      en: [
+        "Requirements and workflows are scoped during discovery",
+        "Features, integrations and price are agreed in a written quotation",
+        "No fixed total is shown before scope approval",
+      ],
+    },
+  },
+];
+
+export const INCLUDED_FREEBIES = [
+  { ms: "Pautan media sosial", en: "Social media buttons" },
+  { ms: "SEO asas pada halaman", en: "Basic on-page SEO" },
+] as const;
+
+export const PRICING_ADDONS: PricingAddon[] = [
+  {
+    id: "extra-page",
+    name: { ms: "Halaman Standard Tambahan", en: "Extra Standard Page" },
     description: {
-      ms: "Sokongan dwibahasa (cth: BM + EN) untuk laman web anda dengan penukar bahasa lancar.",
-      en: "Bilingual support (e.g. BM + EN) for your website with seamless language toggle.",
+      ms: "Untuk halaman kandungan standard sahaja; bukan modul dashboard tambahan.",
+      en: "For standard content pages only; not additional dashboard modules.",
     },
-    price: 250,
+    price: 99,
+    group: "page",
+  },
+  {
+    id: "advanced-animation",
+    name: { ms: "Animasi Lanjutan", en: "Advanced Animation" },
+    description: {
+      ms: "Satu tahap animasi untuk hover, entrance dan peralihan yang dipersetujui.",
+      en: "One animation tier for agreed hover, entrance and transition effects.",
+    },
+    price: 99,
+    group: "animation",
+  },
+  {
+    id: "cinematic-animation",
+    name: { ms: "Animasi Sinematik", en: "Cinematic Animation" },
+    description: {
+      ms: "Alternatif kepada Animasi Lanjutan untuk satu urutan yang dipersetujui.",
+      en: "An alternative to Advanced Animation for one agreed sequence.",
+    },
+    price: 199,
+    group: "animation",
+  },
+];
+
+export const MAINTENANCE_OPTIONS: MaintenanceOption[] = [
+  {
+    id: "none",
+    name: { ms: "Tiada penjagaan tambahan", en: "No additional care" },
+    priceDisplay: { ms: "Pilihan", en: "Optional" },
+    cadence: "none",
+    description: {
+      ms: "Pakej penjagaan tidak ditambah secara automatik.",
+      en: "A care plan is not added automatically.",
+    },
+    includes: { ms: [], en: [] },
+    excludes: { ms: [], en: [] },
+  },
+  {
+    id: "pay-per-task",
+    name: { ms: "Bayar Ikut Tugasan", en: "Pay Per Task" },
+    priceDisplay: { ms: "Dari RM29 / tugasan", en: "From RM29 / task" },
+    cadence: "per-task",
+    description: {
+      ms: "Satu perubahan kecil pada teks, imej atau pautan; sekitar 15 minit maksimum.",
+      en: "One minor text, image or link change; approximately 15 minutes maximum.",
+    },
+    includes: {
+      ms: ["Satu perubahan kandungan kecil yang diminta"],
+      en: ["One requested minor content change"],
+    },
+    excludes: {
+      ms: ["Halaman/ciri baharu, reka bentuk semula, backend atau kerja kecemasan"],
+      en: ["New pages/features, redesign, backend changes or urgent troubleshooting"],
+    },
+  },
+  {
+    id: "website-care",
+    name: { ms: "Penjagaan Website", en: "Website Care" },
+    priceDisplay: { ms: "RM59 / bulan", en: "RM59 / month" },
+    cadence: "monthly",
+    description: {
+      ms: "Penjagaan pilihan untuk website; bukan hosting, uptime atau sokongan kecemasan.",
+      en: "Optional website care; it is not hosting, uptime coverage or emergency support.",
+    },
+    includes: {
+      ms: ["Satu pemeriksaan asas bulanan untuk pautan dan tindakan contact", "Satu kemas kini kecil sehingga sekitar 15 minit"],
+      en: ["One basic monthly check of links and contact actions", "One small content update of approximately 15 minutes"],
+    },
+    excludes: {
+      ms: ["Hosting/domain, suntingan tanpa had, ciri baharu atau sokongan 24/7"],
+      en: ["Hosting/domain, unlimited editing, new features or 24/7 support"],
+    },
+  },
+  {
+    id: "system-care",
+    name: { ms: "Penjagaan Sistem", en: "System Care" },
+    priceDisplay: { ms: "Dari RM149 / bulan", en: "From RM149 / month" },
+    cadence: "monthly",
+    description: {
+      ms: "Skop bulanan dipersetujui mengikut sistem; bukan jaminan keselamatan atau uptime menyeluruh.",
+      en: "Monthly scope is agreed for the system; this is not a full security or uptime guarantee.",
+    },
+    includes: {
+      ms: ["Satu semakan teknikal dan fungsi utama sebulan", "Semak status backup yang tersedia", "Sehingga sekitar 30 minit kerja penyelenggaraan ringan"],
+      en: ["One monthly technical review of key functions", "Review available backup status", "Up to approximately 30 minutes of light maintenance"],
+    },
+    excludes: {
+      ms: ["Modul baharu, pembaikan besar, migrasi kompleks, pemulihan insiden, 24/7, hosting/database/API"],
+      en: ["New modules, major repairs, complex migrations, incident recovery, 24/7, hosting/database/API charges"],
+    },
   },
 ];
 
@@ -167,13 +280,29 @@ export function getPackageById(id: string): PricingPackage | undefined {
   return PRICING_PACKAGES.find((pkg) => pkg.id === id);
 }
 
+export function getSystemOfferById(id: string): SystemOffer | undefined {
+  return SYSTEM_OFFERS.find((offer) => offer.id === id);
+}
+
 export function getAddonById(id: string): PricingAddon | undefined {
   return PRICING_ADDONS.find((addon) => addon.id === id);
 }
 
+export function normalizeFrontendAddonIds(selectedAddonIds: string[]): string[] {
+  const validIds = Array.from(new Set(selectedAddonIds)).filter((id) => getAddonById(id));
+  const hasCinematic = validIds.includes("cinematic-animation");
+  return validIds.filter((id) =>
+    id === "advanced-animation" ? !hasCinematic : true,
+  );
+}
+
+export function getMaintenanceOptionById(id: string): MaintenanceOption | undefined {
+  return MAINTENANCE_OPTIONS.find((option) => option.id === id);
+}
+
 export function calculateFrontendEstimate(
   packageId: string,
-  selectedAddonIds: string[] = []
+  selectedAddonIds: string[] = [],
 ): {
   basePrice: number;
   addonsTotal: number;
@@ -182,42 +311,26 @@ export function calculateFrontendEstimate(
   breakdown: Array<{ name: string; price: number }>;
 } {
   const pkg = getPackageById(packageId) || PRICING_PACKAGES[0];
-  const isFullStack = Boolean(pkg.isFullStack);
-
-  if (isFullStack) {
-    return {
-      basePrice: pkg.basePrice,
-      addonsTotal: 0,
-      total: pkg.basePrice,
-      isFullStack: true,
-      breakdown: [{ name: pkg.name.ms, price: pkg.basePrice }],
-    };
-  }
-
-  const basePrice = pkg.basePrice;
-  let addonsTotal = 0;
-  const breakdown: Array<{ name: string; price: number }> = [
-    { name: pkg.name.ms, price: basePrice },
+  const addonIds = normalizeFrontendAddonIds(selectedAddonIds);
+  const breakdown = [
+    { name: pkg.name.ms, price: pkg.basePrice },
+    ...addonIds.map((id) => {
+      const addon = getAddonById(id)!;
+      return { name: addon.name.ms, price: addon.price };
+    }),
   ];
-
-  for (const addonId of selectedAddonIds) {
-    const addon = getAddonById(addonId);
-    if (addon) {
-      addonsTotal += addon.price;
-      breakdown.push({ name: addon.name.ms, price: addon.price });
-    }
-  }
+  const addonsTotal = breakdown.slice(1).reduce((sum, item) => sum + item.price, 0);
 
   return {
-    basePrice,
+    basePrice: pkg.basePrice,
     addonsTotal,
-    total: basePrice + addonsTotal,
+    total: pkg.basePrice + addonsTotal,
     isFullStack: false,
     breakdown,
   };
 }
 
 export function formatMYR(amount: number): string {
-  if (isNaN(amount)) return "RM0";
+  if (!Number.isFinite(amount)) return "RM0";
   return `RM${amount.toLocaleString("en-MY")}`;
 }

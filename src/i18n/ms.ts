@@ -35,7 +35,7 @@ export const msTranslations = {
     pricingTeaser: {
       badge: "PENETAPAN HARGA TELUS",
       title: "PENGIRA ANGGARAN PRICING STUDIO",
-      desc: "Ketahui kos pelaburan laman web anda secara telus. Pakej frontend bermula RM645.",
+      desc: "Pilih pakej website dari RM299, semak skop dan minta sebut harga untuk sistem bisnes.",
       link: "Kira Anggaran Kos",
     },
     coachingTeaser: {

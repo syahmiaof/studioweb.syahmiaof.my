@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { PortfolioView } from "@/components/pages/PortfolioView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Portfolio & Eksperimen Digital — SYAHMIAOF STUDIO",
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PortfolioPage() {
-  return <PortfolioView locale="ms" />;
+export default function PortfolioPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("ms", "portfolio", searchParams);
 }

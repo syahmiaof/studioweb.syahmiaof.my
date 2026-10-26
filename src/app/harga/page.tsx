@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { PricingView } from "@/components/pages/PricingView";
+import { redirectLegacySection, type LegacySectionPageProps } from "@/lib/routing/legacySectionRedirect";
 
 export const metadata: Metadata = {
   title: "Pricing Studio & Pengira Anggaran — SYAHMIAOF STUDIO",
   description:
-    "Kalkulator sebut harga telus untuk laman web anda. Pakej Frontend bermula RM645, sistem khas bermula RM3,250.",
+    "Pakej website dari RM299, sistem tempahan RM499 dan sebut harga untuk sistem bisnes tersuai.",
   alternates: {
     canonical: "https://studio.syahmiaof.my/harga",
     languages: {
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PricingPage() {
-  return <PricingView locale="ms" />;
+export default function PricingPage({ searchParams }: LegacySectionPageProps) {
+  return redirectLegacySection("ms", "harga", searchParams);
 }

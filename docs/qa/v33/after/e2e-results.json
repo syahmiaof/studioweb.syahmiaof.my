@@ -1,0 +1,225 @@
+{
+  "base": "http://localhost:3461",
+  "checks": [
+    "Malay homepage returns one rendered page",
+    "Hero copy uses the approved V3.3 headline",
+    "Hero CTAs target service and contact sections",
+    "Professional title sits above the existing wordmark",
+    "One header and footer wrap the whole experience",
+    "All seven real sections render in required order",
+    "Legacy homepage teaser sections are removed",
+    "Only the hero is an H1",
+    "Anchor utama scrolls with sticky-header offset and active indicator",
+    "Anchor servis scrolls with sticky-header offset and active indicator",
+    "Anchor portfolio scrolls with sticky-header offset and active indicator",
+    "Anchor harga scrolls with sticky-header offset and active indicator",
+    "Anchor coaching scrolls with sticky-header offset and active indicator",
+    "Anchor tentang scrolls with sticky-header offset and active indicator",
+    "Anchor hubungi scrolls with sticky-header offset and active indicator",
+    "Browser back and forward restore anchor history",
+    "Legacy route redirects to its section and preserves quote context",
+    "Legacy contact deep link lands on contact with system context",
+    "WhatsApp enquiry points to the configured wa.me number",
+    "Contact privacy purpose remains visible",
+    "Landing package calculates RM299 and keeps section hash",
+    "Business plus page calculates RM598",
+    "Animation tiers stay exclusive and cinematic totals RM698",
+    "Website Care is separate from one-time total",
+    "Quote handoff carries package, add-on and care context",
+    "Full-Stack coaching shows RM99 for two hours",
+    "Coaching handoff carries selected package",
+    "Refreshing a direct section hash restores its scroll position",
+    "BM/EN switch preserves current section and renders English copy",
+    "Empty contact form is blocked before API submission",
+    "Unconfigured inquiry provider remains honestly disclosed as HTTP 503",
+    "ms 1440px one-page layout fits without horizontal overflow",
+    "en 1440px one-page layout fits without horizontal overflow",
+    "ms 768px one-page layout fits without horizontal overflow",
+    "en 768px one-page layout fits without horizontal overflow",
+    "ms 390px one-page layout fits without horizontal overflow",
+    "ms mobile menu opens at 390px",
+    "ms mobile anchor closes menu and reaches pricing",
+    "en 390px one-page layout fits without horizontal overflow",
+    "en mobile menu opens at 390px",
+    "en mobile anchor closes menu and reaches pricing",
+    "ms 360px one-page layout fits without horizontal overflow",
+    "ms mobile menu opens at 360px",
+    "ms mobile anchor closes menu and reaches pricing",
+    "en 360px one-page layout fits without horizontal overflow",
+    "en mobile menu opens at 360px",
+    "en mobile anchor closes menu and reaches pricing",
+    "GSAP section entrances complete during forward scroll",
+    "No uncaught browser runtime errors"
+  ],
+  "responsive": [
+    {
+      "locale": "ms",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "h1": [
+        {
+          "left": 56,
+          "right": 772
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "h1": [
+        {
+          "left": 56,
+          "right": 772
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "ms",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "h1": [
+        {
+          "left": 28,
+          "right": 740
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "h1": [
+        {
+          "left": 28,
+          "right": 740
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "ms",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": [
+        {
+          "left": 20,
+          "right": 370
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": [
+        {
+          "left": 20,
+          "right": 370
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "ms",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "h1": [
+        {
+          "left": 20,
+          "right": 340
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "h1": [
+        {
+          "left": 20,
+          "right": 340
+        }
+      ],
+      "sectionIds": [
+        "utama",
+        "servis",
+        "portfolio",
+        "harga",
+        "coaching",
+        "tentang",
+        "hubungi"
+      ]
+    }
+  ],
+  "errors": []
+}

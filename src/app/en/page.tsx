@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { HomeView } from "@/components/pages/HomeView";
+import { StudioJourney } from "@/components/pages/StudioJourney";
 
 export const metadata: Metadata = {
-  title: "SYAHMIAOF STUDIO — WEB THAT IS BEYOND ORDINARY",
+  title: "Freelance Web Services — SYAHMIAOF STUDIO",
   description:
-    "Web engineering studio led by Syahmi AOF. High-impact Digital Brutalism web development, extreme speed & bespoke systems.",
+    "Premium, interactive and responsive landing pages, business websites and custom systems by Syahmi AOF.",
   alternates: {
     canonical: "https://studio.syahmiaof.my/en",
     languages: {
@@ -15,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function EnglishHomePage() {
-  return <HomeView locale="en" />;
+  return <StudioJourney locale="en" />;
 }

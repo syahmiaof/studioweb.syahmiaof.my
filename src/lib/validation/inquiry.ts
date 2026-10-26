@@ -35,7 +35,17 @@ export const InquirySchema = z.object({
   addons: z.array(z.string()).optional(),
   estimatedTotal: z.number().optional(),
   coachingTopic: z.string().optional(),
-  coachingDuration: z.enum(["60", "90"]).optional(),
+  coachingDuration: z.enum(["60", "90", "120"]).optional(),
+  coachingPackageId: z.enum([
+    "basic-frontend",
+    "advanced-frontend",
+    "full-stack-system",
+  ]).optional(),
+  maintenanceId: z.enum([
+    "pay-per-task",
+    "website-care",
+    "system-care",
+  ]).optional(),
   honeypot: z.string().max(0, { message: "Aktiviti bot dikesan." }).optional(),
 });
 
