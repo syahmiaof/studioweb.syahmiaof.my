@@ -116,9 +116,11 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
   useEffect(() => {
     let cancelled = false;
     fetch("/api/projects", { cache: "no-store" })
-      .then((response) => (response.ok ? response.json() : { projects: [] }))
-      .then((data: { projects?: ProjectItem[] }) => {
-          if (!cancelled && Array.isArray(data.projects)) setProjects(data.projects);
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: { projects?: ProjectItem[] } | null) => {
+        if (!cancelled && data && Array.isArray(data.projects) && data.projects.length > 0) {
+          setProjects(data.projects);
+        }
       })
       .catch(() => undefined);
     return () => { cancelled = true; };

@@ -25,3 +25,5 @@ Thumbs.db
 .env*.local
 .next-dev/
 data/projects.local.json
+
+.vercel

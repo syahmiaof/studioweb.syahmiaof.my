@@ -151,18 +151,28 @@ function slugify(value: string) {
 
 export async function GET() {
   try {
-    const databaseProjects = await fetchDatabaseProjects();
-    if (databaseProjects) {
-      const localProjects = localProjectPathAvailable() ? await readProjects() : [];
-      const seen = new Set(databaseProjects.map((project) => project.id));
+    const databaseProjects = await fetchDatabaseProjects().catch(() => null);
+    const localProjects = localProjectPathAvailable() ? await readProjects().catch(() => []) : [];
+    const dynamicList = [...(databaseProjects || []), ...localProjects];
+
+    if (dynamicList.length > 0) {
+      const dynamicIds = new Set(dynamicList.map((project) => project.id));
+      const combined = [...dynamicList, ...PROJECTS.filter((project) => !dynamicIds.has(project.id))];
       return NextResponse.json(
-        { projects: [...databaseProjects, ...localProjects.filter((project) => !seen.has(project.id))], source: "supabase" },
+        { projects: combined, source: databaseProjects ? "supabase" : "local" },
         { headers: { "Cache-Control": "no-store, max-age=0" } },
       );
     }
-    return NextResponse.json({ projects: await readProjects(), source: "local" }, { headers: { "Cache-Control": "no-store, max-age=0" } });
+
+    return NextResponse.json(
+      { projects: PROJECTS, source: "static" },
+      { headers: { "Cache-Control": "no-store, max-age=0" } },
+    );
   } catch {
-    return NextResponse.json({ message: "Portfolio database is unavailable." }, { status: 502, headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json(
+      { projects: PROJECTS, source: "fallback" },
+      { headers: { "Cache-Control": "no-store, max-age=0" } },
+    );
   }
 }
 

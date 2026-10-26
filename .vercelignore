@@ -1,0 +1,8 @@
+# Ignore heavy QA screenshots and non-runtime files from Vercel deployment
+docs/
+design/
+tests/
+scripts/
+supabase/
+.agents/
+*.md
