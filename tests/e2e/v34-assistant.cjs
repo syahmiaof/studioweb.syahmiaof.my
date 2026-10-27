@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const BASE = process.env.BASE_URL || "http://127.0.0.1:3462";
-const SECTION_IDS = ["home", "tentang", "servis", "portfolio", "harga", "coaching", "hubungi"];
+const SECTION_IDS = ["home", "tentang", "portfolio", "servis", "harga", "coaching", "hubungi"];
 const VIEWPORTS = [[1440, 900], [1024, 900], [768, 1024], [390, 844], [375, 812]];
 const OUT = path.resolve("docs/qa/v34-ui/after");
 const results = { base: BASE, checks: [], responsive: [], errors: [], screenshots: [] };

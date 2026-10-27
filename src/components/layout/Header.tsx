@@ -9,8 +9,8 @@ import type { Locale } from "@/lib/types";
 const SECTION_IDS = [
   "home",
   "tentang",
-  "servis",
   "portfolio",
+  "servis",
   "harga",
   "coaching",
   "hubungi",
@@ -31,8 +31,8 @@ function HeaderBar({ locale }: { locale: Locale }) {
     label: [
       t.nav.home,
       t.nav.about,
-      t.nav.services,
       t.nav.portfolio,
+      t.nav.services,
       t.nav.pricing,
       t.nav.coaching,
       t.nav.contact,

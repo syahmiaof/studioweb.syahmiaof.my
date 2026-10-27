@@ -227,7 +227,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
       <section className="studio-scene portfolio-scene" id="portfolio">
         <Architecture variant="portfolio" priority={!embedded} />
         <div className="portfolio-copy">
-          <SceneLabel number="04">PORTFOLIO</SceneLabel>
+          <SceneLabel number="03">PORTFOLIO</SceneLabel>
           <DisplayTitle level={2} lines={locale === "ms" ? ["IDEA JADI", "REALITI."] : ["IDEAS MADE", "REAL."]} />
           <p className="scene-intro">
             {c(

@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 
 const BASE = process.env.BASE_URL || "http://localhost:3461";
-const SECTION_IDS = ["home", "tentang", "servis", "portfolio", "harga", "coaching", "hubungi"];
+const SECTION_IDS = ["home", "tentang", "portfolio", "servis", "harga", "coaching", "hubungi"];
 const VIEWPORTS = [[1440, 900], [768, 1024], [390, 844], [360, 800]];
 const results = { base: BASE, checks: [], responsive: [], errors: [] };
 

@@ -16,8 +16,8 @@ export function StudioJourney({ locale }: { locale: Locale }) {
       <StudioPage locale={locale} motion={false}>
         <HomeView locale={locale} embedded />
         <AboutView locale={locale} embedded />
-        <ServicesView locale={locale} embedded />
         <PortfolioView locale={locale} embedded />
+        <ServicesView locale={locale} embedded />
         <PricingView locale={locale} embedded />
         <CoachingView locale={locale} embedded />
         <ContactView locale={locale} embedded />
