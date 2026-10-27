@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import type { Locale, ServiceCategory } from "@/lib/types";
 import { validateInquiry } from "@/lib/validation/inquiry";
+import { buildWhatsAppUrl } from "@/lib/assistant/lead";
+import { buildInquiryWhatsAppMessage } from "@/lib/whatsapp/inquiry";
 import {
   calculateFrontendEstimate,
   formatMYR,
@@ -33,7 +35,7 @@ import {
 const services = ["website-ui", "full-stack", "coaching"] as const;
 function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: boolean }) {
   const params = useSearchParams(),
-    c = (ms: string, en: string) => copy(locale, ms, en);
+    c = (ms: string, en: string, zh?: string) => copy(locale, ms, en, zh);
   const paramService = params.get("service");
   const initialService = services.includes(paramService as ServiceCategory)
     ? (paramService as ServiceCategory)
@@ -44,8 +46,7 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
     [message, setMessage] = useState(""),
     [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({}),
-    [busy, setBusy] = useState(false),
-    [fallback, setFallback] = useState(""),
+    [whatsappUrl, setWhatsappUrl] = useState(""),
     [notice, setNotice] = useState("");
   useEffect(() => {
     setService(initialService);
@@ -78,35 +79,17 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
   ]
     .filter(Boolean)
     .join("\n");
-  const body = [
-    c("Nama: ", "Name: ") + name,
-    c("Hubungi: ", "Contact: ") + contact,
-    c("Servis: ", "Service: ") + service,
-    contextText,
-    "",
-    message,
-  ]
-    .filter(Boolean)
-    .join("\n");
   const whatsappBody = [
     c("Pertanyaan SYAHMIAOF Studio", "SYAHMIAOF Studio enquiry"),
     c("Servis: ", "Service: ") + service,
     contextText,
     c("Saya ingin bertanya tentang slot dan langkah seterusnya.", "I would like to ask about availability and next steps."),
   ].filter(Boolean).join("\n");
-  const mailto =
-    "mailto:hello@syahmiaof.my?subject=" +
-    encodeURIComponent(c("Pertanyaan Studio: ", "Studio Inquiry: ") + name) +
-    "&body=" +
-    encodeURIComponent(body);
-  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "60107965236").replace(
-    /[+\s-]/g,
-    "",
-  );
+  const number = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "60107965236").replace(/\D/g, "");
   const whatsappReady = /^[1-9]\d{7,14}$/.test(number);
-  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFallback("");
+    setWhatsappUrl("");
     setNotice("");
     const payload = {
       service,
@@ -144,35 +127,37 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
       return;
     }
     setErrors({});
-    setBusy(true);
     try {
-      const response = await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const summary = buildInquiryWhatsAppMessage({
+        locale,
+        name,
+        contact,
+        service,
+        message,
+        packageDetail: quoteActive
+          ? `${localized(pkg!.name, locale)} — ${formatMYR(total!)} ${c("(sekali bayar)", "(one-time)", "（一次性）")}`
+          : systemOfferActive
+            ? `${localized(systemOffer!.name, locale)} — ${localizedPriceLabel(systemOffer!.priceDisplay, locale)}`
+            : undefined,
+        addons: quoteActive ? addons.map((id) => localized(PRICING_ADDONS.find((item) => item.id === id)!.name, locale)) : undefined,
+        maintenance: maintenanceActive ? `${localized(maintenance!.name, locale)} — ${localized(maintenance!.priceDisplay, locale)}` : undefined,
+        coaching: coachingPackage ? `${localized(coachingPackage.name, locale)} — RM${coachingPackage.price} / ${coachingPackage.durationMinutes} min` : undefined,
+        project: project?.title,
       });
-      const result = await response.json();
-      if (response.ok && result.success === true) {
-        setNotice(c("Pertanyaan berjaya dihantar.", "Inquiry delivered."));
-      } else {
-        setNotice(
-          c(
-            "Pertanyaan belum dihantar. Buka aplikasi emel untuk menghantarnya kepada kami.",
-            "Your inquiry has not been sent. Open your email app to send it to us.",
-          ),
-        );
-        setFallback(mailto);
-      }
+      const url = buildWhatsAppUrl(number, summary);
+      setWhatsappUrl(url);
+      window.open(url, "_blank", "noopener,noreferrer");
+      setNotice(c(
+        "Mesej siap. Semak di WhatsApp dan tekan Hantar. Jika tab tak terbuka, guna pautan di bawah.",
+        "Your message is ready. Review it in WhatsApp and press Send. If the tab did not open, use the link below.",
+        "消息已准备好。请在 WhatsApp 检查并点击发送。如果未打开新标签页，请使用下方链接。",
+      ));
     } catch {
-      setNotice(
-        c(
-          "Sambungan gagal. Anda masih boleh teruskan melalui emel.",
-          "Connection failed. You can still continue by email.",
-        ),
-      );
-      setFallback(mailto);
-    } finally {
-      setBusy(false);
+      setNotice(c(
+        "Pautan WhatsApp belum tersedia. Sila semak nombor studio.",
+        "WhatsApp is not available. Please check the studio number.",
+        "WhatsApp 链接暂不可用，请检查工作室号码。",
+      ));
     }
   };
   return (
@@ -393,24 +378,23 @@ function ContactForm({ locale, embedded = false }: { locale: Locale; embedded?: 
                 </p>
               )}
             </div>
-            <button className="studio-button" type="submit" disabled={busy}>
-              {busy
-                ? c("Menyemak…", "Checking…")
-                : c("Sediakan Pertanyaan", "Prepare Inquiry")}
+            <button className="studio-button" type="submit">
+              {c("Terus ke WhatsApp", "Continue to WhatsApp", "前往 WhatsApp")}
               <ArrowRight />
             </button>
             <p className="form-note">
               {c(
-                "Penghantaran terus belum diaktifkan. Semak butiran dan teruskan melalui aplikasi emel anda.",
-                "Direct delivery is not enabled. Check your details and continue through your email app.",
+                "Butiran borang akan disediakan sebagai mesej WhatsApp. Tiada apa dihantar sehingga anda tekan Hantar di WhatsApp.",
+                "Your form details will be prepared as a WhatsApp message. Nothing is sent until you press Send in WhatsApp.",
+                "表单内容会整理成 WhatsApp 消息。只有在 WhatsApp 点击发送后才会送出。",
               )}
             </p>
             <div aria-live="polite">
               {notice && <p className="form-notice">{notice}</p>}
-              {fallback && (
-                <a className="studio-button button-secondary" href={fallback}>
-                  <Mail />
-                  {c("Buka Emel untuk Hantar", "Open Email to Send")}
+              {whatsappUrl && (
+                <a className="studio-button button-secondary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle />
+                  {c("Buka WhatsApp semula", "Open WhatsApp again", "重新打开 WhatsApp")}
                 </a>
               )}
             </div>

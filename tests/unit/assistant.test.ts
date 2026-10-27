@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { answerFaq, FAQ_KNOWLEDGE, resolveFaqIntent } from "../../src/lib/assistant/faq";
 import { buildLeadSummary, buildWhatsAppUrl, getLeadPackages } from "../../src/lib/assistant/lead";
 import { buildAssistantSystemPrompt, getLlmConfig, isPriceSensitive } from "../../src/lib/assistant/llm";
+import { answerUnmatchedPriceQuestion } from "../../src/lib/assistant/pricing";
 import { HERO_JOKES } from "../../src/content/hero-jokes";
 import { PROJECTS } from "../../src/content/projects";
 
@@ -41,7 +42,18 @@ describe("SYAHMIAOF Assistant FAQ", () => {
     expect(answerFaq("最便宜的网站配套多少钱", "zh-Hans")?.answer).toContain("RM299");
     expect(answerFaq("RM499 Business Website 包含什么", "zh-Hans")?.answer).toContain("RM499");
     expect(answerFaq("一对一辅导多少钱", "zh-Hans")?.answer).toContain("RM39");
-    expect(FAQ_KNOWLEDGE).toHaveLength(28);
+    expect(FAQ_KNOWLEDGE).toHaveLength(31);
+  });
+
+  it("answers who Syahmi is from the approved About copy in every locale", () => {
+    expect(answerFaq("siapa syahmi", "ms")?.answer).toContain("TVETMARA Besut");
+    expect(answerFaq("who is syahmi", "en")?.answer).toContain("TVETMARA Besut");
+    expect(answerFaq("Syahmi 是谁", "zh-Hans")?.answer).toContain("TVETMARA Besut");
+  });
+
+  it("handles broad first-time buyer questions without a generic fallback", () => {
+    expect(answerFaq("berapa harga website", "ms")?.answer).toContain("RM299");
+    expect(answerFaq("what services do you offer", "en")?.answer).toContain("full-stack");
   });
 
   it("answers project-count questions from the Nemo portfolio records", () => {
@@ -90,6 +102,13 @@ describe("SYAHMIAOF Assistant FAQ", () => {
     if (original !== undefined) process.env.STUDIO_ASSISTANT_LLM_ENABLED = original;
   });
 
+  it("answers unmatched price questions from canonical prices and conversation context", () => {
+    expect(answerUnmatchedPriceQuestion("berapa kos buat 10 halaman?", "ms")).toContain("RM299");
+    expect(answerUnmatchedPriceQuestion("berapa?", "ms", ["Saya nak coaching React"])).toContain("RM99");
+    expect(answerUnmatchedPriceQuestion("Can I get a discount?", "en")).toContain("No official discount");
+    expect(answerUnmatchedPriceQuestion("系统多少钱？", "zh-Hans")).toContain("RM499");
+  });
+
   it("keeps provider calls disabled in production until shared rate limiting exists", () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("STUDIO_ASSISTANT_LLM_ENABLED", "true");
@@ -104,5 +123,8 @@ describe("SYAHMIAOF Assistant FAQ", () => {
     expect(prompt).toContain("Do not invent or estimate prices");
     expect(prompt).toContain("Landing Page starts at RM299");
     expect(prompt).toContain("Never claim to be Syahmi");
+    expect(prompt).toContain("TVETMARA Besut");
+    expect(prompt).toContain("Nemo");
+    expect(prompt).toContain("WhatsApp draft");
   });
 });

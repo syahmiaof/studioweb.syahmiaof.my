@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -384,13 +384,26 @@ export function ActionLink({
   secondary?: boolean;
   blue?: boolean;
 }) {
+  const className = `studio-button ${secondary ? "button-secondary" : ""} ${blue ? "button-blue" : ""}`;
+  const content = <>{children}<ArrowRight size={22} aria-hidden="true" /></>;
+  const navigateWithContext = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const destination = new URL(href, window.location.href);
+    if (destination.origin !== window.location.origin || destination.pathname !== window.location.pathname) return;
+    event.preventDefault();
+    window.history.pushState(null, "", destination.pathname + destination.search + destination.hash);
+    const target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+    target?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
+  };
+  if (href.includes("?")) {
+    return <a href={href} className={className} onClick={navigateWithContext}>{content}</a>;
+  }
   return (
     <Link
       href={href}
-      className={`studio-button ${secondary ? "button-secondary" : ""} ${blue ? "button-blue" : ""}`}
+      className={className}
     >
-      {children}
-      <ArrowRight size={22} aria-hidden="true" />
+      {content}
     </Link>
   );
 }

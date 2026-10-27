@@ -25,31 +25,10 @@ function greeting(locale: Locale): string {
     : "Hi! 👋 I'm MIBOT, your virtual assistant. Need help choosing a website package, checking prices or discussing your project?";
 }
 
-const POPUP_MESSAGES: Record<Locale, string[]> = {
-  ms: [
-    "Hai! 👋 Nak tanya apa-apa? Saya boleh bantu.",
-    "Nak semak anggaran bajet atau pakej website? 💰",
-    "Tertarik dengan projek macam Lamborghini & Uber Pokmi? 🚀",
-    "Berminat coaching 1-on-1 Web Dev dengan Syahmi? 👨‍💻",
-    "Perlukan sebut harga pantas dalam 5 minit? 📲",
-    "Website bisnes kau slow atau nampak lama? ⚡ MIBOT sedia tolong!",
-  ],
-  en: [
-    "Hi! 👋 Need any help? I'm here for you.",
-    "Want to check website packages or budget estimates? 💰",
-    "Curious about projects like Lamborghini & Uber Pokmi? 🚀",
-    "Looking for 1-on-1 coaching on Web Dev with Syahmi? 👨‍💻",
-    "Need a quick project quote in under 5 minutes? 📲",
-    "Is your website feeling slow or outdated? ⚡",
-  ],
-  "zh-Hans": [
-    "嗨! 👋 有任何疑问吗？我随时可以协助你。",
-    "想了解网站开发配套或预算报价吗？💰",
-    "对兰博基尼或 Uber Pokmi 等项目感兴趣？🚀",
-    "想与 Syahmi 进行 Web 开发 1 对 1 指导？👨‍💻",
-    "需要 5 分钟内快速获取项目报价方案吗？📲",
-    "网站加载慢或设计过时？⚡ MIBOT 帮你免费评估！",
-  ],
+const POPUP_MESSAGE: Record<Locale, string> = {
+  ms: "Hai! Nak tanya tentang servis, harga atau Syahmi?",
+  en: "Hi! Ask me about services, pricing or Syahmi.",
+  "zh-Hans": "你好！可以问我服务、价格或 Syahmi 的介绍。",
 };
 
 
@@ -88,7 +67,6 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const [editableSummary, setEditableSummary] = useState("");
   const [notice, setNotice] = useState("");
   const [bubble, setBubble] = useState(false);
-  const [bubbleIndex, setBubbleIndex] = useState(0);
     const launcherRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -105,7 +83,9 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
     send: isEnglish ? "Send message" : isChinese ? "发送消息" : "Hantar mesej",
     close: isEnglish ? "Close MIBOT" : isChinese ? "关闭 MIBOT" : "Tutup MIBOT",
     chips: isEnglish ? ["Website Pricing", "Full-Stack System", "1:1 Coaching", "Start a Project"] : isChinese ? ["网站价格", "全栈系统", "一对一辅导", "开始项目"] : ["Harga Website", "Sistem Full-Stack", "Coaching 1:1", "Bincang Projek"],
-    fallback: isEnglish ? "I couldn't match that to an approved FAQ. I won't guess. You can rephrase it or prepare a short WhatsApp enquiry." : isChinese ? "这个问题不在已确认的常见问题中，我不会猜测答案。你可以换个说法，或准备 WhatsApp 咨询。" : "Soalan ini tak sepadan dengan FAQ yang disahkan. Aku tak akan teka jawapan. Cuba ayat lain atau sediakan ringkasan pertanyaan WhatsApp.",
+    fallback: isEnglish ? "I don't have enough verified detail to answer that precisely. Ask about a service, package, coaching or project, or use the WhatsApp form for your specific brief." : isChinese ? "我没有足够的已确认资料来准确回答。你可以问服务、配套、辅导或项目；具体需求可通过 WhatsApp 表单说明。" : "Aku belum ada fakta cukup untuk jawab tepat. Cuba tanya tentang servis, pakej, coaching atau projek; untuk skop khusus, guna borang WhatsApp.",
+    unavailable: isEnglish ? "My AI connection is temporarily unavailable. The package buttons still work, or you can continue through WhatsApp." : isChinese ? "AI 连接暂时不可用。你仍可使用配套按钮，或通过 WhatsApp 继续。" : "Sambungan AI terganggu sekejap. Butang pakej masih berfungsi, atau teruskan melalui WhatsApp.",
+    rateLimited: isEnglish ? "Too many questions in a minute. Give me a moment, then try again or use the package buttons." : isChinese ? "一分钟内问题太多，请稍后再试，或使用配套按钮。" : "Terlalu banyak soalan dalam seminit. Cuba semula sekejap lagi atau guna butang pakej.",
     handoff: isEnglish ? "Prepare WhatsApp summary" : isChinese ? "准备 WhatsApp 摘要" : "Sediakan ringkasan WhatsApp",
     whatsApp: isEnglish ? "Continue in WhatsApp" : isChinese ? "继续使用 WhatsApp" : "Sambung melalui WhatsApp",
     leadLabel: isEnglish ? "PROJECT BRIEF" : isChinese ? "项目简介" : "RINGKASAN PROJEK",
@@ -120,25 +100,21 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
 
     if (open) {
       setBubble(false);
+      try { sessionStorage.setItem("mibot-greeting-dismissed", "1"); } catch {}
       return;
     }
 
-    let timer: number;
-    if (bubble) {
-      // Stay visible for 5 seconds, then hide
-      timer = window.setTimeout(() => {
+    const timer = window.setTimeout(() => {
+      if (bubble) {
         setBubble(false);
-      }, 5000);
-    } else {
-      // Stay hidden for 3 seconds gap, then show next popup message
-      timer = window.setTimeout(() => {
-        setBubbleIndex((prev) => (prev + 1) % (POPUP_MESSAGES[locale]?.length || 1));
+        try { sessionStorage.setItem("mibot-greeting-dismissed", "1"); } catch {}
+      } else {
         setBubble(true);
-      }, 3000);
-    }
+      }
+    }, bubble ? 6000 : 1500);
 
     return () => window.clearTimeout(timer);
-  }, [bubble, open, locale]);
+  }, [bubble, open]);
 
   useEffect(() => {
     setMessages([{ id: Date.now(), role: "assistant", content: greeting(locale) }]);
@@ -223,8 +199,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
     setInput(""); setNotice(""); addMessage("user", text);
     const match = answerFaq(text, locale);
     if (match) { addMessage("assistant", match.answer); return; }
-    if (!llmEnabled) { addMessage("assistant", labels.fallback, true); return; }
-        setPending(true);
+    setPending(true);
     try {
       const history = messages.concat([{ id: Date.now(), role: "user" as const, content: text }])
         .filter((item) => item.role === "user" || item.content !== greeting(locale))
@@ -235,9 +210,11 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
       });
       const payload = await response.json() as { answer?: string; error?: string };
       if (response.ok && payload.answer) addMessage("assistant", payload.answer);
+      else if (response.status === 429) addMessage("assistant", labels.rateLimited);
+      else if (payload.error === "provider_unavailable") addMessage("assistant", labels.unavailable, true);
       else addMessage("assistant", labels.fallback, true);
     } catch {
-      addMessage("assistant", labels.fallback, true);
+      addMessage("assistant", labels.unavailable, true);
     } finally { setPending(false); }
   }
 
@@ -302,12 +279,13 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
                 {message.handoff && <button type="button" className="assistant-inline-action" onClick={beginLead}>{labels.handoff}<ArrowRight size={16} /></button>}
               </div>
             ))}
-            {messages.length === 1 && !lead && (
+            {!lead && (
               <div className="assistant-quick-actions" aria-label={isEnglish ? "Suggested questions" : isChinese ? "推荐问题" : "Soalan cadangan"}>
                 {labels.chips.map((label, index) => <button key={label} type="button" onClick={() => onQuickAction(index)}>{label}<ArrowRight size={14} /></button>)}
               </div>
             )}
             {pending && <p className="assistant-typing" role="status">{isEnglish ? "Checking the approved information…" : isChinese ? "正在检查已确认的信息……" : "Semak maklumat yang diluluskan…"}</p>}
+            {lead && <button type="button" className="assistant-back-action" onClick={() => { setLead(null); setNotice(""); }}>{isEnglish ? "Cancel project brief" : isChinese ? "取消项目简介" : "Batal ringkasan projek"}</button>}
             {lead?.step === "service" && (
               <div className="assistant-lead-step">
                 <p>{isEnglish ? "01 / Which service are you looking for?" : isChinese ? "01 / 你正在寻找哪项服务？" : "01 / Servis apa yang kau cari?"}</p>
@@ -323,6 +301,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
                   {packageOptions.map((item) => <button type="button" key={item.id} onClick={() => choosePackage(item)}><span>{item.label}<small>{item.price}</small></span><ArrowRight size={16} /></button>)}
                   <button type="button" onClick={() => choosePackage()}>{isEnglish ? "Not sure yet / custom quote" : isChinese ? "尚未确定 / 定制报价" : "Belum pasti / sebut harga khas"}<ArrowRight size={16} /></button>
                 </div>
+                <button type="button" className="assistant-back-action" onClick={() => setLead({ step: "service" })}>{isEnglish ? "Change service" : isChinese ? "更改服务" : "Ubah servis"}</button>
               </div>
             )}
             {lead?.step === "details" && (
@@ -340,6 +319,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
                   {MAINTENANCE_OPTIONS.filter((item) => item.id !== "none").map((item) => <option key={item.id} value={item.id}>{localized(item.name, locale)} — {localized(item.priceDisplay, locale)}</option>)}
                 </select>
                 <button className="assistant-primary-action" type="submit">{isEnglish ? "Review summary" : isChinese ? "检查摘要" : "Semak ringkasan"}<ArrowRight size={17} /></button>
+                <button type="button" className="assistant-back-action" onClick={() => setLead({ step: "package", service: lead.service })}>{isEnglish ? "Change package" : isChinese ? "更改配套" : "Ubah pakej"}</button>
               </form>
             )}
             {lead?.step === "review" && (
@@ -358,7 +338,9 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
               <textarea value={input} maxLength={1200} rows={1} onChange={(event) => setInput(event.target.value)} onKeyDown={onComposerKeyDown} placeholder={labels.placeholder} aria-label={isEnglish ? "Your question" : isChinese ? "你的问题" : "Soalan anda"} />
               <button className="assistant-send" type="submit" disabled={!input.trim() || pending} aria-label={labels.send}><Send size={20} /></button>
             </form>
-            <p>{isEnglish ? "FAQ mode · No chat history is saved." : isChinese ? "FAQ 模式 · 不会保存聊天记录。" : "Mod FAQ · Sejarah chat tidak disimpan."}</p>
+            <p>{llmEnabled
+              ? (isEnglish ? "FAQ + AI · Do not share sensitive information." : isChinese ? "常见问题 + AI · 请勿分享敏感信息。" : "FAQ + AI · Jangan kongsi maklumat sulit.")
+              : (isEnglish ? "FAQ mode · No chat history is saved." : isChinese ? "FAQ 模式 · 不会保存聊天记录。" : "Mod FAQ · Sejarah chat tidak disimpan.")}</p>
           </footer>
         </section>
       )}
@@ -371,16 +353,8 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
             onClick={() => { setBubble(false); setOpen(true); }}
           >
             <span className="mibot-greeting-text">
-              {POPUP_MESSAGES[locale]?.[bubbleIndex] || POPUP_MESSAGES.ms[0]}
+              {POPUP_MESSAGE[locale]}
             </span>
-            <div className="mibot-greeting-dots" aria-hidden="true">
-              {(POPUP_MESSAGES[locale] || POPUP_MESSAGES.ms).map((_, idx) => (
-                <span
-                  key={idx}
-                  className={"mibot-greeting-dot" + (idx === bubbleIndex ? " is-active" : "")}
-                />
-              ))}
-            </div>
           </button>
           <button
             className="mibot-greeting-dismiss"

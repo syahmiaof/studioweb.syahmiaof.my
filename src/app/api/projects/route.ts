@@ -53,16 +53,16 @@ type PortfolioProjectRow = {
 };
 
 function sessionSecret() {
-  return process.env.PORTFOLIO_ADMIN_PASSWORD || "Syahanim_19";
+  return process.env.PORTFOLIO_ADMIN_PASSWORD?.trim() || "";
 }
 
 function writeTokenSecret() {
-  return process.env.SUPABASE_PROJECT_WRITE_TOKEN || "U7wRQ9iQn7xP6yePimiHRjcxvgmUI4ftu2Kn5SJblGc";
+  return process.env.SUPABASE_PROJECT_WRITE_TOKEN?.trim() || "";
 }
 
 function supabaseConfig() {
-  const url = (process.env.SUPABASE_URL || "https://fgslccypirnktvimjtpa.supabase.co").replace(/\/$/, "");
-  const key = process.env.SUPABASE_PUBLISHABLE_KEY || "sb_publishable_B0G8L1LBwgFkKavknLzmmQ_tZOGC7gy";
+  const url = (process.env.SUPABASE_URL || "").replace(/\/$/, "");
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY || "";
   return url && key ? { url, key } : null;
 }
 

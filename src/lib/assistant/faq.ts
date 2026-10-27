@@ -177,6 +177,21 @@ export const FAQ_KNOWLEDGE: FaqEntry[] = [
     aliases: { ms: ["macam mana nak mula projek", "nak mula projek", "mula website", "cara tempah website"], en: ["how do i start a project", "start a website project", "get a website quote", "how to hire you"] },
     answer: (l) => local(l, "Boleh mula dengan nama bisnes, jenis website yang dicari dan fungsi wajib. Tekan “Bincang Projek” untuk sediakan ringkasan WhatsApp yang boleh disemak dulu.", "Start with your business, the type of website you need and essential features. Choose “Start a Project” to prepare a WhatsApp summary for review first."),
   },
+  {
+    id: "F29", examples: { ms: ["Siapa Syahmi?"], en: ["Who is Syahmi?"] },
+    aliases: { ms: ["siapa syahmi", "siapa syahmi aof", "siapa pengasas studio", "siapa owner studio", "tentang syahmi"], en: ["who is syahmi", "who is syahmi aof", "who founded the studio", "who owns the studio", "about syahmi"] },
+    answer: (l) => local(l, "Syahmi AOF ialah pembangun web di sebalik SYAHMIAOF Studio dan pelajar IT (Cloud Computing) di TVETMARA Besut. Dia membina website responsif dan sistem digital untuk bisnes serta individu. Boleh lihat seksyen Tentang untuk kisah ringkasnya.", "Syahmi AOF is the web developer behind SYAHMIAOF Studio and an IT (Cloud Computing) student at TVETMARA Besut. He builds responsive websites and practical digital systems for businesses and individuals. Visit the About section for his short bio."),
+  },
+  {
+    id: "F30", examples: { ms: ["Berapa harga website?"], en: ["How much does a website cost?"] },
+    aliases: { ms: ["berapa harga website", "harga pakej website", "website berapa ringgit", "kos buat website"], en: ["how much does a website cost", "website package prices", "website pricing options", "cost to build a website"] },
+    answer: (l) => local(l, `Harga sekali bayar: Landing Page ${p("landing").priceDisplay}, Business Website ${p("business").priceDisplay}, dan Premium Custom ${p("premium").priceDisplay}. Domain, hosting dan penjagaan bulanan pilihan dicaj berasingan.`, `One-time prices: Landing Page ${p("landing").priceDisplay}, Business Website ${p("business").priceDisplay}, and Premium Custom ${p("premium").priceDisplay}. Domain, hosting and optional monthly care are separate.`),
+  },
+  {
+    id: "F31", examples: { ms: ["Apa servis SYAHMIAOF Studio?"], en: ["What services does SYAHMIAOF Studio offer?"] },
+    aliases: { ms: ["apa servis syahmiaof studio", "servis yang ditawarkan", "syahmiaof buat apa", "apa perkhidmatan studio"], en: ["what services does syahmiaof studio offer", "what services do you offer", "what does the studio do", "studio services"] },
+    answer: (l) => local(l, "Studio ini menawarkan website UI responsif, sistem full-stack ikut skop, dan coaching pembangunan web 1:1. Pilih seksyen Servis untuk lihat skop; jika sudah ada idea, guna Bincang Projek untuk terangkan keperluan.", "The studio offers responsive website UI, scoped full-stack systems, and 1:1 web development coaching. Visit Services for scope details, or use Start a Project if you already have a brief."),
+  },
 ];
 
 const zhFaq: Record<string, { example: string; aliases: string[]; answer: string }> = {
@@ -208,6 +223,9 @@ const zhFaq: Record<string, { example: string; aliases: string[]; answer: string
   F26:{example:"可以直接预约并付款吗？",aliases:["直接预约","自动预约辅导","立即付款"],answer:"目前不可以。Syahmi 会人工确认辅导咨询与时段；没有自动预约或付款流程。"},
   F27:{example:"可以制作登录或支付网关吗？",aliases:["用户登录系统","支付网关","网站在线支付"],answer:"可以作为单独报价的全栈/定制项目。登录和支付网关不属于前端网站配套。"},
   F28:{example:"如何开始一个项目？",aliases:["开始网站项目","索取网站报价","聘请开发者"],answer:"请先准备公司/商店名称、所需网站类型及必要功能。点击“开始项目”即可准备 WhatsApp 摘要，并在发送前自行检查。"},
+  F29:{example:"Syahmi 是谁？",aliases:["谁是 Syahmi","工作室创办人","关于 Syahmi"],answer:"Syahmi AOF 是 SYAHMIAOF Studio 的网页开发者，也是 TVETMARA Besut 云计算专业的 IT 学生。他为企业和个人开发响应式网站与实用数字系统。可在“关于”栏目了解更多。"},
+  F30:{example:"网站多少钱？",aliases:["网站配套价格","制作网站的费用","网站报价"],answer:`一次性价格：Landing Page ${p("landing").priceDisplay}、Business Website ${p("business").priceDisplay}、Premium Custom ${p("premium").priceDisplay}。域名、托管和可选的月度维护另计。`},
+  F31:{example:"SYAHMIAOF Studio 提供什么服务？",aliases:["工作室服务","提供哪些服务","工作室做什么"],answer:"工作室提供响应式网站界面、按范围开发的全栈系统，以及一对一网页开发辅导。请到“服务”栏目查看范围；如已有项目构想，可用“开始项目”说明需求。"},
 };
 
 for (const entry of FAQ_KNOWLEDGE) {

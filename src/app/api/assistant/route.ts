@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getLlmConfig, isPriceSensitive, requestGroundedLlmReply, type AssistantMessage } from "@/lib/assistant/llm";
+import { answerFaq } from "@/lib/assistant/faq";
+import { answerUnmatchedPriceQuestion } from "@/lib/assistant/pricing";
 import type { Locale } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -15,7 +17,7 @@ function json(body: unknown, status = 200) {
 function allowRequest(key: string): boolean {
   const now = Date.now();
   const recent = (requests.get(key) ?? []).filter((time) => now - time < WINDOW_MS);
-  if (recent.length >= 5) {
+  if (recent.length >= 12) {
     requests.set(key, recent);
     return false;
   }
@@ -35,9 +37,6 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const config = getLlmConfig();
-  if (!config.enabled || !config.apiKey || !config.model) return json({ enabled: false, mode: "faq-only" }, 503);
-
   const ip = request.headers.get("x-real-ip") || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   if (!allowRequest(ip)) return json({ enabled: true, error: "rate_limited" }, 429);
 
@@ -73,7 +72,15 @@ export async function POST(request: NextRequest) {
   }
   const latestUserMessage = [...messages].reverse().find((item) => item.role === "user")?.content;
   if (!latestUserMessage) return json({ enabled: true, error: "missing_user_message" }, 400);
-  if (isPriceSensitive(latestUserMessage)) return json({ enabled: true, error: "use_deterministic_faq" }, 422);
+  const locale = payload.locale as Locale;
+  const faq = answerFaq(latestUserMessage, locale);
+  if (faq) return json({ enabled: true, mode: "faq", answer: faq.answer });
+  if (isPriceSensitive(latestUserMessage)) {
+    const previousQuestions = messages.slice(0, -1).filter((item) => item.role === "user").map((item) => item.content);
+    return json({ enabled: true, mode: "deterministic-price", answer: answerUnmatchedPriceQuestion(latestUserMessage, locale, previousQuestions) });
+  }
+  const config = getLlmConfig();
+  if (!config.enabled || !config.apiKey || !config.model) return json({ enabled: false, mode: "faq-only", error: "provider_unavailable" }, 503);
 
   try {
     const answer = await requestGroundedLlmReply({
@@ -81,7 +88,7 @@ export async function POST(request: NextRequest) {
       endpoint: config.endpoint,
       apiKey: config.apiKey,
       model: config.model,
-      locale: payload.locale as Locale,
+      locale,
       messages,
     });
     return answer ? json({ enabled: true, mode: "grounded-llm-fallback", answer }) : json({ enabled: true, error: "provider_unavailable" }, 503);
