@@ -80,8 +80,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const [input, setInput] = useState("");
   const [pending, setPending] = useState(false);
   const [llmEnabled, setLlmEnabled] = useState(false);
-  const [llmConsent, setLlmConsent] = useState(false);
-  const [lead, setLead] = useState<LeadFlow | null>(null);
+    const [lead, setLead] = useState<LeadFlow | null>(null);
   const [requirements, setRequirements] = useState("");
   const [timeline, setTimeline] = useState("");
   const [budget, setBudget] = useState("");
@@ -90,8 +89,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const [notice, setNotice] = useState("");
   const [bubble, setBubble] = useState(false);
   const [bubbleIndex, setBubbleIndex] = useState(0);
-  const [bubbleFading, setBubbleFading] = useState(false);
-  const launcherRef = useRef<HTMLButtonElement>(null);
+    const launcherRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const panelId = uid + "-panel";
@@ -102,7 +100,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const labels = {
     title: "MIBOT",
     disclosure: "VIRTUAL ASSISTANT",
-    online: llmEnabled ? (isEnglish ? "FAQ-FIRST · GEMINI AI ACTIVE" : isChinese ? "FAQ 优先 · GEMINI AI 已启用" : "FAQ DAHULU · GEMINI AI AKTIF") : (isEnglish ? "FAQ-FIRST · AI FALLBACK OFF" : isChinese ? "FAQ 优先 · AI 备用关闭" : "FAQ DAHULU · FALLBACK AI MATI"),
+    online: isEnglish ? "ONLINE" : isChinese ? "在线" : "AKTIF",
     placeholder: isEnglish ? "Ask about services or pricing…" : isChinese ? "询问服务或价格……" : "Tanya tentang servis atau harga…",
     send: isEnglish ? "Send message" : isChinese ? "发送消息" : "Hantar mesej",
     close: isEnglish ? "Close MIBOT" : isChinese ? "关闭 MIBOT" : "Tutup MIBOT",
@@ -110,30 +108,36 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
     fallback: isEnglish ? "I couldn't match that to an approved FAQ. I won't guess. You can rephrase it or prepare a short WhatsApp enquiry." : isChinese ? "这个问题不在已确认的常见问题中，我不会猜测答案。你可以换个说法，或准备 WhatsApp 咨询。" : "Soalan ini tak sepadan dengan FAQ yang disahkan. Aku tak akan teka jawapan. Cuba ayat lain atau sediakan ringkasan pertanyaan WhatsApp.",
     handoff: isEnglish ? "Prepare WhatsApp summary" : isChinese ? "准备 WhatsApp 摘要" : "Sediakan ringkasan WhatsApp",
     whatsApp: isEnglish ? "Continue in WhatsApp" : isChinese ? "继续使用 WhatsApp" : "Sambung melalui WhatsApp",
-    disclosureLlm: isEnglish ? "AI fallback is enabled. If you opt in, your latest question and short chat context will be processed by the configured external AI provider. FAQ answers stay authoritative for prices." : isChinese ? "AI 备用功能已启用。选择同意后，最近的问题与简短聊天内容将由已配置的外部 AI 服务商处理。价格仍以常见问题中的确认信息为准。" : "Fallback AI aktif. Jika anda setuju, soalan terkini dan konteks chat ringkas akan diproses oleh provider AI luaran yang dikonfigurasi. FAQ kekal sumber harga yang tepat.",
-    consent: isEnglish ? "I agree to send this chat context to the AI provider for this session." : isChinese ? "我同意在本次会话中将聊天内容发送给 AI 服务商。" : "Saya setuju konteks chat ini dihantar kepada provider AI untuk sesi ini.",
-    consentNeeded: isEnglish ? "AI fallback needs your consent first. Your message has not been sent to an AI provider." : isChinese ? "AI 备用功能需要先获得你的同意。消息尚未发送给 AI 服务商。" : "Fallback AI perlukan persetujuan anda dahulu. Mesej tadi tidak dihantar kepada provider AI.",
     leadLabel: isEnglish ? "PROJECT BRIEF" : isChinese ? "项目简介" : "RINGKASAN PROJEK",
   };
 
   useEffect(() => {
     try {
       if (sessionStorage.getItem("mibot-greeting-dismissed")) return;
-      const show = window.setTimeout(() => setBubble(true), 2000);
-      return () => window.clearTimeout(show);
-    } catch { return; }
-  }, []);
+    } catch {
+      return;
+    }
 
-  useEffect(() => {
-    if (!bubble || open) return;
-    const interval = window.setInterval(() => {
-      setBubbleFading(true);
-      window.setTimeout(() => {
+    if (open) {
+      setBubble(false);
+      return;
+    }
+
+    let timer: number;
+    if (bubble) {
+      // Stay visible for 5 seconds, then hide
+      timer = window.setTimeout(() => {
+        setBubble(false);
+      }, 5000);
+    } else {
+      // Stay hidden for 3 seconds gap, then show next popup message
+      timer = window.setTimeout(() => {
         setBubbleIndex((prev) => (prev + 1) % (POPUP_MESSAGES[locale]?.length || 1));
-        setBubbleFading(false);
-      }, 250);
-    }, 6000);
-    return () => window.clearInterval(interval);
+        setBubble(true);
+      }, 3000);
+    }
+
+    return () => window.clearTimeout(timer);
   }, [bubble, open, locale]);
 
   useEffect(() => {
@@ -220,8 +224,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
     const match = answerFaq(text, locale);
     if (match) { addMessage("assistant", match.answer); return; }
     if (!llmEnabled) { addMessage("assistant", labels.fallback, true); return; }
-    if (!llmConsent) { addMessage("assistant", labels.consentNeeded + " " + labels.fallback, true); return; }
-    setPending(true);
+        setPending(true);
     try {
       const history = messages.concat([{ id: Date.now(), role: "user" as const, content: text }])
         .filter((item) => item.role === "user" || item.content !== greeting(locale))
@@ -231,7 +234,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
         body: JSON.stringify({ locale, consent: true, messages: history }),
       });
       const payload = await response.json() as { answer?: string; error?: string };
-      if (response.ok && payload.answer) addMessage("assistant", payload.answer + "\n\n" + (isEnglish ? "AI-assisted fallback. Prices remain based on the approved FAQ." : isChinese ? "AI 辅助回答。价格仍以已确认的常见问题为准。" : "Jawapan bantuan AI. Harga tetap ikut FAQ yang disahkan."));
+      if (response.ok && payload.answer) addMessage("assistant", payload.answer);
       else addMessage("assistant", labels.fallback, true);
     } catch {
       addMessage("assistant", labels.fallback, true);
@@ -289,7 +292,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
           <header className="assistant-header">
             <span className="assistant-mark"><MibotRobot label="MIBOT" /></span>
             <div className="assistant-branding"><h2 id={titleId}>{labels.title}</h2><span>{labels.disclosure}</span></div>
-            <span className="assistant-state"><i aria-hidden="true" />{llmEnabled ? (isEnglish ? "AI OPT-IN" : isChinese ? "AI 自愿启用" : "AI PILIHAN") : labels.online}</span>
+            <span className="assistant-state"><i aria-hidden="true" />{labels.online}</span>
             <button className="assistant-close" ref={closeRef} type="button" onClick={closePanel} aria-label={labels.close}><X size={22} /></button>
           </header>
           <div className="assistant-transcript" ref={bodyRef} aria-live="polite" aria-relevant="additions text">
@@ -350,13 +353,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
             )}
             {notice && <p className="assistant-notice" role="status">{notice}</p>}
           </div>
-          {llmEnabled && (
-            <div className="assistant-ai-consent">
-              <p>{labels.disclosureLlm}</p>
-              <label><input type="checkbox" checked={llmConsent} onChange={(event) => setLlmConsent(event.target.checked)} />{labels.consent}</label>
-            </div>
-          )}
-          <footer className="assistant-composer-wrap">
+                    <footer className="assistant-composer-wrap">
             <form className="assistant-composer" onSubmit={sendMessage}>
               <textarea value={input} maxLength={1200} rows={1} onChange={(event) => setInput(event.target.value)} onKeyDown={onComposerKeyDown} placeholder={labels.placeholder} aria-label={isEnglish ? "Your question" : isChinese ? "你的问题" : "Soalan anda"} />
               <button className="assistant-send" type="submit" disabled={!input.trim() || pending} aria-label={labels.send}><Send size={20} /></button>
@@ -373,7 +370,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
             aria-label={isEnglish ? "Open MIBOT from greeting" : isChinese ? "通过问候打开 MIBOT" : "Buka MIBOT daripada ucapan"}
             onClick={() => { setBubble(false); setOpen(true); }}
           >
-            <span className={"mibot-greeting-text" + (bubbleFading ? " is-fading" : "")}>
+            <span className="mibot-greeting-text">
               {POPUP_MESSAGES[locale]?.[bubbleIndex] || POPUP_MESSAGES.ms[0]}
             </span>
             <div className="mibot-greeting-dots" aria-hidden="true">
