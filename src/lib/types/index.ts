@@ -105,6 +105,7 @@ export interface ProjectItem {
   category: LocalizedText;
   status: ProjectStatus;
   liveUrl?: string;
+  isHidden?: boolean;
 }
 
 export interface CoachingTopic {

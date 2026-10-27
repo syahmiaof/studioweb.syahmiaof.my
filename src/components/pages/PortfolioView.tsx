@@ -37,6 +37,7 @@ type EditProject = {
   category: string;
   status: ProjectStatus;
   liveUrl: string;
+  isHidden: boolean;
 };
 
 export function PortfolioView({ locale, embedded = false }: { locale: Locale; embedded?: boolean }) {
@@ -64,6 +65,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
     category: "",
     status: "completed",
     liveUrl: "",
+    isHidden: false,
   });
 
   const isChinese = locale === "zh-Hans";
@@ -76,11 +78,12 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
   const visibleProjects = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
     return allProjects.filter((item) => {
+      if (!adminUnlocked && item.isHidden) return false;
       const matchesStatus = activeStatus === "all" || item.status === activeStatus;
       const matchesQuery = !normalizedQuery || `${item.title} ${localized(item.category, locale)}`.toLocaleLowerCase().includes(normalizedQuery);
       return matchesStatus && matchesQuery;
     });
-  }, [activeStatus, allProjects, locale, query]);
+  }, [activeStatus, adminUnlocked, allProjects, locale, query]);
   const statusLabels = {
     completed: locale === "ms" ? "Selesai" : isChinese ? "已完成" : "Completed",
     "in-progress": locale === "ms" ? "Sedang dibina" : isChinese ? "进行中" : "In progress",
@@ -96,6 +99,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
         category: localized(target.category, locale),
         status: target.status,
         liveUrl: target.liveUrl || "",
+        isHidden: Boolean(target.isHidden),
       });
     }
   }
@@ -147,14 +151,43 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
     let cancelled = false;
     fetch("/api/projects", { cache: "no-store" })
       .then((response) => (response.ok ? response.json() : null))
-      .then((data: { projects?: ProjectItem[] } | null) => {
+      .then((data: { projects?: ProjectItem[]; isAdmin?: boolean } | null) => {
         if (!cancelled && data && Array.isArray(data.projects) && data.projects.length > 0) {
           setProjects(data.projects);
+          if (data.isAdmin) setAdminUnlocked(true);
         }
       })
       .catch(() => undefined);
     return () => { cancelled = true; };
   }, []);
+
+  async function handleDeleteProject() {
+    if (!editProject.id) return;
+    const projectTitle = editProject.title || "projek ini";
+    const confirmMsg = locale === "ms"
+      ? `Adakah anda pasti mahu memadam "${projectTitle}" dari showcase?`
+      : `Are you sure you want to delete "${projectTitle}" from the showcase?`;
+    if (!window.confirm(confirmMsg)) return;
+
+    setAdminMessage("");
+    setIsSaving(true);
+    try {
+      const response = await fetch("/api/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "delete", id: editProject.id }),
+      });
+      const data = await response.json() as { success?: boolean; message?: string };
+      if (!response.ok) throw new Error(data.message || c("Projek tak dapat dipadam.", "Could not delete project."));
+      setProjects((items) => items.filter((item) => item.id !== editProject.id));
+      setAdminMessage(c("Projek berjaya dipadam dari showcase.", "Project removed from showcase.", "项目已成功从展示中删除。"));
+      setAdminOpen(false);
+    } catch (error) {
+      setAdminMessage(error instanceof Error ? error.message : c("Ralat memadam projek.", "Error deleting project."));
+    } finally {
+      setIsSaving(false);
+    }
+  }
 
   async function handleAdminSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -227,7 +260,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
       <section className="studio-scene portfolio-scene" id="portfolio">
         <Architecture variant="portfolio" priority={!embedded} />
         <div className="portfolio-copy">
-          <SceneLabel number="03">PORTFOLIO</SceneLabel>
+          <SceneLabel number="04">PORTFOLIO</SceneLabel>
           <DisplayTitle level={2} lines={locale === "ms" ? ["IDEA JADI", "REALITI."] : ["IDEAS MADE", "REAL."]} />
           <p className="scene-intro">
             {c(
@@ -334,9 +367,16 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
                   )}
                   <div className="project-card-info">
                     <div className="project-card-heading">
-                      <span className={`project-status project-status--${item.status}`}>
-                        <i aria-hidden="true" />{PROJECT_STATUS_LABELS[locale][item.status]}
-                      </span>
+                      <div className="project-card-statuses">
+                        <span className={`project-status project-status--${item.status}`}>
+                          <i aria-hidden="true" />{PROJECT_STATUS_LABELS[locale][item.status]}
+                        </span>
+                        {item.isHidden && (
+                          <span className="project-status project-status--hidden">
+                            {c("Disorok", "Hidden", "已隐藏")}
+                          </span>
+                        )}
+                      </div>
                       <div className="project-card-meta">
                         {adminUnlocked && (
                           <button
@@ -486,7 +526,7 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
                     >
                       {projects.map((p) => (
                         <option key={p.id} value={p.id}>
-                          {p.title} ({statusLabels[p.status]})
+                          {p.title} {p.isHidden ? `[${c("Disorok", "Hidden", "已隐藏")}]` : `(${statusLabels[p.status]})`}
                         </option>
                       ))}
                     </select>
@@ -530,18 +570,38 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
                       onChange={(event) => setEditProject({ ...editProject, liveUrl: event.target.value })}
                     />
                   </label>
+                  <label className="project-admin-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={editProject.isHidden}
+                      onChange={(event) => setEditProject({ ...editProject, isHidden: event.target.checked })}
+                    />
+                    <span>{c("Sorok projek ini dari paparan umum (Hide)", "Hide this project from public showcase", "在公开展示中隐藏此项目")}</span>
+                  </label>
                 </>
               )}
 
-              <button className="studio-button" type="submit" disabled={isSaving}>
-                {isSaving
-                  ? c("Sedang simpan…", "Saving…", "正在保存…")
-                  : !adminUnlocked
-                  ? c("Buka akses", "Unlock", "解锁")
-                  : adminMode === "edit"
-                  ? c("Kemaskini projek", "Update project", "更新项目")
-                  : c("Simpan projek", "Save project", "保存项目")}
-              </button>
+              <div className="project-admin-form-actions">
+                <button className="studio-button" type="submit" disabled={isSaving}>
+                  {isSaving
+                    ? c("Sedang simpan…", "Saving…", "正在保存…")
+                    : !adminUnlocked
+                    ? c("Buka akses", "Unlock", "解锁")
+                    : adminMode === "edit"
+                    ? c("Kemaskini projek", "Update project", "更新项目")
+                    : c("Simpan projek", "Save project", "保存项目")}
+                </button>
+                {adminUnlocked && adminMode === "edit" && (
+                  <button
+                    type="button"
+                    className="project-admin-delete-button"
+                    disabled={isSaving}
+                    onClick={handleDeleteProject}
+                  >
+                    🗑️ {c("Padam Projek", "Delete Project", "删除项目")}
+                  </button>
+                )}
+              </div>
 
               <p
                 className={`project-admin-message ${adminMessage.includes("HAHAHAHA") ? "is-error" : ""}`}

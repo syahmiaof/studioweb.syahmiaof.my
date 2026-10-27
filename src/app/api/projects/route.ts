@@ -12,6 +12,7 @@ export const dynamic = "force-dynamic";
 const COOKIE_NAME = "studio_project_admin";
 const SESSION_TTL_SECONDS = 8 * 60 * 60;
 const statuses = ["completed", "in-progress", "on-hold"] as const satisfies readonly ProjectStatus[];
+const FEATURED_HERO_IDS = ["symi-yogurt", "lamborghini", "uber-pokmi"] as const;
 
 const newProjectSchema = z.object({
   action: z.literal("create"),
@@ -28,6 +29,12 @@ const updateProjectSchema = z.object({
   category: z.string().trim().min(2).max(100),
   status: z.enum(statuses),
   liveUrl: z.union([z.literal(""), z.string().url().max(500)]),
+  isHidden: z.boolean().optional(),
+}).strict();
+
+const deleteProjectSchema = z.object({
+  action: z.literal("delete"),
+  id: z.string().trim().min(1).max(90),
 }).strict();
 
 const attempts = new Map<string, { count: number; resetAt: number }>();
@@ -42,6 +49,7 @@ type PortfolioProjectRow = {
   status: ProjectStatus;
   live_url: string | null;
   sort_order: number;
+  is_hidden?: boolean;
 };
 
 function sessionSecret() {
@@ -66,6 +74,7 @@ function toProject(row: PortfolioProjectRow): ProjectItem {
     category: { ms: row.category_ms, en: row.category_en, "zh-Hans": row.category_zh },
     status: row.status,
     ...(row.live_url ? { liveUrl: row.live_url } : {}),
+    ...(row.is_hidden ? { isHidden: true } : {}),
   };
 }
 
@@ -73,7 +82,7 @@ async function fetchDatabaseProjects() {
   const config = supabaseConfig();
   if (!config) return null;
   const endpoint = new URL(`${config.url}/rest/v1/portfolio_projects`);
-  endpoint.searchParams.set("select", "id,slug,title,category_ms,category_en,category_zh,status,live_url,sort_order");
+  endpoint.searchParams.set("select", "id,slug,title,category_ms,category_en,category_zh,status,live_url,sort_order,is_hidden");
   endpoint.searchParams.set("order", "sort_order.asc,created_at.asc,id.asc");
   const response = await fetch(endpoint, {
     headers: { apikey: config.key, Authorization: `Bearer ${config.key}` },
@@ -163,28 +172,30 @@ function slugify(value: string) {
   return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 70);
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const isAdmin = validSession(request);
     const databaseProjects = await fetchDatabaseProjects().catch(() => null);
     const localProjects = localProjectPathAvailable() ? await readProjects().catch(() => []) : [];
     const dynamicList = [...(databaseProjects || []), ...localProjects];
 
+    let all: ProjectItem[];
     if (dynamicList.length > 0) {
       const dynamicIds = new Set(dynamicList.map((project) => project.id));
-      const combined = [...dynamicList, ...PROJECTS.filter((project) => !dynamicIds.has(project.id))];
-      return NextResponse.json(
-        { projects: combined, source: databaseProjects ? "supabase" : "local" },
-        { headers: { "Cache-Control": "no-store, max-age=0" } },
-      );
+      all = [...dynamicList, ...PROJECTS.filter((project) => !dynamicIds.has(project.id))];
+    } else {
+      all = PROJECTS;
     }
 
+    const projects = isAdmin ? all : all.filter((project) => !project.isHidden);
+
     return NextResponse.json(
-      { projects: PROJECTS, source: "static" },
+      { projects, source: databaseProjects ? "supabase" : "static", isAdmin },
       { headers: { "Cache-Control": "no-store, max-age=0" } },
     );
   } catch {
     return NextResponse.json(
-      { projects: PROJECTS, source: "fallback" },
+      { projects: PROJECTS.filter((project) => !project.isHidden), source: "fallback", isAdmin: false },
       { headers: { "Cache-Control": "no-store, max-age=0" } },
     );
   }
@@ -225,6 +236,47 @@ export async function POST(request: NextRequest) {
 
   if (!validSession(request)) return NextResponse.json({ message: "Sesi admin tamat. Masukkan kata laluan semula." }, { status: 401 });
 
+  // Handle Delete project (soft-delete via is_hidden)
+  if (typeof body === "object" && body !== null && "action" in body && body.action === "delete") {
+    const parsed = deleteProjectSchema.safeParse(body);
+    if (!parsed.success) return NextResponse.json({ message: "ID projek tak sah." }, { status: 400 });
+
+    if ((FEATURED_HERO_IDS as readonly string[]).includes(parsed.data.id)) {
+      return NextResponse.json({ message: "Projek ini digunakan dalam galeri utama 3D hero dan tidak boleh dipadam." }, { status: 400 });
+    }
+
+    const config = supabaseConfig();
+    const writeToken = writeTokenSecret();
+    if (config && writeToken) {
+      try {
+        await fetch(`${config.url}/rest/v1/portfolio_projects?id=eq.${encodeURIComponent(parsed.data.id)}`, {
+          method: "PATCH",
+          headers: {
+            apikey: config.key,
+            Authorization: `Bearer ${config.key}`,
+            "Content-Type": "application/json",
+            "x-portfolio-write-token": writeToken,
+          },
+          body: JSON.stringify({ is_hidden: true, updated_at: new Date().toISOString() }),
+        });
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (localProjectPathAvailable()) {
+      const localProjects = await readProjects().catch(() => []);
+      const updatedList = localProjects.map((p) => (p.id === parsed.data.id ? { ...p, isHidden: true } : p));
+      const file = storagePath();
+      await mkdir(path.dirname(file), { recursive: true });
+      const temporaryFile = `${file}.${process.pid}.tmp`;
+      await writeFile(temporaryFile, `${JSON.stringify(updatedList, null, 2)}\n`, { encoding: "utf8", mode: 0o600 });
+      await rename(temporaryFile, file);
+    }
+
+    return NextResponse.json({ success: true, id: parsed.data.id }, { status: 200, headers: { "Cache-Control": "no-store" } });
+  }
+
   // Handle Edit / Update project
   if (typeof body === "object" && body !== null && "action" in body && body.action === "update") {
     const parsed = updateProjectSchema.safeParse(body);
@@ -239,6 +291,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    const isHidden = Boolean(value.isHidden);
     const config = supabaseConfig();
     const writeToken = writeTokenSecret();
     if (config && writeToken) {
@@ -250,6 +303,7 @@ export async function POST(request: NextRequest) {
           category_zh: value.category,
           status: value.status,
           live_url: liveUrl ? new URL(liveUrl).toString() : null,
+          is_hidden: isHidden,
           updated_at: new Date().toISOString(),
         };
         const updateResponse = await fetch(`${config.url}/rest/v1/portfolio_projects?id=eq.${encodeURIComponent(value.id)}`, {
@@ -283,6 +337,7 @@ export async function POST(request: NextRequest) {
       category: { ms: value.category, en: value.category, "zh-Hans": value.category },
       status: value.status,
       ...(liveUrl ? { liveUrl: new URL(liveUrl).toString() } : {}),
+      ...(isHidden ? { isHidden: true } : {}),
     };
 
     if (localProjectPathAvailable()) {
@@ -358,6 +413,7 @@ export async function POST(request: NextRequest) {
         category_zh: project.category["zh-Hans"] || project.category.en,
         status: project.status,
         live_url: liveUrl ? new URL(liveUrl).toString() : null,
+        is_hidden: false,
         sort_order: (latestRows[0]?.sort_order ?? -1) + 1,
       };
       const insertResponse = await fetch(`${config.url}/rest/v1/portfolio_projects`, {

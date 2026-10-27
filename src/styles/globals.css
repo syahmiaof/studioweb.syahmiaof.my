@@ -3543,6 +3543,15 @@ legend {
   color: #080909;
 }
 .project-card-meta { display: inline-flex; align-items: center; gap: 8px; }
+.project-card-statuses { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.project-status--hidden {
+  border: 1px solid #ffd166;
+  background: #2a2208;
+  color: #ffd166;
+  padding: 1px 7px;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
 .project-card-edit-button {
   padding: 2px 7px;
   border: 1px solid var(--color-acid);
@@ -3556,6 +3565,47 @@ legend {
   background: var(--color-acid);
   color: #080909;
 }
+.project-admin-checkbox {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer;
+  padding: 4px 0 8px;
+}
+.project-admin-checkbox input[type="checkbox"] {
+  width: 18px !important;
+  min-height: 18px !important;
+  height: 18px !important;
+  cursor: pointer;
+  accent-color: var(--color-acid);
+}
+.project-admin-form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.project-admin-form-actions .studio-button { flex: 1; }
+.project-admin-delete-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 16px;
+  border: 1px solid #ff4d4f;
+  background: transparent;
+  color: #ff4d4f;
+  font: 700 12px/1.2 var(--font-mono);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.project-admin-delete-button:hover:not(:disabled) {
+  background: #ff4d4f;
+  color: #fff;
+}
+.project-admin-delete-button:disabled { opacity: .5; cursor: not-allowed; }
 
 .studio-intro__page { display: contents; }
 .studio-intro {
