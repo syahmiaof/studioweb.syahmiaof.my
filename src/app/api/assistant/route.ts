@@ -36,7 +36,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const config = getLlmConfig();
-  if (!config.enabled || !config.endpoint || !config.apiKey || !config.model) return json({ enabled: false, mode: "faq-only" }, 503);
+  if (!config.enabled || !config.apiKey || !config.model) return json({ enabled: false, mode: "faq-only" }, 503);
 
   const ip = request.headers.get("x-real-ip") || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   if (!allowRequest(ip)) return json({ enabled: true, error: "rate_limited" }, 429);
@@ -76,7 +76,14 @@ export async function POST(request: NextRequest) {
   if (isPriceSensitive(latestUserMessage)) return json({ enabled: true, error: "use_deterministic_faq" }, 422);
 
   try {
-    const answer = await requestGroundedLlmReply({ ...config, endpoint: config.endpoint, apiKey: config.apiKey, model: config.model, locale: payload.locale as Locale, messages });
+    const answer = await requestGroundedLlmReply({
+      provider: config.provider,
+      endpoint: config.endpoint,
+      apiKey: config.apiKey,
+      model: config.model,
+      locale: payload.locale as Locale,
+      messages,
+    });
     return answer ? json({ enabled: true, mode: "grounded-llm-fallback", answer }) : json({ enabled: true, error: "provider_unavailable" }, 503);
   } catch {
     return json({ enabled: true, error: "provider_unavailable" }, 503);

@@ -24,6 +24,17 @@ const FEATURED_PROJECTS = [
 ] as const;
 const STATUSES: ProjectStatus[] = ["completed", "in-progress", "on-hold"];
 
+function getProjectWhatsAppUrl(project: ProjectItem, locale: Locale): string {
+  const phone = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "60107965236").replace(/[+\s-]/g, "");
+  let msg = `Salam Syahmi, saya berminat nak bincang bina website macam projek "${project.title}" (${project.liveUrl || project.slug}). Boleh kita sembang lanjut?`;
+  if (locale === "en") {
+    msg = `Hi Syahmi, I'm interested in discussing a website project like "${project.title}" (${project.liveUrl || project.slug}). Can we chat?`;
+  } else if (locale === "zh-Hans") {
+    msg = `你好 Syahmi，我对类似 "${project.title}" (${project.liveUrl || project.slug}) 的网站开发很感兴趣，想进一步咨询。`;
+  }
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
+
 type NewProject = {
   title: string;
   category: string;
@@ -398,18 +409,30 @@ export function PortfolioView({ locale, embedded = false }: { locale: Locale; em
                     </div>
                     <h3>{item.title}</h3>
                     <p>{localized(item.category, locale)}</p>
-                    {item.liveUrl ? (
-                      <a className="project-card-domain" href={item.liveUrl} target="_blank" rel="noopener noreferrer">
-                        {new URL(item.liveUrl).hostname}<span aria-hidden="true"> ↗</span>
+                    <div className="project-card-footer">
+                      <div className="project-card-domain-wrap">
+                        {item.liveUrl ? (
+                          <a className="project-card-domain" href={item.liveUrl} target="_blank" rel="noopener noreferrer">
+                            {new URL(item.liveUrl).hostname}<span aria-hidden="true"> ↗</span>
+                          </a>
+                        ) : (
+                          <span className="project-card-domain project-card-domain-muted">
+                            {c("Pautan akan ditambah", "Live link not listed", "暂未提供线上链接")}
+                          </span>
+                        )}
+                      </div>
+                      <a
+                        className="project-card-inquiry"
+                        href={getProjectWhatsAppUrl(item, locale)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${c("Bincang projek ini di WhatsApp", "Discuss this project on WhatsApp", "在 WhatsApp 上讨论此项目")}: ${item.title}`}
+                      >
+                        <span className="inquiry-icon" aria-hidden="true">💬</span>
+                        <span className="inquiry-text">{c("Bincang projek ini", "Discuss this project", "讨论这个项目")}</span>
+                        <span className="inquiry-arrow" aria-hidden="true">→</span>
                       </a>
-                    ) : (
-                      <span className="project-card-domain project-card-domain-muted">
-                        {c("Pautan akan ditambah", "Live link not listed", "暂未提供线上链接")}
-                      </span>
-                    )}
-                    <a className="project-card-inquiry" href={sectionPath(locale, "hubungi", new URLSearchParams({ service: "website-ui", project: item.slug }))}>
-                      {c("Bincang projek ini", "Discuss this project", "讨论这个项目")} <span aria-hidden="true">→</span>
-                    </a>
+                    </div>
                   </div>
                 </article>
               ))}

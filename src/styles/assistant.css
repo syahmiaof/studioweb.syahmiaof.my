@@ -45,10 +45,15 @@
 .assistant-mark .mibot-robot { width:40px; height:40px; transform:none; }
 .mibot-greeting { position:fixed; z-index:89; right:max(96px,calc(env(safe-area-inset-right) + 86px)); bottom:max(31px,calc(env(safe-area-inset-bottom) + 31px)); max-width:min(300px,calc(100vw - 110px)); padding:11px 31px 11px 14px; color:#f5f4ee; background:#111213; border:1px solid #f2ff00; box-shadow:5px 5px 0 #1c54ff; font:600 13px/1.35 var(--font-sans); animation:assistant-panel-in 260ms ease both; }
 .mibot-greeting button { border:0; cursor:pointer; }
-.mibot-greeting-open { padding:0; color:inherit; background:transparent; text-align:left; font:inherit; }
+.mibot-greeting-open { display:block; width:100%; padding:0; color:inherit; background:transparent; text-align:left; font:inherit; }
 .mibot-greeting-open:hover { color:#f2ff00; }
 .mibot-greeting-dismiss { position:absolute; top:3px; right:6px; padding:2px 5px; color:#f2ff00; background:transparent; font-size:18px; }
 .mibot-greeting::after { position:absolute; right:-7px; bottom:13px; width:12px; height:12px; content:""; background:#111213; border-right:1px solid #f2ff00; border-top:1px solid #f2ff00; transform:rotate(45deg); }
+.mibot-greeting-text { display:block; min-height:34px; line-height:1.35; transition:opacity 250ms ease, transform 250ms ease; }
+.mibot-greeting-text.is-fading { opacity:0; transform:translateY(-3px); }
+.mibot-greeting-dots { display:flex; align-items:center; gap:4px; margin-top:7px; }
+.mibot-greeting-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.25); transition:all 250ms ease; }
+.mibot-greeting-dot.is-active { background:#f2ff00; width:14px; border-radius:4px; }
 .assistant-header .assistant-mark { flex:none; border:1px solid #111; }
 
 .assistant-panel {

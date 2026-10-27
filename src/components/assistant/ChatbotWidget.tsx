@@ -25,6 +25,34 @@ function greeting(locale: Locale): string {
     : "Hi! 👋 I'm MIBOT, your virtual assistant. Need help choosing a website package, checking prices or discussing your project?";
 }
 
+const POPUP_MESSAGES: Record<Locale, string[]> = {
+  ms: [
+    "Hai! 👋 Nak tanya apa-apa? Saya boleh bantu.",
+    "Nak semak anggaran bajet atau pakej website? 💰",
+    "Tertarik dengan projek macam Lamborghini & Uber Pokmi? 🚀",
+    "Berminat coaching 1-on-1 Web Dev dengan Syahmi? 👨‍💻",
+    "Perlukan sebut harga pantas dalam 5 minit? 📲",
+    "Website bisnes kau slow atau nampak lama? ⚡ MIBOT sedia tolong!",
+  ],
+  en: [
+    "Hi! 👋 Need any help? I'm here for you.",
+    "Want to check website packages or budget estimates? 💰",
+    "Curious about projects like Lamborghini & Uber Pokmi? 🚀",
+    "Looking for 1-on-1 coaching on Web Dev with Syahmi? 👨‍💻",
+    "Need a quick project quote in under 5 minutes? 📲",
+    "Is your website feeling slow or outdated? ⚡",
+  ],
+  "zh-Hans": [
+    "嗨! 👋 有任何疑问吗？我随时可以协助你。",
+    "想了解网站开发配套或预算报价吗？💰",
+    "对兰博基尼或 Uber Pokmi 等项目感兴趣？🚀",
+    "想与 Syahmi 进行 Web 开发 1 对 1 指导？👨‍💻",
+    "需要 5 分钟内快速获取项目报价方案吗？📲",
+    "网站加载慢或设计过时？⚡ MIBOT 帮你免费评估！",
+  ],
+};
+
+
 function quickPricing(locale: Locale): string {
   const website = PRICING_PACKAGES.map((item) => localized(item.name, locale) + " " + item.priceDisplay).join(" · ");
   const systems = SYSTEM_OFFERS.map((item) => localized(item.name, locale) + " " + localizedPriceLabel(item.priceDisplay, locale)).join(" · ");
@@ -61,6 +89,8 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const [editableSummary, setEditableSummary] = useState("");
   const [notice, setNotice] = useState("");
   const [bubble, setBubble] = useState(false);
+  const [bubbleIndex, setBubbleIndex] = useState(0);
+  const [bubbleFading, setBubbleFading] = useState(false);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -72,7 +102,7 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
   const labels = {
     title: "MIBOT",
     disclosure: "VIRTUAL ASSISTANT",
-    online: isEnglish ? "FAQ-FIRST · AI FALLBACK OFF" : isChinese ? "FAQ 优先 · AI 备用关闭" : "FAQ DAHULU · FALLBACK AI MATI",
+    online: llmEnabled ? (isEnglish ? "FAQ-FIRST · GEMINI AI ACTIVE" : isChinese ? "FAQ 优先 · GEMINI AI 已启用" : "FAQ DAHULU · GEMINI AI AKTIF") : (isEnglish ? "FAQ-FIRST · AI FALLBACK OFF" : isChinese ? "FAQ 优先 · AI 备用关闭" : "FAQ DAHULU · FALLBACK AI MATI"),
     placeholder: isEnglish ? "Ask about services or pricing…" : isChinese ? "询问服务或价格……" : "Tanya tentang servis atau harga…",
     send: isEnglish ? "Send message" : isChinese ? "发送消息" : "Hantar mesej",
     close: isEnglish ? "Close MIBOT" : isChinese ? "关闭 MIBOT" : "Tutup MIBOT",
@@ -88,12 +118,23 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     try {
-      if (sessionStorage.getItem("mibot-greeting-seen")) return;
-      const show = window.setTimeout(() => { setBubble(true); sessionStorage.setItem("mibot-greeting-seen", "1"); }, 1800);
-      const hide = window.setTimeout(() => setBubble(false), 8800);
-      return () => { window.clearTimeout(show); window.clearTimeout(hide); };
+      if (sessionStorage.getItem("mibot-greeting-dismissed")) return;
+      const show = window.setTimeout(() => setBubble(true), 2000);
+      return () => window.clearTimeout(show);
     } catch { return; }
   }, []);
+
+  useEffect(() => {
+    if (!bubble || open) return;
+    const interval = window.setInterval(() => {
+      setBubbleFading(true);
+      window.setTimeout(() => {
+        setBubbleIndex((prev) => (prev + 1) % (POPUP_MESSAGES[locale]?.length || 1));
+        setBubbleFading(false);
+      }, 250);
+    }, 6000);
+    return () => window.clearInterval(interval);
+  }, [bubble, open, locale]);
 
   useEffect(() => {
     setMessages([{ id: Date.now(), role: "assistant", content: greeting(locale) }]);
@@ -324,7 +365,39 @@ export function ChatbotWidget({ locale }: { locale: Locale }) {
           </footer>
         </section>
       )}
-      {!open && bubble && <div className="mibot-greeting"><button className="mibot-greeting-open" type="button" aria-label={isEnglish ? "Open MIBOT from greeting" : isChinese ? "通过问候打开 MIBOT" : "Buka MIBOT daripada ucapan"} onClick={() => { setBubble(false); setOpen(true); }}>{isEnglish ? "Hi! 👋 Ask me if you need help." : isChinese ? "你好！👋 有问题可以问我哦！" : "Hai! 👋 Nak tanya apa-apa? Saya boleh bantu."}</button><button className="mibot-greeting-dismiss" type="button" aria-label={isEnglish ? "Dismiss greeting" : isChinese ? "关闭问候" : "Tutup ucapan"} onClick={() => setBubble(false)}>×</button></div>}
+      {!open && bubble && (
+        <div className="mibot-greeting" role="region" aria-label="MIBOT greeting">
+          <button
+            className="mibot-greeting-open"
+            type="button"
+            aria-label={isEnglish ? "Open MIBOT from greeting" : isChinese ? "通过问候打开 MIBOT" : "Buka MIBOT daripada ucapan"}
+            onClick={() => { setBubble(false); setOpen(true); }}
+          >
+            <span className={"mibot-greeting-text" + (bubbleFading ? " is-fading" : "")}>
+              {POPUP_MESSAGES[locale]?.[bubbleIndex] || POPUP_MESSAGES.ms[0]}
+            </span>
+            <div className="mibot-greeting-dots" aria-hidden="true">
+              {(POPUP_MESSAGES[locale] || POPUP_MESSAGES.ms).map((_, idx) => (
+                <span
+                  key={idx}
+                  className={"mibot-greeting-dot" + (idx === bubbleIndex ? " is-active" : "")}
+                />
+              ))}
+            </div>
+          </button>
+          <button
+            className="mibot-greeting-dismiss"
+            type="button"
+            aria-label={isEnglish ? "Dismiss greeting" : isChinese ? "关闭问候" : "Tutup ucapan"}
+            onClick={() => {
+              setBubble(false);
+              try { sessionStorage.setItem("mibot-greeting-dismissed", "1"); } catch {}
+            }}
+          >
+            ×
+          </button>
+        </div>
+      )}
       <button ref={launcherRef} type="button" className={"assistant-launcher" + (open ? " is-open" : "")} onClick={() => { setBubble(false); if (open) closePanel(); else setOpen(true); }} aria-expanded={open} aria-controls={panelId} aria-label={open ? labels.close : (isEnglish ? "Open MIBOT" : isChinese ? "打开 MIBOT" : "Buka MIBOT")}>
         {open ? <X size={23} /> : <MibotRobot label="MIBOT" />}
       </button>
