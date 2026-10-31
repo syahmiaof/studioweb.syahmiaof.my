@@ -1,8 +1,23 @@
-# SYAHMIAOF STUDIO — ASTRA V2
+<div align="center">
+  <h1>studioweb.syahmiaof.my</h1>
+  <p><strong>SYAHMIAOF STUDIO — Digital Brutalism Web Development & 1:1 Coaching</strong></p>
+  <p>
+    <a href="https://studio.syahmiaof.my"><img src="https://img.shields.io/badge/Demo-Live-60E1B5?style=for-the-badge&logoColor=60E1B5&labelColor=101713" alt="Demo"></a>
+    <a href="https://github.com/syahmiaof/studioweb.syahmiaof.my"><img src="https://img.shields.io/badge/Source-GitHub-60E1B5?style=for-the-badge&logo=github&logoColor=60E1B5&labelColor=101713" alt="GitHub"></a>
+    <a href="https://github.com/syahmiaof/studioweb.syahmiaof.my/actions"><img src="https://img.shields.io/badge/CI-Passing-60E1B5?style=for-the-badge&logo=githubactions&logoColor=60E1B5&labelColor=101713" alt="CI"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-60E1B5?style=for-the-badge&logoColor=60E1B5&labelColor=101713" alt="License"></a>
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-14.2-101713?style=for-the-badge&logo=nextdotjs&logoColor=60E1B5" alt="Next.js">
+    <img src="https://img.shields.io/badge/React-18.3-101713?style=for-the-badge&logo=react&logoColor=60E1B5" alt="React">
+    <img src="https://img.shields.io/badge/TypeScript-5.6-101713?style=for-the-badge&logo=typescript&logoColor=60E1B5" alt="TypeScript">
+    <img src="https://img.shields.io/badge/TailwindCSS-3.4-101713?style=for-the-badge&logo=tailwindcss&logoColor=60E1B5" alt="TailwindCSS">
+    <img src="https://img.shields.io/badge/GSAP-3.12-101713?style=for-the-badge&logo=greensock&logoColor=60E1B5" alt="GSAP">
+    <img src="https://img.shields.io/badge/Vitest-2.1-101713?style=for-the-badge&logo=vitest&logoColor=60E1B5" alt="Vitest">
+  </p>
+</div>
 
-**Live Local Production Build:** Next.js 14 App Router, TypeScript, Tailwind CSS, GSAP 3.  
-**Target Domain:** `studio.syahmiaof.my` (local build only; not yet connected).  
-**Brand:** SYAHMIAOF STUDIO — Frontend Development, Custom Full-Stack Systems & 1:1 Web-Dev Coaching.  
+---
 
 Current local reconstruction evidence: [ASTRA V2 audit](docs/qa/ASTRA_V2_VISUAL_AUDIT.md) and [seven-page before/after comparison](docs/qa/ASTRA_V2_COMPARISON.html). Open the HTML file in a browser. Original references and PNGs are preserved. Earlier QA documents describe V1 and are not current verification.
 
